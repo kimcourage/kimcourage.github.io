@@ -1,0 +1,7 @@
+/*
+  Appending custom SCSS variables will override the default ones in `_sass/addon/variables.scss`
+*/
+
+:root {
+  --bs-body-font-weight: 500;
+}
