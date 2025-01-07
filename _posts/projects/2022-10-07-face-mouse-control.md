@@ -4,6 +4,7 @@ tags: [AI, CV, Python]
 category: Projects 
 toc: true
 img_path: /assets/posts/face-control/
+pin: true
 ---
 
 > Github: [/face-mouse-control](https://github.com/denev6/face-mouse-control)  

@@ -1,10 +1,10 @@
 ---
 title: 이미지 변환 행렬과 OpenCV
 tags: [CV, C++]
-category: Computer Vision
+category: Computer-Vision
 toc: true 
 math: true
-img_path: /assets/posts/transform
+img_path: /assets/posts/transform/
 ---
 
 이미지 행렬의 이동, 확대, 축소 등 **기하학적 변환**에 대해 다룬다. C++로 작성한 OpenCV 코드를 사용한다. 원본 이미지 좌표는 $(x, y)$로, 변환된 이미지 좌표는 $(x',y')$로 표현한다. 간결한 코드를 위해 네임스페이스를 생략하며, 이미지를 읽는 과정도 생략한다. 코드에서 img는 원본 이미지, dst는 변환된 이미지이다.
