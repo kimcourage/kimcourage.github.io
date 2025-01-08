@@ -26,3 +26,4 @@ package-lock.json
 desktop.ini
 NOTE
 *.bat
+/*.py

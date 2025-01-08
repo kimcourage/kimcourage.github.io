@@ -47,7 +47,7 @@ const allowedDomains = [
     'www.google-analytics.com',
   
 
-  'denev6.github.io',
+  'localhost:4000',
 
   
 
