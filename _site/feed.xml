@@ -1,17 +1,17 @@
 
 
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>http://localhost:4000/</id>
+  <id>https://denev6.github.io/</id>
   <title>Jin's Notes</title>
   <subtitle>AI, 수학, Python, Golang을 다루는 학생입니다.</subtitle>
-  <updated>2025-01-08T20:00:39+09:00</updated>
+  <updated>2025-01-10T10:20:55+09:00</updated>
   <author>
     <name>박성진</name>
-    <uri>http://localhost:4000/</uri>
+    <uri>https://denev6.github.io/</uri>
   </author>
-  <link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml"/>
+  <link rel="self" type="application/atom+xml" href="https://denev6.github.io/feed.xml"/>
   <link rel="alternate" type="text/html" hreflang="ko-KR"
-    href="http://localhost:4000/"/>
+    href="https://denev6.github.io/"/>
   <generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator>
   <rights> © 2025 박성진 </rights>
   <icon>/assets/img/favicons/favicon.ico</icon>
@@ -21,13 +21,13 @@
   
   <entry>
     <title>SVD를 이용한 이미지 압축</title>
-    <link href="http://localhost:4000/machine-learning/2025/01/08/svd.html" rel="alternate" type="text/html" title="SVD를 이용한 이미지 압축" />
+    <link href="https://denev6.github.io/machine-learning/2025/01/08/svd.html" rel="alternate" type="text/html" title="SVD를 이용한 이미지 압축" />
     <published>2025-01-08T00:00:00+09:00</published>
   
     <updated>2025-01-08T00:00:00+09:00</updated>
   
-    <id>http://localhost:4000/machine-learning/2025/01/08/svd.html</id>
-    <content src="http://localhost:4000/machine-learning/2025/01/08/svd.html" />
+    <id>https://denev6.github.io/machine-learning/2025/01/08/svd.html</id>
+    <content src="https://denev6.github.io/machine-learning/2025/01/08/svd.html" />
     <author>
       <name>박성진</name>
     </author>
@@ -61,13 +61,13 @@ Orthogonal matrix: 모든 column 벡터가 직교하는 행렬로, $AA^T=A^TA=I$
   
   <entry>
     <title>Edge detection</title>
-    <link href="http://localhost:4000/computer-vision/2025/01/06/edge-detection.html" rel="alternate" type="text/html" title="Edge detection" />
+    <link href="https://denev6.github.io/computer-vision/2025/01/06/edge-detection.html" rel="alternate" type="text/html" title="Edge detection" />
     <published>2025-01-06T00:00:00+09:00</published>
   
-    <updated>2025-01-06T00:00:00+09:00</updated>
+    <updated>2025-01-09T00:07:07+09:00</updated>
   
-    <id>http://localhost:4000/computer-vision/2025/01/06/edge-detection.html</id>
-    <content src="http://localhost:4000/computer-vision/2025/01/06/edge-detection.html" />
+    <id>https://denev6.github.io/computer-vision/2025/01/06/edge-detection.html</id>
+    <content src="https://denev6.github.io/computer-vision/2025/01/06/edge-detection.html" />
     <author>
       <name>박성진</name>
     </author>
@@ -107,13 +107,13 @@ Orthogonal matrix: 모든 column 벡터가 직교하는 행렬로, $AA^T=A^TA=I$
   
   <entry>
     <title>이미지 변환 행렬과 OpenCV</title>
-    <link href="http://localhost:4000/computer-vision/2025/01/03/transformation.html" rel="alternate" type="text/html" title="이미지 변환 행렬과 OpenCV" />
+    <link href="https://denev6.github.io/computer-vision/2025/01/03/transformation.html" rel="alternate" type="text/html" title="이미지 변환 행렬과 OpenCV" />
     <published>2025-01-03T00:00:00+09:00</published>
   
     <updated>2025-01-08T00:08:04+09:00</updated>
   
-    <id>http://localhost:4000/computer-vision/2025/01/03/transformation.html</id>
-    <content src="http://localhost:4000/computer-vision/2025/01/03/transformation.html" />
+    <id>https://denev6.github.io/computer-vision/2025/01/03/transformation.html</id>
+    <content src="https://denev6.github.io/computer-vision/2025/01/03/transformation.html" />
     <author>
       <name>박성진</name>
     </author>
@@ -160,13 +160,13 @@ OpenCV는 warpAffine과 perspectiveTransform 메서드를 지원한다.
   
   <entry>
     <title>Attention is all you need</title>
-    <link href="http://localhost:4000/machine-learning/2024/04/10/transformer.html" rel="alternate" type="text/html" title="Attention is all you need" />
+    <link href="https://denev6.github.io/machine-learning/2024/04/10/transformer.html" rel="alternate" type="text/html" title="Attention is all you need" />
     <published>2024-04-10T00:00:00+09:00</published>
   
     <updated>2024-04-10T00:00:00+09:00</updated>
   
-    <id>http://localhost:4000/machine-learning/2024/04/10/transformer.html</id>
-    <content src="http://localhost:4000/machine-learning/2024/04/10/transformer.html" />
+    <id>https://denev6.github.io/machine-learning/2024/04/10/transformer.html</id>
+    <content src="https://denev6.github.io/machine-learning/2024/04/10/transformer.html" />
     <author>
       <name>박성진</name>
     </author>
@@ -200,13 +200,13 @@ Abstract 
   
   <entry>
     <title>Chripy 블로그 만들기</title>
-    <link href="http://localhost:4000/playground/2023/10/15/init-chripy.html" rel="alternate" type="text/html" title="Chripy 블로그 만들기" />
+    <link href="https://denev6.github.io/playground/2023/10/15/init-chripy.html" rel="alternate" type="text/html" title="Chripy 블로그 만들기" />
     <published>2023-10-15T00:00:00+09:00</published>
   
     <updated>2023-10-15T00:00:00+09:00</updated>
   
-    <id>http://localhost:4000/playground/2023/10/15/init-chripy.html</id>
-    <content src="http://localhost:4000/playground/2023/10/15/init-chripy.html" />
+    <id>https://denev6.github.io/playground/2023/10/15/init-chripy.html</id>
+    <content src="https://denev6.github.io/playground/2023/10/15/init-chripy.html" />
     <author>
       <name>박성진</name>
     </author>

@@ -46,8 +46,8 @@
 <meta property="og:locale" content="ko_KR" />
 <meta name="description" content="딥러닝으로 모델을 학습시키기 위해 미분 값을 구하는 과정이 필요하다. 만약 왜 미분이 필요한지 모른다면 ‘경사하강법과 학습률‘을 참고하면 된다. 해당 내용을 몰라도 이번 글을 이해하는 데는 문제는 없다. " />
 <meta property="og:description" content="딥러닝으로 모델을 학습시키기 위해 미분 값을 구하는 과정이 필요하다. 만약 왜 미분이 필요한지 모른다면 ‘경사하강법과 학습률‘을 참고하면 된다. 해당 내용을 몰라도 이번 글을 이해하는 데는 문제는 없다. " />
-<link rel="canonical" href="http://localhost:4000/machine-learning/2022/12/31/backpropagation.html" />
-<meta property="og:url" content="http://localhost:4000/machine-learning/2022/12/31/backpropagation.html" />
+<link rel="canonical" href="https://denev6.github.io/machine-learning/2022/12/31/backpropagation.html" />
+<meta property="og:url" content="https://denev6.github.io/machine-learning/2022/12/31/backpropagation.html" />
 <meta property="og:site_name" content="Jin’s Notes" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2022-12-31T00:00:00+09:00" />
@@ -55,7 +55,7 @@
 <meta property="twitter:title" content="역방향으로 미분값 계산하기" />
 <meta name="twitter:site" content="@" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-12-31T00:00:00+09:00","datePublished":"2022-12-31T00:00:00+09:00","description":"딥러닝으로 모델을 학습시키기 위해 미분 값을 구하는 과정이 필요하다. 만약 왜 미분이 필요한지 모른다면 ‘경사하강법과 학습률‘을 참고하면 된다. 해당 내용을 몰라도 이번 글을 이해하는 데는 문제는 없다. ","headline":"역방향으로 미분값 계산하기","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/machine-learning/2022/12/31/backpropagation.html"},"url":"http://localhost:4000/machine-learning/2022/12/31/backpropagation.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-12-31T00:00:00+09:00","datePublished":"2022-12-31T00:00:00+09:00","description":"딥러닝으로 모델을 학습시키기 위해 미분 값을 구하는 과정이 필요하다. 만약 왜 미분이 필요한지 모른다면 ‘경사하강법과 학습률‘을 참고하면 된다. 해당 내용을 몰라도 이번 글을 이해하는 데는 문제는 없다. ","headline":"역방향으로 미분값 계산하기","mainEntityOfPage":{"@type":"WebPage","@id":"https://denev6.github.io/machine-learning/2022/12/31/backpropagation.html"},"url":"https://denev6.github.io/machine-learning/2022/12/31/backpropagation.html"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -1075,7 +1075,7 @@ Jin's Notes
     
       
       <a
-        href="https://twitter.com/intent/tweet?text=%EC%97%AD%EB%B0%A9%ED%96%A5%EC%9C%BC%EB%A1%9C%20%EB%AF%B8%EB%B6%84%EA%B0%92%20%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0%20-%20Jin's%20Notes&url=http%3A%2F%2Flocalhost%3A4000%2Fmachine-learning%2F2022%2F12%2F31%2Fbackpropagation.html"
+        href="https://twitter.com/intent/tweet?text=%EC%97%AD%EB%B0%A9%ED%96%A5%EC%9C%BC%EB%A1%9C%20%EB%AF%B8%EB%B6%84%EA%B0%92%20%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0%20-%20Jin's%20Notes&url=https%3A%2F%2Fdenev6.github.io%2Fmachine-learning%2F2022%2F12%2F31%2Fbackpropagation.html"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Twitter"
@@ -1088,7 +1088,7 @@ Jin's Notes
     
       
       <a
-        href="https://www.facebook.com/sharer/sharer.php?title=%EC%97%AD%EB%B0%A9%ED%96%A5%EC%9C%BC%EB%A1%9C%20%EB%AF%B8%EB%B6%84%EA%B0%92%20%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0%20-%20Jin's%20Notes&u=http%3A%2F%2Flocalhost%3A4000%2Fmachine-learning%2F2022%2F12%2F31%2Fbackpropagation.html"
+        href="https://www.facebook.com/sharer/sharer.php?title=%EC%97%AD%EB%B0%A9%ED%96%A5%EC%9C%BC%EB%A1%9C%20%EB%AF%B8%EB%B6%84%EA%B0%92%20%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0%20-%20Jin's%20Notes&u=https%3A%2F%2Fdenev6.github.io%2Fmachine-learning%2F2022%2F12%2F31%2Fbackpropagation.html"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Facebook"
@@ -1101,7 +1101,7 @@ Jin's Notes
     
       
       <a
-        href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fmachine-learning%2F2022%2F12%2F31%2Fbackpropagation.html&text=%EC%97%AD%EB%B0%A9%ED%96%A5%EC%9C%BC%EB%A1%9C%20%EB%AF%B8%EB%B6%84%EA%B0%92%20%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0%20-%20Jin's%20Notes"
+        href="https://t.me/share/url?url=https%3A%2F%2Fdenev6.github.io%2Fmachine-learning%2F2022%2F12%2F31%2Fbackpropagation.html&text=%EC%97%AD%EB%B0%A9%ED%96%A5%EC%9C%BC%EB%A1%9C%20%EB%AF%B8%EB%B6%84%EA%B0%92%20%EA%B3%84%EC%82%B0%ED%95%98%EA%B8%B0%20-%20Jin's%20Notes"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Telegram"
@@ -1114,7 +1114,7 @@ Jin's Notes
     
       
       <a
-        href="https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2Flocalhost%3A4000%2Fmachine-learning%2F2022%2F12%2F31%2Fbackpropagation.html"
+        href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdenev6.github.io%2Fmachine-learning%2F2022%2F12%2F31%2Fbackpropagation.html"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Linkedin"
@@ -1174,6 +1174,13 @@ Jin's Notes
   <section id="access-lastmod">
     <h2 class="panel-heading">최근 수정</h2>
     <ul class="content list-unstyled ps-0 pb-1 ms-1 mt-2">
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/computer-vision/2025/01/06/edge-detection.html">Edge detection</a>
+        </li>
       
         
         
