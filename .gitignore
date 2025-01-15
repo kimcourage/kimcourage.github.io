@@ -23,7 +23,7 @@ package-lock.json
 *.old
 
 # Local
+# /assets/posts/*
 desktop.ini
-NOTE
 *.bat
 /*.py
