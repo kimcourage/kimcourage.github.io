@@ -4,7 +4,7 @@
   <id>https://denev6.github.io/</id>
   <title>Jin's Notes</title>
   <subtitle>AI, 수학, Python, Golang을 다루는 학생입니다.</subtitle>
-  <updated>2025-01-10T10:20:55+09:00</updated>
+  <updated>2025-01-22T20:24:13+09:00</updated>
   <author>
     <name>박성진</name>
     <uri>https://denev6.github.io/</uri>
@@ -17,6 +17,48 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>Docker 기반 딥러닝 모델 API 구축하기</title>
+    <link href="https://denev6.github.io/playground/2025/01/17/ml-api.html" rel="alternate" type="text/html" title="Docker 기반 딥러닝 모델 API 구축하기" />
+    <published>2025-01-17T00:00:00+09:00</published>
+  
+    <updated>2025-01-17T00:00:00+09:00</updated>
+  
+    <id>https://denev6.github.io/playground/2025/01/17/ml-api.html</id>
+    <content src="https://denev6.github.io/playground/2025/01/17/ml-api.html" />
+    <author>
+      <name>박성진</name>
+    </author>
+
+  
+    
+    <category term="Playground" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      항상 공부를 하면서 궁금한 점이 있었다. 내가 만드는 기술이 사용자에게 닿기까지 어떤 과정이 있을까? 머신러닝 모델을 공부하면서도 같은 의문이 들었다. 그래서 이미지 파일을 받아 딥러닝 모델로 예측하는 API를 만들어 보았다.
+
+Github: deep-learning-codes/ML-Ops
+
+Model 학습
+
+모델과 데이터셋을 고르는 기준은 단순하다. 로컬에서 가볍게 돌릴 수 있어야 한다. 지금은 모델이 중요한 게 아니라 그럴싸한 API를 만드는 것이 목표이기 때문에 성능보다 속도를 우선시했다. 데이터셋은 가벼운 Fashion MNIST를 사용했다. 28 x 28의 작은 크기 덕분에 빠르게 학습할 수 있다.
+
+참고로 Fashion MNIST는 부츠, 운동화, 티셔츠, 가방 등 의류 이미지로 구성된 데이...
+    </summary>
+  
+
+  </entry>
 
   
   <entry>
@@ -192,47 +234,6 @@ OpenCV는 warpAffine과 perspectiveTransform 메서드를 지원한다.
 Abstract 
 
 기존 시퀀스 모델은 encoder-decoder가 포함된 복잡한 recurrent나 convolutional 신경망을 기반으로 한다. 본 논문은 recurrence와 convolution 없이 attention mechanisms을 기반으로 하는 간단한 Transformer 구조를 제안한다. 2종류의 기계번역 문제에서 좋은 성과를 보였고, 병렬화를...
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>Chripy 블로그 만들기</title>
-    <link href="https://denev6.github.io/playground/2023/10/15/init-chripy.html" rel="alternate" type="text/html" title="Chripy 블로그 만들기" />
-    <published>2023-10-15T00:00:00+09:00</published>
-  
-    <updated>2023-10-15T00:00:00+09:00</updated>
-  
-    <id>https://denev6.github.io/playground/2023/10/15/init-chripy.html</id>
-    <content src="https://denev6.github.io/playground/2023/10/15/init-chripy.html" />
-    <author>
-      <name>박성진</name>
-    </author>
-
-  
-    
-    <category term="Playground" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      만약 본인이 Jekyll을 사용해본 경험이 있다면 공식 문서를 참고하는 게 더 빠를 수 있다. 그런데 Jekyll도 잘 모르고 FrontEnd도 잘 모르겠다하는 사람은 이 글을 잘 찾아왔다.
-
-지금 보고 있듯이 Chirpy은 정말 깔끔한 Jekyll 테마이다. 하지만 막상 시작하려니 계속 문제가 생겨서 5시간 정도를 허무하게 날렸다. 모드 변경도 안 되고 난리도 아니였다. 심지어 로컬 PC를 사용할 수 없는 상황이라 Ruby를 설치하고 build를 할 수 없어 더 골치 아팠다. 같은 문제를 겪지 않을 수 있게 과정을 기록해봤다.
-
-
-
-
-  처음 글을 작성할 당시는 군 복무 중이었기 때문에 Github 웹 에디터에서 글을 작성하고 바로 build, deploy하는 묘기를 선보였다. 하지만 현재(2025)...
     </summary>
   
 
