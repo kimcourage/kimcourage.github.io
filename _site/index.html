@@ -421,11 +421,11 @@ Jin's Notes
 
   
     <article class="card-wrapper">
-      <a href="/computer-vision/2025/01/06/edge-detection.html" class="card post-preview flex-md-row-reverse">
+      <a href="/projects/2023/02/06/multimodal-depression.html" class="card post-preview flex-md-row-reverse">
         
 
         <div class="card-body d-flex flex-column">
-          <h1 class="card-title my-2 mt-md-0">Edge detection</h1>
+          <h1 class="card-title my-2 mt-md-0">영상을 통한 우울증 예측 모델 분석</h1>
 
           <div class="card-text content mt-0 mb-2">
             <p>
@@ -435,13 +435,15 @@ Jin's Notes
 
 
 
-              엣지(edge) 검출은 객체의 경계를 찾는 방법으로 객체 판별 전처리 과정으로 사용한다. 본 글은 대표적인 엣지(이하 경계) 검출에 필요한 수학적 배경과 알고리즘에 대해 설명한다.
+              동기
+
+성균관대 우수학부생 프로그램을 통해 우울증 챗봇 개발에 참여하는 기회를 얻었다. 이전에 실시간 얼굴 인식 프로젝트를 진행한 경험이 있어 얼굴 이미지를 통해 우울증을 탐지하는 멀티모달 구현에 도전했다.
 
 
 
-미분과 변화량
+논문 요약 (번역/ 정리)
 
-경계 검출의 핵심은 변화를 찾는 것이다. 객체와 배경은 밝기 차이가 있을 것이라고 가정한다. 밝기 변화가 일정 수준을 넘어가면 경계로 예측한다. 이미지...
+이미지를 중심으로한 우울증 연구 중 논문: Automatic Depression Detection via Lea...
             </p>
           </div>
 
@@ -459,11 +461,11 @@ Jin's Notes
 
 <time
   
-  data-ts="1736089200"
+  data-ts="1675609200"
   data-df="YYYY/MM/DD"
   
 >
-  2025/01/06
+  2023/02/06
 </time>
 
 
@@ -472,11 +474,87 @@ Jin's Notes
                 <i class="far fa-folder-open fa-fw me-1"></i>
                 <span class="categories">
                   
-                    Computer-Vision
+                    Projects
 
                 </span>
               
-            <span class="clap-count" data-url="https://denev6.github.io/computer-vision/2025/01/06/edge-detection.html"></span>
+            <span class="clap-count" data-url="https://denev6.github.io/projects/2023/02/06/multimodal-depression.html"></span>
+            </div>
+
+            
+              <div class="pin ms-1">
+                <i class="fas fa-thumbtack fa-fw"></i>
+                <span></span>
+              </div>
+            
+          </div>
+          <!-- .post-meta -->
+        </div>
+        <!-- .card-body -->
+      </a>
+    </article>
+  
+    <article class="card-wrapper">
+      <a href="/projects/2022/12/17/dacon.html" class="card post-preview flex-md-row-reverse">
+        
+
+        <div class="card-body d-flex flex-column">
+          <h1 class="card-title my-2 mt-md-0">월간 DACON 발화자의 감정 인식 AI</h1>
+
+          <div class="card-text content mt-0 mb-2">
+            <p>
+              
+
+
+
+
+
+              
+  대회: 월간 데이콘 발화자의 감정인식 AI 경진대회
+제출 코드: dacon.io/codeshare
+인터뷰: 우승자 인터뷰: 219
+
+
+
+
+동기
+
+자연어처리 대회를 소개받아 DACON 대회에 참가하게 되었다. 자연어처리 과목을 수강하고 있었는데 교수님께서 대회를 소개해주셨다. 당시 멀티모달 우울증 탐지 연구를 하고 있었기 때문에 감정 분석 모델에 ...
+            </p>
+          </div>
+
+          <div class="post-meta flex-grow-1 d-flex align-items-end">
+            <div class="me-auto">
+              <!-- posted date -->
+              <i class="far fa-calendar fa-fw me-1"></i>
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1671202800"
+  data-df="YYYY/MM/DD"
+  
+>
+  2022/12/17
+</time>
+
+
+              <!-- categories -->
+              
+                <i class="far fa-folder-open fa-fw me-1"></i>
+                <span class="categories">
+                  
+                    Projects
+
+                </span>
+              
+            <span class="clap-count" data-url="https://denev6.github.io/projects/2022/12/17/dacon.html"></span>
             </div>
 
             
@@ -571,11 +649,74 @@ $ python main.py
     </article>
   
     <article class="card-wrapper">
+      <a href="/computer-vision/2025/01/27/hog.html" class="card post-preview flex-md-row-reverse">
+        
+
+        <div class="card-body d-flex flex-column">
+          <h1 class="card-title my-2 mt-md-0">Histograms of Oriented Gradients for Human Detection</h1>
+
+          <div class="card-text content mt-0 mb-2">
+            <p>
+              
+
+
+
+
+
+              Histograms of Oriented Gradients for Human Detection(vision.stanford) 논문을 바탕으로 HOG descriptor 작동 원리에 대해 분석한다. 논문을 완전히 번역하는 것이 아닌 내용을 분석하고 정리한 글이다. 따라서 실제 논문 목차와 다르며, 필자의 설명이 추가되었다.
+
+본 글에서 gradient는...
+            </p>
+          </div>
+
+          <div class="post-meta flex-grow-1 d-flex align-items-end">
+            <div class="me-auto">
+              <!-- posted date -->
+              <i class="far fa-calendar fa-fw me-1"></i>
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1737903600"
+  data-df="YYYY/MM/DD"
+  
+>
+  2025/01/27
+</time>
+
+
+              <!-- categories -->
+              
+                <i class="far fa-folder-open fa-fw me-1"></i>
+                <span class="categories">
+                  
+                    Computer-Vision
+
+                </span>
+              
+            <span class="clap-count" data-url="https://denev6.github.io/computer-vision/2025/01/27/hog.html"></span>
+            </div>
+
+            
+          </div>
+          <!-- .post-meta -->
+        </div>
+        <!-- .card-body -->
+      </a>
+    </article>
+  
+    <article class="card-wrapper">
       <a href="/playground/2025/01/17/ml-api.html" class="card post-preview flex-md-row-reverse">
         
 
         <div class="card-body d-flex flex-column">
-          <h1 class="card-title my-2 mt-md-0">Docker 기반 딥러닝 모델 API 구축하기</h1>
+          <h1 class="card-title my-2 mt-md-0">FastAPI 기반 딥러닝 모델 API 구축하기</h1>
 
           <div class="card-text content mt-0 mb-2">
             <p>
@@ -701,11 +842,11 @@ Vector: 크기와 방향을 가지는 양으로, 2차원 공간의 벡터는 $\v
     </article>
   
     <article class="card-wrapper">
-      <a href="/computer-vision/2025/01/03/transformation.html" class="card post-preview flex-md-row-reverse">
+      <a href="/computer-vision/2025/01/06/edge-detection.html" class="card post-preview flex-md-row-reverse">
         
 
         <div class="card-body d-flex flex-column">
-          <h1 class="card-title my-2 mt-md-0">이미지 변환 행렬과 OpenCV</h1>
+          <h1 class="card-title my-2 mt-md-0">Edge detection</h1>
 
           <div class="card-text content mt-0 mb-2">
             <p>
@@ -715,9 +856,13 @@ Vector: 크기와 방향을 가지는 양으로, 2차원 공간의 벡터는 $\v
 
 
 
-              이미지 행렬의 이동, 확대, 축소 등 기하학적 변환에 대해 다룬다. C++로 작성한 OpenCV 코드를 사용한다. 원본 이미지 좌표는 $(x, y)$로, 변환된 이미지 좌표는 $(x’,y’)$로 표현한다. 간결한 코드를 위해 네임스페이스를 생략하며, 이미지를 읽는 과정도 생략한다. 코드에서 img는 원본 이미지, dst는 변환된 이미지이다.
+              엣지(edge) 검출은 객체의 경계를 찾는 방법으로 객체 판별 전처리 과정으로 사용한다. 본 글은 대표적인 엣지(이하 경계) 검출에 필요한 수학적 배경과 알고리즘에 대해 설명한다.
 
-원본 이...
+
+
+미분과 변화량
+
+경계 검출의 핵심은 변화를 찾는 것이다. 객체와 배경은 밝기 차이가 있을 것이라고 가정한다. 밝기 변화가 일정 수준을 넘어가면 경계로 예측한다. 이미지...
             </p>
           </div>
 
@@ -735,11 +880,11 @@ Vector: 크기와 방향을 가지는 양으로, 2차원 공간의 벡터는 $\v
 
 <time
   
-  data-ts="1735830000"
+  data-ts="1736089200"
   data-df="YYYY/MM/DD"
   
 >
-  2025/01/03
+  2025/01/06
 </time>
 
 
@@ -752,135 +897,7 @@ Vector: 크기와 방향을 가지는 양으로, 2차원 공간의 벡터는 $\v
 
                 </span>
               
-            <span class="clap-count" data-url="https://denev6.github.io/computer-vision/2025/01/03/transformation.html"></span>
-            </div>
-
-            
-          </div>
-          <!-- .post-meta -->
-        </div>
-        <!-- .card-body -->
-      </a>
-    </article>
-  
-    <article class="card-wrapper">
-      <a href="/machine-learning/2024/04/10/transformer.html" class="card post-preview flex-md-row-reverse">
-        
-
-        <div class="card-body d-flex flex-column">
-          <h1 class="card-title my-2 mt-md-0">Attention is all you need</h1>
-
-          <div class="card-text content mt-0 mb-2">
-            <p>
-              
-
-
-
-
-
-              Attention Is All You Need
-
-본 글은 “Attention is All You Need” 논문을 번역 및 분석했다. 일부 문장은 맥락에 따라 의역되었으며, 명확한 이해를 위해 부분적으로 설명을 추가했다. 주요 용어는 정확한 의미 전달을 위해 영문 그대로 작성했다. (예: recurrent, convolutional 등)
-
-Abstra...
-            </p>
-          </div>
-
-          <div class="post-meta flex-grow-1 d-flex align-items-end">
-            <div class="me-auto">
-              <!-- posted date -->
-              <i class="far fa-calendar fa-fw me-1"></i>
-              <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-  data-ts="1712674800"
-  data-df="YYYY/MM/DD"
-  
->
-  2024/04/10
-</time>
-
-
-              <!-- categories -->
-              
-                <i class="far fa-folder-open fa-fw me-1"></i>
-                <span class="categories">
-                  
-                    Machine-Learning
-
-                </span>
-              
-            <span class="clap-count" data-url="https://denev6.github.io/machine-learning/2024/04/10/transformer.html"></span>
-            </div>
-
-            
-          </div>
-          <!-- .post-meta -->
-        </div>
-        <!-- .card-body -->
-      </a>
-    </article>
-  
-    <article class="card-wrapper">
-      <a href="/playground/2023/10/15/init-chripy.html" class="card post-preview flex-md-row-reverse">
-        
-
-        <div class="card-body d-flex flex-column">
-          <h1 class="card-title my-2 mt-md-0">Chripy 블로그 만들기</h1>
-
-          <div class="card-text content mt-0 mb-2">
-            <p>
-              
-
-
-
-
-
-              만약 본인이 Jekyll을 사용해본 경험이 있다면 공식 문서를 참고하는 게 더 빠를 수 있다. 그런데 Jekyll도 잘 모르고 FrontEnd도 잘 모르겠다하는 사람은 이 글을 잘 찾아왔다.
-
-지금 보고 있듯이 Chirpy은 정말 깔끔한 Jekyll 테마이다. 하지만 막상 시작하려니 계속 문제가 생겨서 5시간 정도를 허무하게 날렸다. 모드 변경도 안 ...
-            </p>
-          </div>
-
-          <div class="post-meta flex-grow-1 d-flex align-items-end">
-            <div class="me-auto">
-              <!-- posted date -->
-              <i class="far fa-calendar fa-fw me-1"></i>
-              <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-  data-ts="1697295600"
-  data-df="YYYY/MM/DD"
-  
->
-  2023/10/15
-</time>
-
-
-              <!-- categories -->
-              
-                <i class="far fa-folder-open fa-fw me-1"></i>
-                <span class="categories">
-                  
-                    Playground
-
-                </span>
-              
-            <span class="clap-count" data-url="https://denev6.github.io/playground/2023/10/15/init-chripy.html"></span>
+            <span class="clap-count" data-url="https://denev6.github.io/computer-vision/2025/01/06/edge-detection.html"></span>
             </div>
 
             
@@ -1148,6 +1165,27 @@ Abstra...
     
     
     
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
   
     
     
@@ -1177,6 +1215,8 @@ Abstra...
     
     
     
+      
+    
   
     
     
@@ -1194,25 +1234,6 @@ Abstra...
     
     
     
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
-        
-        
-
   
     
     
@@ -1341,13 +1362,13 @@ Abstra...
         <a class="post-tag btn btn-outline-primary" href="/tags/cv/">CV</a>
       
         
+        <a class="post-tag btn btn-outline-primary" href="/tags/c/">C++</a>
+      
+        
         <a class="post-tag btn btn-outline-primary" href="/tags/go/">Go</a>
       
         
         <a class="post-tag btn btn-outline-primary" href="/tags/pytorch/">Pytorch</a>
-      
-        
-        <a class="post-tag btn btn-outline-primary" href="/tags/c/">C++</a>
       
         
         <a class="post-tag btn btn-outline-primary" href="/tags/blog/">blog</a>
@@ -1515,6 +1536,27 @@ Abstra...
     
     
     
+      
+        
+        
+
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      
+    
   
     
     
@@ -1544,6 +1586,8 @@ Abstra...
     
     
     
+      
+    
   
     
     
@@ -1561,25 +1605,6 @@ Abstra...
     
     
     
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
-        
-        
-
   
     
     
@@ -1708,13 +1733,13 @@ Abstra...
         <a class="post-tag btn btn-outline-primary" href="/tags/cv/">CV</a>
       
         
+        <a class="post-tag btn btn-outline-primary" href="/tags/c/">C++</a>
+      
+        
         <a class="post-tag btn btn-outline-primary" href="/tags/go/">Go</a>
       
         
         <a class="post-tag btn btn-outline-primary" href="/tags/pytorch/">Pytorch</a>
-      
-        
-        <a class="post-tag btn btn-outline-primary" href="/tags/c/">C++</a>
       
         
         <a class="post-tag btn btn-outline-primary" href="/tags/blog/">blog</a>

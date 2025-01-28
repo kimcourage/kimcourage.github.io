@@ -4,7 +4,7 @@
   <id>https://denev6.github.io/</id>
   <title>Jin's Notes</title>
   <subtitle>AI, 수학, Python, Golang을 다루는 학생입니다.</subtitle>
-  <updated>2025-01-26T10:19:59+09:00</updated>
+  <updated>2025-01-28T20:43:00+09:00</updated>
   <author>
     <name>박성진</name>
     <uri>https://denev6.github.io/</uri>
@@ -20,8 +20,48 @@
 
   
   <entry>
-    <title>Docker 기반 딥러닝 모델 API 구축하기</title>
-    <link href="https://denev6.github.io/playground/2025/01/17/ml-api.html" rel="alternate" type="text/html" title="Docker 기반 딥러닝 모델 API 구축하기" />
+    <title>Histograms of Oriented Gradients for Human Detection</title>
+    <link href="https://denev6.github.io/computer-vision/2025/01/27/hog.html" rel="alternate" type="text/html" title="Histograms of Oriented Gradients for Human Detection" />
+    <published>2025-01-27T00:00:00+09:00</published>
+  
+    <updated>2025-01-27T00:00:00+09:00</updated>
+  
+    <id>https://denev6.github.io/computer-vision/2025/01/27/hog.html</id>
+    <content src="https://denev6.github.io/computer-vision/2025/01/27/hog.html" />
+    <author>
+      <name>박성진</name>
+    </author>
+
+  
+    
+    <category term="Computer-Vision" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Histograms of Oriented Gradients for Human Detection(vision.stanford) 논문을 바탕으로 HOG descriptor 작동 원리에 대해 분석한다. 논문을 완전히 번역하는 것이 아닌 내용을 분석하고 정리한 글이다. 따라서 실제 논문 목차와 다르며, 필자의 설명이 추가되었다.
+
+본 글에서 gradient는 이미지의 x 또는 y 방향에 대한 미분값을 말하며, 자세한 내용은 블로그: edge-detection에서 정의했다. SVM도 블로그: svm에서 다뤘었다.
+
+초록
+
+본 연구는 Linear SVM을 이용한 사람 검출 모델을 개발했다. 이미지 gradient를 이용해 경계(edge)를 탐지하는 Histograms of Oriented Gradient(HOG)...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>FastAPI 기반 딥러닝 모델 API 구축하기</title>
+    <link href="https://denev6.github.io/playground/2025/01/17/ml-api.html" rel="alternate" type="text/html" title="FastAPI 기반 딥러닝 모델 API 구축하기" />
     <published>2025-01-17T00:00:00+09:00</published>
   
     <updated>2025-01-17T00:00:00+09:00</updated>
@@ -194,46 +234,6 @@ OpenCV는 warpAffine과 perspectiveTransform 메서드를 지원한다.
 
 
 이동(translation) 변환은 이미지 좌표를 x, y 방향으로 이동(shift)한다. 평행 이...
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>Attention is all you need</title>
-    <link href="https://denev6.github.io/machine-learning/2024/04/10/transformer.html" rel="alternate" type="text/html" title="Attention is all you need" />
-    <published>2024-04-10T00:00:00+09:00</published>
-  
-    <updated>2024-04-10T00:00:00+09:00</updated>
-  
-    <id>https://denev6.github.io/machine-learning/2024/04/10/transformer.html</id>
-    <content src="https://denev6.github.io/machine-learning/2024/04/10/transformer.html" />
-    <author>
-      <name>박성진</name>
-    </author>
-
-  
-    
-    <category term="Machine-Learning" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      Attention Is All You Need
-
-본 글은 “Attention is All You Need” 논문을 번역 및 분석했다. 일부 문장은 맥락에 따라 의역되었으며, 명확한 이해를 위해 부분적으로 설명을 추가했다. 주요 용어는 정확한 의미 전달을 위해 영문 그대로 작성했다. (예: recurrent, convolutional 등)
-
-Abstract 
-
-기존 시퀀스 모델은 encoder-decoder가 포함된 복잡한 recurrent나 convolutional 신경망을 기반으로 한다. 본 논문은 recurrence와 convolution 없이 attention mechanisms을 기반으로 하는 간단한 Transformer 구조를 제안한다. 2종류의 기계번역 문제에서 좋은 성과를 보였고, 병렬화를...
     </summary>
   
 

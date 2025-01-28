@@ -4,6 +4,7 @@ tags: [AI, CV, Python]
 category: Projects 
 toc: true
 img_path: /assets/posts/multimodal-dep/
+pin: true
 ---
 
 ## 동기

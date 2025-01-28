@@ -5,7 +5,6 @@ category: Computer-Vision
 toc: true 
 math: true
 img_path: /assets/posts/edge-detection/
-pin: true
 ---
 
 `엣지(edge) 검출`은 객체의 경계를 찾는 방법으로 객체 판별 전처리 과정으로 사용한다. 본 글은 대표적인 엣지(이하 경계) 검출에 필요한 수학적 배경과 알고리즘에 대해 설명한다.
