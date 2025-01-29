@@ -1,6 +1,6 @@
 ---
 title: Attention is all you need
-category: Machine-Learning
+category: Paper-Review
 toc: true 
 math: true
 img_path: /assets/posts/transformer/
