@@ -55,7 +55,7 @@
 <meta property="twitter:title" content="Edge detection" />
 <meta name="twitter:site" content="@" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-01-09T00:07:07+09:00","datePublished":"2025-01-06T00:00:00+09:00","description":"엣지(edge) 검출은 객체의 경계를 찾는 방법으로 객체 판별 전처리 과정으로 사용한다. 본 글은 대표적인 엣지(이하 경계) 검출에 필요한 수학적 배경과 알고리즘에 대해 설명한다.","headline":"Edge detection","mainEntityOfPage":{"@type":"WebPage","@id":"https://denev6.github.io/computer-vision/2025/01/06/edge-detection.html"},"url":"https://denev6.github.io/computer-vision/2025/01/06/edge-detection.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-01-28T23:37:47+09:00","datePublished":"2025-01-06T00:00:00+09:00","description":"엣지(edge) 검출은 객체의 경계를 찾는 방법으로 객체 판별 전처리 과정으로 사용한다. 본 글은 대표적인 엣지(이하 경계) 검출에 필요한 수학적 배경과 알고리즘에 대해 설명한다.","headline":"Edge detection","mainEntityOfPage":{"@type":"WebPage","@id":"https://denev6.github.io/computer-vision/2025/01/06/edge-detection.html"},"url":"https://denev6.github.io/computer-vision/2025/01/06/edge-detection.html"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -2444,14 +2444,28 @@ Jin's Notes
         
         
         <li class="text-truncate lh-lg">
-          <a href="/computer-vision/2025/01/03/transformation.html">이미지 변환 행렬과 OpenCV</a>
+          <a href="/playground/2025/01/17/ml-api.html">FastAPI 기반 딥러닝 모델 API 구축하기</a>
         </li>
       
         
         
         
         <li class="text-truncate lh-lg">
-          <a href="/projects/2022/10/07/face-mouse-control.html">실시간 얼굴 인식 프로젝트를 진행하며</a>
+          <a href="/machine-learning/2022/12/15/cnn.html">CNN 개념과 MNIST 분류</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/projects/2022/12/17/dacon.html">월간 DACON 발화자의 감정 인식 AI</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/computer-vision/2025/01/03/transformation.html">이미지 변환 행렬과 OpenCV</a>
         </li>
       
     </ul>
@@ -2598,6 +2612,26 @@ Jin's Notes
     
     
     
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
       
         
         
@@ -2606,30 +2640,6 @@ Jin's Notes
     
     
     
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
     
   
     
@@ -2767,10 +2777,10 @@ Jin's Notes
         <a class="post-tag btn btn-outline-primary" href="/tags/c/">C++</a>
       
         
-        <a class="post-tag btn btn-outline-primary" href="/tags/go/">Go</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/pytorch/">Pytorch</a>
       
         
-        <a class="post-tag btn btn-outline-primary" href="/tags/pytorch/">Pytorch</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/go/">Go</a>
       
         
         <a class="post-tag btn btn-outline-primary" href="/tags/blog/">blog</a>
@@ -2831,6 +2841,18 @@ Jin's Notes
 
 
 
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
   
 
@@ -2923,6 +2945,46 @@ Jin's Notes
     <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
       
         <article class="col">
+          <a href="/paper-review/2025/01/27/hog.html" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+    class="small"
+  
+  data-ts="1737903600"
+  data-df="YYYY/MM/DD"
+  
+>
+  2025/01/27
+</time>
+
+              <h4 class="pt-0 my-2">Histograms of Oriented Gradients for Human Detection</h4>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  Histograms of Oriented Gradients for Human Detection(vision.stanford) 논문을 바탕으로 HOG descriptor 작동 원리에 대해 분석한다. 논문을 완전히 번역하는 것이 아닌 내용을 분석하고 정리한 글이다. 따라서 실제 논문 목차와 다르며, 필자의 설명이 추가되었다.
+
+본 글에서 gradient는...
+                </p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+        <article class="col">
           <a href="/computer-vision/2025/01/03/transformation.html" class="post-preview card h-100">
             <div class="card-body">
               <!--
@@ -2956,46 +3018,6 @@ Jin's Notes
                   이미지 행렬의 이동, 확대, 축소 등 기하학적 변환에 대해 다룬다. C++로 작성한 OpenCV 코드를 사용한다. 원본 이미지 좌표는 $(x, y)$로, 변환된 이미지 좌표는 $(x’,y’)$로 표현한다. 간결한 코드를 위해 네임스페이스를 생략하며, 이미지를 읽는 과정도 생략한다. 코드에서 img는 원본 이미지, dst는 변환된 이미지이다.
 
 원본 이...
-                </p>
-              </div>
-            </div>
-          </a>
-        </article>
-      
-        <article class="col">
-          <a href="/computer-vision/2025/01/27/hog.html" class="post-preview card h-100">
-            <div class="card-body">
-              <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-    class="small"
-  
-  data-ts="1737903600"
-  data-df="YYYY/MM/DD"
-  
->
-  2025/01/27
-</time>
-
-              <h4 class="pt-0 my-2">Histograms of Oriented Gradients for Human Detection</h4>
-              <div class="text-muted small">
-                <p>
-                  
-
-
-
-
-
-                  Histograms of Oriented Gradients for Human Detection(vision.stanford) 논문을 바탕으로 HOG descriptor 작동 원리에 대해 분석한다. 논문을 완전히 번역하는 것이 아닌 내용을 분석하고 정리한 글이다. 따라서 실제 논문 목차와 다르며, 필자의 설명이 추가되었다.
-
-본 글에서 gradient는...
                 </p>
               </div>
             </div>
@@ -3077,7 +3099,7 @@ $ python main.py
 
   
     <a
-      href="/machine-learning/2025/01/08/svd.html"
+      href="/computer-vision/2025/01/08/svd.html"
       class="btn btn-outline-primary"
       aria-label="다음 글"
     >
@@ -3321,6 +3343,26 @@ $ python main.py
     
     
     
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
       
         
         
@@ -3329,30 +3371,6 @@ $ python main.py
     
     
     
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
     
   
     
@@ -3490,10 +3508,10 @@ $ python main.py
         <a class="post-tag btn btn-outline-primary" href="/tags/c/">C++</a>
       
         
-        <a class="post-tag btn btn-outline-primary" href="/tags/go/">Go</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/pytorch/">Pytorch</a>
       
         
-        <a class="post-tag btn btn-outline-primary" href="/tags/pytorch/">Pytorch</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/go/">Go</a>
       
         
         <a class="post-tag btn btn-outline-primary" href="/tags/blog/">blog</a>

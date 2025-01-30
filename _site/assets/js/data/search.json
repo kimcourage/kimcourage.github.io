@@ -1,9 +1,26 @@
 [
   
   {
-    "title": "Histograms of Oriented Gradients for Human Detection",
-    "url": "/computer-vision/2025/01/27/hog.html",
+    "title": "Auto-Encoding Variational Bayes",
+    "url": "/computer-vision/2025/01/29/vae.html",
     "categories": "Computer-Vision",
+    "tags": "Python, CV, AI",
+    "date": "2025-01-29 00:00:00 +0900",
+    
+
+
+
+
+
+    
+    "snippet": "Auto EncoderVariational Auto-Encoding을 이해하기 위해 기본적인 Auto-Encoding을 알아야 한다.Auto Encoder(AE)는 데이터를 압축하고 복원하는 단순한 모델이다. Linear layer을 통해 데이터 크기를 줄이고 복원한다. Auto Encoder 구성은 다음과 같다.  Encoder: 데이터를 압축하는 ...",
+    "content": "Auto EncoderVariational Auto-Encoding을 이해하기 위해 기본적인 Auto-Encoding을 알아야 한다.Auto Encoder(AE)는 데이터를 압축하고 복원하는 단순한 모델이다. Linear layer을 통해 데이터 크기를 줄이고 복원한다. Auto Encoder 구성은 다음과 같다.  Encoder: 데이터를 압축하는 신경망 (파란 부분)  latent variable: 데이터가 압축된 벡터  Decoder: 데이터를 복원하는 신경망 (초록 부분)다른 표현으로 Encoder를 Recognition model, Decoder를 Reconstruction model이라고 부른다.class Autoencoder(nn.Module):    def __init__(self):        super(Autoencoder, self).__init__()        self.encoder = nn.Sequential(            nn.Linear(in_dim, hidden_dim),            nn.ReLU(),            nn.Linear(hidden_dim, latent_dim),            nn.ReLU(),        )        self.decoder = nn.Sequential(            nn.Linear(latent_dim, hidden_dim),            nn.ReLU(),            nn.Linear(hidden_dim, in_dim),            nn.Tanh(),        )이를 활용하면 이미지 노이즈를 제거할 수 있다. 전체 코드: Github.입력을 노이즈 있는 이미지, 정답을 노이즈 없는 이미지로 두고 학습하면 노이즈를 제거하는 모델이 학습된다. 같은 맥락에서 워터마크를 제거하는 모델도 학습할 수 있다.Variational AE 개요Variational Auto Encoder(VAE)는 “Auto-Encoding Variational Bayes“에서 소개된 모델로, latent variable을 확률 분포에서 샘플링한다.Encoder가 latent variable을 출력하는 대신, 평균($\\mu$)과 표준편차($\\sigma$)를 출력한다. 평균과 표준편차를 이용해 Gaussian 분포를 생성하고 latent variable을 샘플링한다. 즉, Gaussian 분포 $N(\\mu ,\\sigma^2)$에 대해 Encoder는 $\\mu$와 $\\sigma$를 생성하도록 학습한다. 샘플링한 latent $z$는 Decoder 입력이 된다. 조금 더 깊이 들어가보자.확률 분포를 생성하고 샘플링하는 과정을 수식으로 표현해보자.  $p_{\\theta}(x)$: 풀려는 문제. 올바른 $x$를 생성해낼 확률.  $p_{\\theta}(x|z)$: Decoder. latent $z$로부터 $x$가 나올 확률.  $p_{\\theta}(z|x)$: Encoder. 입력 $x$로부터 latent $z$가 나올 확률.          $q_{\\phi}(z|x)$: $p_{\\theta}(z|x)$의 근삿값.      먼저, Encoder는 입력 $x$가 주어졌을 때 $z$를 출력한다. 그런데 우리는 $x$에 대응하는 $z$를 알지 못한다. 따라서 $p_{\\theta}(z|x)$를 구할 수 없다. 대신 Encoder를 학습시켜 $p_{\\theta}$에 근사하는 $q_{\\phi}$를 구한다.다시 말해, Encoder를 학습하는 과정은 파라미터 $\\phi$를 학습시켜 $q_{\\phi}$가 $p_{\\theta}$에 가까워지도록 한다.Decoder는 $z$가 주어졌을 때 $x$를 출력한다. 따라서 $p_{\\theta}(x|z)$로 표현할 수 있다.  참고로 $p(x)$는 Encoder + Decoder를 나타내는 식이 아니다. 다만, 정의한 문제 $p(x)=p(z)p(x|z)$를 풀기 위해 추론에 Encoder, Decoder 구조를 활용하는 것일 뿐이다.Stochastic Gradient Variational BayesLoss function을 유도해보자.$\\log p_{\\theta}(\\mathbf{x})$는 log-likelihood로 올바른 $x$를 생성할 가능성을 나타낸다. 우리는 이 가능성을 최대로 만들어 올바른 $x$를 생성하려 한다.  아래는 Evidence Lower Bound: ELBO에 대한 식으로, 유도 과정을 생략하고 결과만 작성했다.KL-divergence를 $\\log p_{\\theta}(x)$에 대해 정리하면 다음과 같다.\\[\\log p_{\\theta}(\\mathbf{x}^{(i)}) = D_{KL} \\left( q_{\\phi}(\\mathbf{z} | \\mathbf{x}^{(i)}) \\parallel p_{\\theta}(\\mathbf{z} | \\mathbf{x}^{(i)}) \\right) + \\mathcal{L}(\\theta, \\phi; \\mathbf{x}^{(i)})\\]KL-divergence 부분은 항상 양수이기 때문에 다음과 같은 부등식이 성립한다.\\[\\log p_{\\theta}(\\mathbf{x}^{(i)}) \\geq \\mathcal{L}(\\theta, \\phi; \\mathbf{x}^{(i)})\\]따라서 $\\log p_{\\theta}(\\mathbf{x})$를 최대화하기 위해 $\\mathcal{L}(\\theta, \\phi; \\mathbf{x})$을 최대화해야 하고, 다시 말해 $- \\mathcal{L}(\\theta, \\phi; \\mathbf{x})$를 최소화해야 한다.이 식을 다시 작성하면 다음과 같다.\\[- \\mathcal{L}(\\theta, \\phi; \\mathbf{x}^{(i)}) = D_{KL} \\left( q_{\\phi}(\\mathbf{z} | \\mathbf{x}^{(i)}) \\parallel p_{\\theta}(\\mathbf{z}) \\right) - \\mathbb{E}_{q_{\\phi}(\\mathbf{z} | \\mathbf{x}^{(i)})} \\left[ \\log p_{\\theta}(\\mathbf{x}^{(i)} | \\mathbf{z}) \\right]\\]여기서 우변은 Regularization + Reconstruction로 구성되어 있다.  Regularization Loss: Encoder가 주어진 $x$에 대해 $z$를 잘 생성하는지  Reconstruction Loss: Decoder가 주어진 $z$에 대해 $x$를 잘 생성하는지정리하면, VAE의 Loss function은 Lower bound로부터 파생된다. Loss는 Encoder와 Decoder에 대한 Loss를 더한 값이다. 자세한 과정은 논문 2.2와 2.3에 기록되어 있다.Reparameterization trick앞서 설명했듯 VAE에서 latent $z$는 Gaussian 분포에서 샘플링한다.평균을 $\\mu$, 표준편차를 $\\sigma$라 할 때,\\[z^{(i,l)}\\sim q_{\\phi}(z|x^{(i)})\\]\\[z^{(i,l)} = \\mu^{(i)} + \\sigma^{(i)} \\odot \\epsilon^{(l)}\\]$\\epsilon\\sim N(0,1)$는 랜덤한 작은 값이다.epsilon = randn_like(std)z = mu + std * epsilonLoss Function 정의위에서 설명했던 Loss는 일반화된 모습이었다. 구현을 위해서는 구체적인 식을 정의해야 한다.\\[p_{\\theta}(z)\\sim N(z;0,I)\\]\\[\\log q_{\\phi}(z|x^{(i)})=\\log N(z;\\mu^{(i)},\\sigma^{2(i)}I)\\]먼저, $p_{\\theta}(z)$는 centered isotropic Gaussian을 따르며, $\\log q_{\\phi}(z|x)$도 Gaussian을 따른다고 가정한다.\\[- \\mathcal{L}(\\theta, \\phi; \\mathbf{x}^{(i)}) \\simeq - \\frac{1}{2} \\sum_{j=1}^{J} \\left( 1 + \\log \\left( (\\sigma_{j}^{(i)})^2 \\right) - (\\mu_{j}^{(i)})^2 - (\\sigma_{j}^{(i)})^2 \\right) - \\frac{1}{L} \\sum_{l=1}^{L} \\log p_{\\theta} (\\mathbf{x}^{(i)} | \\mathbf{z}^{(i,l)})\\]이 식은 Gaussian 분포에 대해 Regularization Loss를 구체적으로 정의했다. 두번째 항인 Reconstruction Loss는 negative log-likelihood다. 따라서, Binary Cross Entropy로 정의할 수 있다.def loss(x, x_reconstructed, mu, std):    # Regularization Loss    kl_div = -0.5 * sum(1 + log(std.pow(2)) - mu.pow(2) - std.pow(2))    # Reconstruction Loss    recon_loss = binary_cross_entropy(x_reconstructed, x)    return kl_div + recon_lossPytorch 구현전체 구현은 Github: VAE에서 확인할 수 있다.class VAE(nn.Module):    def __init__(self, input_dim, hidden_dim, latent_dim):        super(VAE, self).__init__()        self.encoder = Encoder(input_dim, hidden_dim, latent_dim)        self.decoder = Decoder(latent_dim, hidden_dim, input_dim)    def forward(self, x):        mu, logvar = self.encoder(x)        # Reparameterization trick        std = torch.exp(0.5 * logvar)        epsilon = torch.randn_like(std)        z = mu + std * epsilon        x_recon = self.decoder(z)        return x_recon, mu, logvar구현에는 표준편차 $\\sigma$ 대신 $\\log \\sigma^2$인 logvar를 반환하도록 한다.  $\\sigma$는 일반적으로 매우 작은 값으로 계산된다. 따라서 학습 과정에서 최적화가 잘 되지 않는 문제가 있다. 하지만 분산을 log 공간에 매핑시키면 값을 더 큰 범위로 변환할 수 있다. $\\sigma$가 일반적으로 [0, 1] 범위를 가진다고 하면, $\\log \\sigma^2$는 [log(1), -inf] 범위를 가진다. 따라서 학습 과정에서 잘 최적화되는 모습을 보인다. - 출처.참고로 $\\log \\sigma^2$가 음수 범위를 가지기 때문에 logvar를 출력하는 layer는 activation으로 ReLU를 사용하면 안 된다.def loss(x, x_recon, mu, logvar):    recon_loss = nn.functional.binary_cross_entropy(x_recon, x)    kl_div = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())    return recon_loss + kl_div이렇게 하면 Loss function도 logvar에 대해 재정의할 수 있다.MNIST 데이터셋을 이용해 학습하면 입력 이미지와 유사한 출력 만들어 낸다.시각화2차원 latent space를 시각화했다. 코드: Github2차원 latent space, 즉 2개의 Gaussian 분포를 생성하도록 Encoder를 학습시켰다. $z$를 [-3, 3] 범위에 대해 Decoder에 입력했다. $p(z)$가 Standard Normal Distribution을 따른다고 가정했기 때문에 [-3, 3] 범위로 latent space 대부분을 시각화할 수 있다.시각화한 이미지를 통해 샘플링된 $z$와 출력 $x$의 관계를 확인할 수 있다."
+  },
+  
+  {
+    "title": "Histograms of Oriented Gradients for Human Detection",
+    "url": "/paper-review/2025/01/27/hog.html",
+    "categories": "Paper-Review",
     "tags": "CV, Python, C++",
     "date": "2025-01-27 00:00:00 +0900",
     
@@ -36,8 +53,8 @@
   
   {
     "title": "SVD를 이용한 이미지 압축",
-    "url": "/machine-learning/2025/01/08/svd.html",
-    "categories": "Machine-Learning",
+    "url": "/computer-vision/2025/01/08/svd.html",
+    "categories": "Computer-Vision",
     "tags": "Python, CV, AI",
     "date": "2025-01-08 00:00:00 +0900",
     
@@ -87,8 +104,8 @@
   
   {
     "title": "Attention is all you need",
-    "url": "/machine-learning/2024/04/10/transformer.html",
-    "categories": "Machine-Learning",
+    "url": "/paper-review/2024/04/10/transformer.html",
+    "categories": "Paper-Review",
     "tags": "",
     "date": "2024-04-10 00:00:00 +0900",
     
@@ -171,26 +188,9 @@
   },
   
   {
-    "title": "Go 언어의 매력",
-    "url": "/playground/2023/10/06/lovely-go.html",
-    "categories": "Playground",
-    "tags": "Go",
-    "date": "2023-10-06 00:00:00 +0900",
-    
-
-
-
-
-
-    
-    "snippet": "@waterglasstoon평소 Python으로 일상생활에 필요한 프로그램을 만들어 왔다. 하지만 실행 속도가 아쉽다 생각했고, 그 대안으로 C++, Go를 둘러보던 중 Go에 제대로 빠졌다.우리의 귀여운 Gopher다. 마스코트는 어벙해보이지만 성능은 야무지다.Why Go?Python을 메인으로 사용하며 아래 조건을 만족하는 서브 언어를 선택해야 했...",
-    "content": "@waterglasstoon평소 Python으로 일상생활에 필요한 프로그램을 만들어 왔다. 하지만 실행 속도가 아쉽다 생각했고, 그 대안으로 C++, Go를 둘러보던 중 Go에 제대로 빠졌다.우리의 귀여운 Gopher다. 마스코트는 어벙해보이지만 성능은 야무지다.Why Go?Python을 메인으로 사용하며 아래 조건을 만족하는 서브 언어를 선택해야 했다. 저수준의 언어로 C++이나 Go를 고민했지만 Go를 선택하게 된 이유는 다음과 같다. 속도Pypy3보다 빠른 실행 속도를 내기 위해 완전한 컴파일 언어가 필요했다. C++, Go 모두 컴파일 언어이고 대부분의 경우 Python에 비해 빠르다. 그런데 Go는 실행 속도뿐만 아니라 컴파일 속도도 빠른 편이다.  “컴파일 속도가 빨라 인터프리터 언어처럼 쓸 수 있다”인용 출처가 나무위키라 믿음이 안 가겠지만 써보니 맞는 말이다. 간결한 문법  Build simple, secure, scalable systems with Go- go.devGo는 지원하는 문법이 간결하며 최소한의 키워드만 가진다. 예를 들어 반복문은 for 하나만 제공하며, OOP는 가능하지만 class를 지원하지 않는다. 지원하는 키워드가 적다고 할 수 있는 게 적다는 뜻은 아니다. 기존 키워드로 해결 가능하다.// while 문for stdin != nil {}// classtype Object struct {    id int}Go는 미니멀한 삶을 추구한다.정적 타입 선언Go는 정적타입 언어다. 최근 Typescript에 대한 반발이 생기는 걸 보면 정적 타입이 장점인가에 대해서는 의견이 갈릴 듯하다.@waterglasstoon하지만 타입이 의도하지 않은 방향으로 처리돼도 “어쩌라고?”를 시전하는 Python을 떠올려보자… 동적 타입핑은 데이터가 찢겨져도 아무 일 없다듯 해맑게 돌아간다. 그렇다고 매번 assert할 수는 없으니 서브 언어는 정적 타입 언어를 쓰기로 마음 먹었다.var := 3 // int게다가 Go는 타입을 작성하지 않아도 알아서 추론해준다. 덕분에 중요하지 않은 데이터는 신경쓰지 않고 넘어갈 수 있다.낮은 진입장벽일단 C++보다는 쉽다. 그리고 저수준 언어치고 코드가 간결하다.import \"fmt\"func main() {    fmt.Println(\"hello world\")}GC 지원Garbage Collector, GC가 자동적으로 메모리를 관리해 준다. GC로 인해 성능 저하가 발생할 수 있다. 그래도 메모리 누수가 발생하는 것보다는 낫다고 생각한다. 이 부분은 C++과 차별되는 점이다. @system32comicsGC 없이 C++은 좀 무섭다.Go의 단점?위 이유들로 Go를 선택했지만 Go도 분명한 단점이 있다.  활용 범위가 적음: 많은 국내 대기업 코테에서 Go를 허용하지 않는다. 만약 인공지능 개발을 위해서라면 현실적으로 C++을 공부하는 게 가성비가 좋긴하다.  부족한 자료: 특히 국내에서는 아직 Go를 많이 사용하지 않다보니 참고할 수 있는 자료가 부족하다. 마이너한 언어다보니 영어 자료도 많은 편은 아니다.코테의 경우는 Python을 주로 사용하기 때문에 문제가 없다. 또 Go로 쓴 코드를 Python 코드로 옮기는 건 어렵지 않았다. 그럼에도 C++에 비해 실용성이 떨어진다는 건 사실이다. 하지만 ‘시간이 있을 때 해보고 싶은 걸 더 열정있게 공부하자‘라는 생각이 컸다. 그래서 중간에 C++로 넘어가더라도 우선은 Gopher(Go 개발자)를 체험해보기로 결정했다. Go 후기Go에 익숙해지기 위해 기초적인 출력문, 반복문부터 차근차근 익혀봤다.  github.com/denev6/archive/learn-go저수준의 언어는 이해 수준에 따라 성능 차이가 많이 난다. Go도 예외는 아니다. 같은 알고리즘을 Go로 짜도 Python보다 느린 경우가 있었다. 하지만 Go스럽게만 써도 성능 하나만큼은 기가 막힌다. 한 마디로 정리하면, 성능과 가독성을 균형있게 챙긴 언어가 아닌가 싶다.Go에 대해 알고 싶다면 Effiective Go라는 문서가 있다. Go를 Go스럽게 쓰는 방법이다. 성능을 위해 삽질했던 내용은 “Go를 빠르게 굴려보자”에 기록해뒀다. 만약 Go에 대해 찾고 싶다면 Go보다 Golang으로 검색하면 정확한 결과를 볼 수 있다.다들 Go하세요.이미지 출처  데브 경수 @waterglasstoon  egonelbre/gophers: CC0-1.0"
-  },
-  
-  {
     "title": "영상을 통한 우울증 예측 모델 분석",
-    "url": "/projects/2023/02/06/multimodal-depression.html",
-    "categories": "Projects",
+    "url": "/paper-review/2023/02/06/multimodal-depression.html",
+    "categories": "Paper-Review",
     "tags": "AI, CV, Python",
     "date": "2023-02-06 00:00:00 +0900",
     

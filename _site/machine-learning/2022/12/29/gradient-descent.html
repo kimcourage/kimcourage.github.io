@@ -1714,14 +1714,28 @@ Jin's Notes
         
         
         <li class="text-truncate lh-lg">
-          <a href="/computer-vision/2025/01/03/transformation.html">이미지 변환 행렬과 OpenCV</a>
+          <a href="/playground/2025/01/17/ml-api.html">FastAPI 기반 딥러닝 모델 API 구축하기</a>
         </li>
       
         
         
         
         <li class="text-truncate lh-lg">
-          <a href="/projects/2022/10/07/face-mouse-control.html">실시간 얼굴 인식 프로젝트를 진행하며</a>
+          <a href="/machine-learning/2022/12/15/cnn.html">CNN 개념과 MNIST 분류</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/projects/2022/12/17/dacon.html">월간 DACON 발화자의 감정 인식 AI</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
+          <a href="/computer-vision/2025/01/03/transformation.html">이미지 변환 행렬과 OpenCV</a>
         </li>
       
     </ul>
@@ -1868,6 +1882,26 @@ Jin's Notes
     
     
     
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
       
         
         
@@ -1876,30 +1910,6 @@ Jin's Notes
     
     
     
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
     
   
     
@@ -2037,10 +2047,10 @@ Jin's Notes
         <a class="post-tag btn btn-outline-primary" href="/tags/c/">C++</a>
       
         
-        <a class="post-tag btn btn-outline-primary" href="/tags/go/">Go</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/pytorch/">Pytorch</a>
       
         
-        <a class="post-tag btn btn-outline-primary" href="/tags/pytorch/">Pytorch</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/go/">Go</a>
       
         
         <a class="post-tag btn btn-outline-primary" href="/tags/blog/">blog</a>
@@ -2101,30 +2111,6 @@ Jin's Notes
 
 
 
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
 
   
 
@@ -2286,6 +2272,30 @@ Jin's Notes
 
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 
 
 
@@ -2299,6 +2309,93 @@ Jin's Notes
   <aside id="related-posts" aria-labelledby="related-label">
     <h3 class="mb-4" id="related-label">관련된 글</h3>
     <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+      
+        <article class="col">
+          <a href="/computer-vision/2025/01/08/svd.html" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+    class="small"
+  
+  data-ts="1736262000"
+  data-df="YYYY/MM/DD"
+  
+>
+  2025/01/08
+</time>
+
+              <h4 class="pt-0 my-2">SVD를 이용한 이미지 압축</h4>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  SVD: Singular Vector Decomposition에 대해 다룬다. 각 수식이 어떤 의미를 가지고, 이미지 압축에 어떻게 사용되는지 설명한다. 본 글을 이해하기 위해 아래 개념을 숙지하고 있어야 한다.
+
+Vector: 크기와 방향을 가지는 양으로, 2차원 공간의 벡터는 $\vec{v}=\begin{bmatrix}u_1 &amp;amp; u_2\en...
+                </p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+        <article class="col">
+          <a href="/computer-vision/2025/01/29/vae.html" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+    class="small"
+  
+  data-ts="1738076400"
+  data-df="YYYY/MM/DD"
+  
+>
+  2025/01/29
+</time>
+
+              <h4 class="pt-0 my-2">Auto-Encoding Variational Bayes</h4>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  Auto Encoder
+
+Variational Auto-Encoding을 이해하기 위해 기본적인 Auto-Encoding을 알아야 한다.
+
+
+
+Auto Encoder(AE)는 데이터를 압축하고 복원하는 단순한 모델이다. Linear layer을 통해 데이터 크기를 줄이고 복원한다. Auto Encoder 구성은 다음과 같다.
+
+
+  Encoder: 데...
+                </p>
+              </div>
+            </div>
+          </a>
+        </article>
       
         <article class="col">
           <a href="/projects/2022/10/07/face-mouse-control.html" class="post-preview card h-100">
@@ -2344,100 +2441,6 @@ $ python main.py
 
 
 실행할 때...
-                </p>
-              </div>
-            </div>
-          </a>
-        </article>
-      
-        <article class="col">
-          <a href="/projects/2022/12/17/dacon.html" class="post-preview card h-100">
-            <div class="card-body">
-              <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-    class="small"
-  
-  data-ts="1671202800"
-  data-df="YYYY/MM/DD"
-  
->
-  2022/12/17
-</time>
-
-              <h4 class="pt-0 my-2">월간 DACON 발화자의 감정 인식 AI</h4>
-              <div class="text-muted small">
-                <p>
-                  
-
-
-
-
-
-                  
-  대회: 월간 데이콘 발화자의 감정인식 AI 경진대회
-제출 코드: dacon.io/codeshare
-인터뷰: 우승자 인터뷰: 219
-
-
-
-
-동기
-
-자연어처리 대회를 소개받아 DACON 대회에 참가하게 되었다. 자연어처리 과목을 수강하고 있었는데 교수님께서 대회를 소개해주셨다. 당시 멀티모달 우울증 탐지 연구를 하고 있었기 때문에 감정 분석 모델에 ...
-                </p>
-              </div>
-            </div>
-          </a>
-        </article>
-      
-        <article class="col">
-          <a href="/projects/2023/02/06/multimodal-depression.html" class="post-preview card h-100">
-            <div class="card-body">
-              <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-    class="small"
-  
-  data-ts="1675609200"
-  data-df="YYYY/MM/DD"
-  
->
-  2023/02/06
-</time>
-
-              <h4 class="pt-0 my-2">영상을 통한 우울증 예측 모델 분석</h4>
-              <div class="text-muted small">
-                <p>
-                  
-
-
-
-
-
-                  동기
-
-성균관대 우수학부생 프로그램을 통해 우울증 챗봇 개발에 참여하는 기회를 얻었다. 이전에 실시간 얼굴 인식 프로젝트를 진행한 경험이 있어 얼굴 이미지를 통해 우울증을 탐지하는 멀티모달 구현에 도전했다.
-
-
-
-논문 요약 (번역/ 정리)
-
-이미지를 중심으로한 우울증 연구 중 논문: Automatic Depression Detection via Lea...
                 </p>
               </div>
             </div>
@@ -2713,6 +2716,26 @@ $ python main.py
     
     
     
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
       
         
         
@@ -2721,30 +2744,6 @@ $ python main.py
     
     
     
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
     
   
     
@@ -2882,10 +2881,10 @@ $ python main.py
         <a class="post-tag btn btn-outline-primary" href="/tags/c/">C++</a>
       
         
-        <a class="post-tag btn btn-outline-primary" href="/tags/go/">Go</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/pytorch/">Pytorch</a>
       
         
-        <a class="post-tag btn btn-outline-primary" href="/tags/pytorch/">Pytorch</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/go/">Go</a>
       
         
         <a class="post-tag btn btn-outline-primary" href="/tags/blog/">blog</a>
