@@ -42,25 +42,25 @@
   
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.3.4" />
-<meta property="og:title" content="Auto-Encoding Variational Bayes" />
+<meta property="og:title" content="Deep Residual Learning for Image Recognition" />
 <meta property="og:locale" content="ko_KR" />
-<meta name="description" content="Auto Encoder" />
-<meta property="og:description" content="Auto Encoder" />
-<link rel="canonical" href="https://denev6.github.io/computer-vision/2025/01/29/vae.html" />
-<meta property="og:url" content="https://denev6.github.io/computer-vision/2025/01/29/vae.html" />
+<meta name="description" content="논문: Deep Residual Learning for Image Recognition 구현: Github: Pytorch-Vision" />
+<meta property="og:description" content="논문: Deep Residual Learning for Image Recognition 구현: Github: Pytorch-Vision" />
+<link rel="canonical" href="https://denev6.github.io/paper-review/2025/02/04/resnet.html" />
+<meta property="og:url" content="https://denev6.github.io/paper-review/2025/02/04/resnet.html" />
 <meta property="og:site_name" content="Jin’s Notes" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2025-01-29T00:00:00+09:00" />
+<meta property="article:published_time" content="2025-02-04T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Auto-Encoding Variational Bayes" />
+<meta property="twitter:title" content="Deep Residual Learning for Image Recognition" />
 <meta name="twitter:site" content="@" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-01-31T00:18:46+09:00","datePublished":"2025-01-29T00:00:00+09:00","description":"Auto Encoder","headline":"Auto-Encoding Variational Bayes","mainEntityOfPage":{"@type":"WebPage","@id":"https://denev6.github.io/computer-vision/2025/01/29/vae.html"},"url":"https://denev6.github.io/computer-vision/2025/01/29/vae.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-02-04T00:00:00+09:00","datePublished":"2025-02-04T00:00:00+09:00","description":"논문: Deep Residual Learning for Image Recognition 구현: Github: Pytorch-Vision","headline":"Deep Residual Learning for Image Recognition","mainEntityOfPage":{"@type":"WebPage","@id":"https://denev6.github.io/paper-review/2025/02/04/resnet.html"},"url":"https://denev6.github.io/paper-review/2025/02/04/resnet.html"}</script>
 <!-- End Jekyll SEO tag -->
 
   
 
-  <title>Auto-Encoding Variational Bayes | 
+  <title>Deep Residual Learning for Image Recognition | 
 Jin's Notes
   </title>
 
@@ -312,7 +312,7 @@ Jin's Notes
         
           
             
-              <span>Auto-Encoding Variational Bayes</span>
+              <span>Deep Residual Learning for Image Recognition</span>
             
 
           
@@ -400,74 +400,6 @@ Jin's Notes
     
       
       
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-    
-
-    
-      
-
-      
-      
-      
-
-      
-    
-      
-
-      
-      
-      
-
-      
-    
-
-    <!-- take out classes -->
-    
-
-    
-
-    
-
-    
-
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    
-    
-
-    <!-- add image placeholder -->
-    
-      
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-      <!-- make sure the `<img>` is wrapped by `<a>` -->
-      
-
-      
-        <!-- create the image wrapper -->
-        
-      
-    
-
-    <!-- combine -->
-    
-
-  
     
 
     
@@ -934,6 +866,42 @@ Jin's Notes
       
 
     
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
 
     
 
@@ -958,7 +926,7 @@ Jin's Notes
 
 
 <header>
-  <h1 data-toc-skip>Auto-Encoding Variational Bayes</h1>
+  <h1 data-toc-skip>Deep Residual Learning for Image Recognition</h1>
 
   <div class="post-meta text-muted">
     <!-- published date -->
@@ -974,13 +942,13 @@ Jin's Notes
 
 <time
   
-  data-ts="1738076400"
+  data-ts="1738594800"
   data-df="YYYY/MM/DD"
   
     data-bs-toggle="tooltip" data-bs-placement="bottom"
   
 >
-  2025/01/29
+  2025/02/04
 </time>
 
     </span>
@@ -1023,9 +991,9 @@ Jin's Notes
   class="readtime"
   data-bs-toggle="tooltip"
   data-bs-placement="bottom"
-  title="1785 단어"
+  title="1997 단어"
 >
-  <em>9 
+  <em>11 
 분</em>
 읽는 시간
 </span>
@@ -1039,252 +1007,146 @@ Jin's Notes
 
 
 <div class="content">
-  <h2 id="auto-encoder"><span class="me-2">Auto Encoder</span><a href="#auto-encoder" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
-
-<p>Variational Auto-Encoding을 이해하기 위해 기본적인 Auto-Encoding을 알아야 한다.</p>
-
-<p><a href="/assets/posts/vae/ae-overview.png" class="popup img-link "><img data-src="/assets/posts/vae/ae-overview.png" alt="Auto-Encoder 개요" class="lazyload" data-proofer-ignore></a></p>
-
-<p><code class="language-plaintext highlighter-rouge">Auto Encoder</code>(AE)는 데이터를 <strong>압축하고 복원</strong>하는 단순한 모델이다. Linear layer을 통해 데이터 크기를 줄이고 복원한다. Auto Encoder 구성은 다음과 같다.</p>
-
-<ul>
-  <li><strong>Encoder</strong>: 데이터를 압축하는 신경망 (파란 부분)</li>
-  <li><strong>latent variable</strong>: 데이터가 압축된 벡터</li>
-  <li><strong>Decoder</strong>: 데이터를 복원하는 신경망 (초록 부분)</li>
+  <ul>
+  <li>논문: <a href="https://arxiv.org/abs/1512.03385">Deep Residual Learning for Image Recognition</a></li>
+  <li>구현: <a href="https://github.com/pytorch/vision/blob/main/torchvision/models/resnet.py">Github: Pytorch-Vision</a></li>
 </ul>
 
-<p>다른 표현으로 Encoder를 <code class="language-plaintext highlighter-rouge">Recognition model</code>, Decoder를 <code class="language-plaintext highlighter-rouge">Reconstruction model</code>이라고 부른다.</p>
-
-<div class="language-python highlighter-rouge"><div class="code-header">
-        <span data-label-text="Python"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">Autoencoder</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
-        <span class="nf">super</span><span class="p">(</span><span class="n">Autoencoder</span><span class="p">,</span> <span class="n">self</span><span class="p">).</span><span class="nf">__init__</span><span class="p">()</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="nc">Sequential</span><span class="p">(</span>
-            <span class="n">nn</span><span class="p">.</span><span class="nc">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">),</span>
-            <span class="n">nn</span><span class="p">.</span><span class="nc">ReLU</span><span class="p">(),</span>
-            <span class="n">nn</span><span class="p">.</span><span class="nc">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">),</span>
-            <span class="n">nn</span><span class="p">.</span><span class="nc">ReLU</span><span class="p">(),</span>
-        <span class="p">)</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="nc">Sequential</span><span class="p">(</span>
-            <span class="n">nn</span><span class="p">.</span><span class="nc">Linear</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">),</span>
-            <span class="n">nn</span><span class="p">.</span><span class="nc">ReLU</span><span class="p">(),</span>
-            <span class="n">nn</span><span class="p">.</span><span class="nc">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">in_dim</span><span class="p">),</span>
-            <span class="n">nn</span><span class="p">.</span><span class="nc">Tanh</span><span class="p">(),</span>
-        <span class="p">)</span>
-</pre></td></tr></tbody></table></code></div></div>
-
-<p>이를 활용하면 이미지 노이즈를 제거할 수 있다. 전체 코드: <a href="https://github.com/denev6/deep-learning-codes/blob/main/models/auto_encoder.ipynb">Github</a>.</p>
-
-<p><a href="/assets/posts/vae/ae-noise.png" class="popup img-link "><img data-src="/assets/posts/vae/ae-noise.png" alt="Auto-encoder 노이즈 제거" class="lazyload" data-proofer-ignore></a></p>
-
-<p>입력을 노이즈 있는 이미지, 정답을 노이즈 없는 이미지로 두고 학습하면 노이즈를 제거하는 모델이 학습된다. 같은 맥락에서 워터마크를 제거하는 모델도 학습할 수 있다.</p>
-
-<h2 id="variational-ae-개요"><span class="me-2">Variational AE 개요</span><a href="#variational-ae-개요" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
-
-<p><code class="language-plaintext highlighter-rouge">Variational Auto Encoder</code>(VAE)는 “<a href="https://arxiv.org/abs/1312.6114">Auto-Encoding Variational Bayes</a>“에서 소개된 모델로, <strong>latent variable을 확률 분포에서 샘플링</strong>한다.</p>
-
-<p><a href="/assets/posts/vae/vae-overview.png" class="popup img-link "><img data-src="/assets/posts/vae/vae-overview.png" alt="VAE 개요" class="lazyload" data-proofer-ignore></a></p>
-
-<p>Encoder가 latent variable을 출력하는 대신, 평균($\mu$)과 표준편차($\sigma$)를 출력한다. 평균과 표준편차를 이용해 Gaussian 분포를 생성하고 latent variable을 샘플링한다. 즉, Gaussian 분포 $N(\mu ,\sigma^2)$에 대해 Encoder는 $\mu$와 $\sigma$를 생성하도록 학습한다. 샘플링한 latent $z$는 Decoder 입력이 된다. 조금 더 깊이 들어가보자.</p>
-
-<p><a href="/assets/posts/vae/vae-math.png" class="popup img-link "><img data-src="/assets/posts/vae/vae-math.png" alt="VAE 수식 표현" class="lazyload" data-proofer-ignore></a></p>
-
-<p>확률 분포를 생성하고 샘플링하는 과정을 수식으로 표현해보자.</p>
+<h2 id="abstract"><span class="me-2">Abstract</span><a href="#abstract" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
 <ul>
-  <li>$p_{\theta}(x)$: 풀려는 문제. 올바른 $x$를 생성해낼 확률.</li>
-  <li>$p_{\theta}(x|z)$: <strong>Decoder</strong>. latent $z$로부터 $x$가 나올 확률.</li>
-  <li>$p_{\theta}(z|x)$: <strong>Encoder</strong>. 입력 $x$로부터 latent $z$가 나올 확률.
-    <ul>
-      <li>$q_{\phi}(z|x)$: $p_{\theta}(z|x)$의 근삿값.</li>
-    </ul>
-  </li>
+  <li>이전보다 더 깊은 모델을 학습</li>
+  <li>레이어 입력을 참고하도록 재구성</li>
+  <li>residual network는 깊은 모델의 정확도를 올림</li>
 </ul>
 
-<p>먼저, Encoder는 입력 $x$가 주어졌을 때 $z$를 출력한다. 그런데 우리는 $x$에 대응하는 $z$를 알지 못한다. 따라서 $p_{\theta}(z|x)$를 구할 수 없다. 대신 Encoder를 학습시켜 $p_{\theta}$에 근사하는 $q_{\phi}$를 구한다.</p>
+<h2 id="introduction"><span class="me-2">Introduction</span><a href="#introduction" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>다시 말해, Encoder를 학습하는 과정은 파라미터 $\phi$를 학습시켜 $q_{\phi}$가 $p_{\theta}$에 가까워지도록 한다.</p>
+<p>vanishing/exploding gradient가 모델 수렴을 방해한다. 이는 normalized initialization과 intermediate normalization layers로 해결할 수 있다.</p>
 
-<p>Decoder는 $z$가 주어졌을 때 $x$를 출력한다. 따라서 $p_{\theta}(x|z)$로 표현할 수 있다.</p>
+<p>하지만 <strong>degradation 문제</strong>도 발생한다. 정확도가 낮아지지 않고 training error가 얕은 모델보다 크다.</p>
 
-<blockquote class="prompt-warning">
-  <p>참고로 $p(x)$는 Encoder + Decoder를 나타내는 식이 아니다. 다만, 정의한 문제 $p(x)=p(z)p(x|z)$를 풀기 위해 추론에 Encoder, Decoder 구조를 활용하는 것일 뿐이다.</p>
+<p><a href="/assets/posts/resnet/layer-error.png" class="popup img-link "><img data-src="/assets/posts/resnet/layer-error.png" alt="error rate" class="lazyload" data-proofer-ignore></a></p>
+
+<p>본 연구는 <strong>deep residual learning framework</strong>로 degradation 문제를 해결했다.</p>
+
+<h2 id="deep-residual-learning"><span class="me-2">Deep Residual Learning</span><a href="#deep-residual-learning" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<h3 id="residual-learning"><span class="me-2">Residual Learning</span><a href="#residual-learning" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p><a href="/assets/posts/resnet/identity-map.png" class="popup img-link "><img data-src="/assets/posts/resnet/identity-map.png" alt="residual learning" class="lazyload" data-proofer-ignore></a></p>
+
+<ul>
+  <li>layer 입력을 $x$라고 가정</li>
+  <li>layer 출력을 $H(x)$라고 기대. (전체 모델이 아닌 layer 출력도 포함)</li>
+  <li>레이어가 $H(x)$ 대신 $F(x) := H(x)-x$를 학습하도록 함</li>
+  <li>원래 기대하는 출력은 $F(x) + x$로 도출</li>
+</ul>
+
+<p>$H(x)$와 $F(x)$를 출력하는 모델이 같은 결과를 낼 거라고 생각할 수 있지만, 학습 난이도가 다르다.</p>
+
+<blockquote class="prompt-tip">
+  <p>레이어 출력인 $H(x)$는 $x$의 특징을 추출한 값이다. 따라서 $H(x)$는 $x$와 유사한 특징을 가진다고 볼 수 있다. 다시 말해, $H(x)$는 원본 복원(identity mapping) + 작은 변형(perturbation)으로 볼 수 있다. 이때 작은 변형을 $F(x)$로 표현한 것이다.</p>
 </blockquote>
 
-<h2 id="stochastic-gradient-variational-bayes"><span class="me-2">Stochastic Gradient Variational Bayes</span><a href="#stochastic-gradient-variational-bayes" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>degradation 문제는 모델이 여러 비선형 layer를 거치면서 identity mapping이 힘들어지는 것으로 볼 수 있다. 여기서 residual learning을 사용하면 <strong>단순히 비선형 layer가 0으로 향하도록 만들어 identity mapping을 수행</strong>할 수 있다. 이 방식은 identity mapping을 새로운 함수로 학습시키는 것보다 쉽고, 레이어는 작은 변화($F$)를 찾는데 집중할 수 있다. 실제 학습된 residual function은 일반적으로 작은 반응을 보인다. (이후 “CIFAR-10 and Analysis”에서 다시 언급)</p>
 
-<p>Loss function을 유도해보자.</p>
+<h3 id="identity-mapping-by-shortcuts"><span class="me-2">Identity Mapping by Shortcuts</span><a href="#identity-mapping-by-shortcuts" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
-<p>$\log p_{\theta}(\mathbf{x})$는 log-likelihood로 올바른 $x$를 생성할 가능성을 나타낸다. 우리는 이 가능성을 최대로 만들어 올바른 $x$를 생성하려 한다.</p>
+\[\mathrm{y} = \mathcal{F}(\mathrm{x}, \{ W_i \}) + \mathrm{x}\]
+
+<p>$\mathrm{x}$와 $\mathrm{y}$는 각각 입출력이며, $\mathcal{F}$는 학습할 residual mapping이다.</p>
+
+<p>$\mathcal{F} + \mathrm{x}$는 <strong>shortcut connection과 element-wise addition으로 구현</strong>한다. <code class="language-plaintext highlighter-rouge">shortcut</code>은 특정 값이 레이어를 건너뛰는 것을 말한다. 덕분에 같은 파라미터의 plain 모델과 residual 모델을 한 번에 비교할 수 있다. (단순히 shortcut을 열고/닫고로 구현 가능하다.)</p>
+
+\[\mathrm{y} = \mathcal{F}(\mathrm{x}, \{ W_i \}) + W_s \mathrm{x}\]
+
+<p>다른 방법으로 square matrix $W_s$를 이용해 차원을 맞춘다.</p>
+
+<p>함수 $\mathcal{F}$는 2 ~ 3개 레이어를 사용해야 한다. 한 개만 사용하면 선형 레이어와 다를 것 없다. 또한 $\mathcal{F}$는 convolution 연산으로, element-wise 덧셈은 각 채널에 대해 진행한다.</p>
+
+<h3 id="network-architectures"><span class="me-2">Network Architectures</span><a href="#network-architectures" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p><code class="language-plaintext highlighter-rouge">Plain Network</code>: Baseline으로 <code class="language-plaintext highlighter-rouge">VGG net</code>을 사용한다. <strong>대부분 convolution은 3 x 3 필터를 사용</strong>하며 아래 규칙을 따른다.</p>
+
+<ol>
+  <li>feature map 크기와 같은 크기의 filter 사용</li>
+  <li>feature map 크기가 절반이라면, filter 크기는 2배로 시간복잡도를 유지</li>
+</ol>
+
+<p>stride를 2로 두어 직접적인 down-sampling을 시도한다. 마지막에 global average pooling과 1000-way softmax를 적용한다.</p>
+
+<p><a href="/assets/posts/resnet/architecture.png" class="popup img-link "><img data-src="/assets/posts/resnet/architecture.png" alt="ResNet architecture" class="lazyload" data-proofer-ignore></a></p>
+
+<p><code class="language-plaintext highlighter-rouge">Residual Network</code>: 위에서 소개한 baseline을 기반으로 shortcut을 추가한다. 차원이 증가했을 때는 2가지 옵션 중 하나를 사용한다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">A</code>. zero padding</li>
+  <li><code class="language-plaintext highlighter-rouge">B</code>. 1x1 convolution</li>
+</ul>
+
+<p>두 옵션 모두 차원이 맞지 않아 down-sampling이 필요한 경우 stride를 2로 사용한다.</p>
+
+<h3 id="implementation"><span class="me-2">Implementation</span><a href="#implementation" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>이미지 짧은 쪽을 256 또는 480으로 샘플링한다. 224 x 224 랜덤 자르기 + 가로 뒤집기 + 픽셀 단위 빼기와 standard color augmentation를 적용한다. convolution + activation 뒤에는 정규화 진행한다. (<a href="https://denev6.github.io/paper-review/2025/01/31/alexnet.html#data-augmentation">AlexNet: “Data Augmentation”</a>참고)</p>
+
+<ul>
+  <li>SGD</li>
+  <li>mini-batch: 256</li>
+  <li>learning rate: 0.1 (error가 수렴하지 않을 때 10으로 나눔)</li>
+  <li>최대 $60\times 10^4$ iterations</li>
+  <li>weight decay: 0.0001</li>
+  <li>momentum: 0.9</li>
+</ul>
+
+<p>테스트에는 10-crop testing(AlexNet 참고)과 여러 스케일의 이미지에 대한 점수 평균(VGG 참고)을 사용했다. 이미지 크기는 {224, 256, 384, 480, 640}이다.</p>
 
 <blockquote class="prompt-info">
-  <p>아래는 Evidence Lower Bound: <a href="https://en.wikipedia.org/wiki/Evidence_lower_bound">ELBO</a>에 대한 식으로, 유도 과정을 생략하고 결과만 작성했다.</p>
+  <p>스케일이 다른 이미지를 어떻게 학습시킬 수 있을까? <a href="https://github.com/pytorch/vision/blob/main/torchvision/models/resnet.py#L266">Pytorch 공식 구현</a>을 보면 AdaptiveAvgPool2d를 사용한다. Convolution 연산은 채널 크기만 맞다면 입력 크기가 달라도 문제 없이 연산할 수 있다. 하지만 Linear는 고정된 크기를 입력으로 받는다. 따라서 Pooling을 통해 고정된 크기로 변환시켜 Linear에 입력되도록 한다.</p>
 </blockquote>
 
-<p>KL-divergence를 $\log p_{\theta}(x)$에 대해 정리하면 다음과 같다.</p>
+<h2 id="experiments"><span class="me-2">Experiments</span><a href="#experiments" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-\[\log p_{\theta}(\mathbf{x}^{(i)}) = D_{KL} \left( q_{\phi}(\mathbf{z} | \mathbf{x}^{(i)}) \parallel p_{\theta}(\mathbf{z} | \mathbf{x}^{(i)}) \right) + \mathcal{L}(\theta, \phi; \mathbf{x}^{(i)})\]
+<h3 id="imagenet-classification"><span class="me-2">ImageNet Classification</span><a href="#imagenet-classification" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
-<p>KL-divergence 부분은 항상 양수이기 때문에 다음과 같은 부등식이 성립한다.</p>
+<p>Plain Network를 확인했을 때 34-layer가 18-layer보다 높은 validation error를 보였다. 34-layer 학습 과정 내내 더 높은 training error를 보였다. 이는 vanishing gradient 때문으로 보이지는 않는다. 이 모델은 정규화를 진행했으며, 신호가 0이 아닌 분산을 가지도록 학습했다. 정규화를 통해 역전파에서도 gradient가 잘 넘어가는 것을 확인했다. 따라서 forward와 backward 모두 신호가 사라지는 문제는 없었다. (문제가 발생한 이유에 대해서는 후속 연구로 넘겼다.)</p>
 
-\[\log p_{\theta}(\mathbf{x}^{(i)}) \geq \mathcal{L}(\theta, \phi; \mathbf{x}^{(i)})\]
+<p>18-layer와 34-layer ResNet을 평가했으며, 옵션 A(zero-padding)를 사용한다. 크게 3가지 사실을 발견했다.</p>
 
-<p>따라서 $\log p_{\theta}(\mathbf{x})$를 최대화하기 위해 $\mathcal{L}(\theta, \phi; \mathbf{x})$을 최대화해야 하고, 다시 말해 $- \mathcal{L}(\theta, \phi; \mathbf{x})$를 최소화해야 한다.</p>
+<ol>
+  <li>Plain Net과는 반대로 <strong>34-layer가 18-layer보다 좋은 성능</strong>을 보였다. 오히려 34-layer가 유의미하게 낮은 training error를 보였다.</li>
+  <li>Plain Net과 비교해 34-ResNet이 더 낮은 training error를 보였다.</li>
+  <li>레이어가 너무 깊지 않을 때(예: 18-layer) ResNet이 plain보다 빨리 수렴했다. ResNet은 초반 최적화가 쉬워 빠른 수렴 속도를 보였다.</li>
+</ol>
 
-<p>이 식을 다시 작성하면 다음과 같다.</p>
-
-\[- \mathcal{L}(\theta, \phi; \mathbf{x}^{(i)}) = D_{KL} \left( q_{\phi}(\mathbf{z} | \mathbf{x}^{(i)}) \parallel p_{\theta}(\mathbf{z}) \right) - \mathbb{E}_{q_{\phi}(\mathbf{z} | \mathbf{x}^{(i)})} \left[ \log p_{\theta}(\mathbf{x}^{(i)} | \mathbf{z}) \right]\]
-
-<p>여기서 우변은 Regularization + Reconstruction로 구성되어 있다.</p>
+<p>차원이 같다면 parameter 학습이 없는 identity shortcut이 학습에 유리하다. 차원이 다른 경우(Eqn.2)에 대해서는 3가지 shortcut을 비교했다.</p>
 
 <ul>
-  <li><strong>Regularization Loss</strong>: Encoder가 주어진 $x$에 대해 $z$를 잘 생성하는지</li>
-  <li><strong>Reconstruction Loss</strong>: Decoder가 주어진 $z$에 대해 $x$를 잘 생성하는지</li>
+  <li><code class="language-plaintext highlighter-rouge">A</code>: zero-padding</li>
+  <li><code class="language-plaintext highlighter-rouge">B</code>: projection(차원이 증가할 때) + identity(그 외)</li>
+  <li><code class="language-plaintext highlighter-rouge">C</code>: projection</li>
 </ul>
 
-<p>정리하면, VAE의 Loss function은 Lower bound로부터 파생된다. <strong>Loss는 Encoder와 Decoder에 대한 Loss를 더한 값</strong>이다. 자세한 과정은 논문 <code class="language-plaintext highlighter-rouge">2.2</code>와 <code class="language-plaintext highlighter-rouge">2.3</code>에 기록되어 있다.</p>
+<p>B는 A보다 약간 더 좋았다. 0으로 고정된 부분은 학습되지 않기 때문이라고 추측한다. C는 B보다 확실히 좋았으며 더 많은 파라미터를 사용했기 때문으로 보인다. 하지만 <strong>A/B/C의 차이는 작은 수준</strong>이며, projection shortcut이 반드시 필요하지는 않다. 따라서 본 연구는 C를 사용하지 않는다. 연산 시간과 복잡도를 줄이기 위해서다. 특히 identity shortcut은 아래 소개할 bottleneck 구조의 복잡성을 줄이는데 도움이 된다.</p>
 
-<h3 id="reparameterization-trick"><span class="me-2">Reparameterization trick</span><a href="#reparameterization-trick" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p>학습 시간 단축을 위해 <code class="language-plaintext highlighter-rouge">Bottleneck 구조</code>를 사용했다.</p>
 
-<p>앞서 설명했듯 VAE에서 latent $z$는 Gaussian 분포에서 샘플링한다.</p>
+<p><a href="/assets/posts/resnet/bottleneck.png" class="popup img-link "><img data-src="/assets/posts/resnet/bottleneck.png" alt="3-layer bottleneck 구조" class="lazyload" data-proofer-ignore></a></p>
 
-<p>평균을 $\mu$, 표준편차를 $\sigma$라 할 때,</p>
+<p>첫 1x1 conv는 차원을 압축(또는 유지)하고, 마지막 1x1 conv는 차원을 복원한다. 이 구조에서 projection을 사용하면 모델 복잡도가 커진다. 따라서 identity shortcut이 더 효율적이다.</p>
 
-\[z^{(i,l)}\sim q_{\phi}(z|x^{(i)})\]
+<p>34-layer ResNet에 2-layer 블록을 3-layer bottleneck으로 바꿔 50-layer ResNet을 만들었다. 같은 방식으로 {101, 152}-layer Resnet을 만들었다. {50, 101, 152}-Resnet은 34-ResNet보다 눈에 띄게 좋은 정확도를 보인다.</p>
 
-\[z^{(i,l)} = \mu^{(i)} + \sigma^{(i)} \odot \epsilon^{(l)}\]
+<h3 id="cifar-10-and-analysis"><span class="me-2">CIFAR-10 and Analysis</span><a href="#cifar-10-and-analysis" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
-<p>$\epsilon\sim N(0,1)$는 랜덤한 작은 값이다.</p>
+<p>모델 별 layer 출력의 표준편차를 비교했다.</p>
 
-<div class="language-python highlighter-rouge"><div class="code-header">
-        <span data-label-text="Python"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="n">epsilon</span> <span class="o">=</span> <span class="nf">randn_like</span><span class="p">(</span><span class="n">std</span><span class="p">)</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">std</span> <span class="o">*</span> <span class="n">epsilon</span>
-</pre></td></tr></tbody></table></code></div></div>
+<p><a href="/assets/posts/resnet/layer-std.png" class="popup img-link "><img data-src="/assets/posts/resnet/layer-std.png" alt="signal-std" class="lazyload" data-proofer-ignore></a></p>
 
-<h3 id="loss-function-정의"><span class="me-2">Loss Function 정의</span><a href="#loss-function-정의" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p>출력은 3x3 conv + 정규화 결과로, 비선형 함수(ReLU)를 거치기 전이다. ResNet이 Plain 모델보다 작은 반응을 보였다. 이는 residual 함수가 0과 가까운 값($\mathcal{F}$)을 낼 것이라는 가정을 증명한다. 또 레이어가 많을수록 각 레이어는 큰 변화를 보이지 않았다.</p>
 
-<p>위에서 설명했던 Loss는 일반화된 모습이었다. 구현을 위해서는 구체적인 식을 정의해야 한다.</p>
-
-\[p_{\theta}(z)\sim N(z;0,I)\]
-
-\[\log q_{\phi}(z|x^{(i)})=\log N(z;\mu^{(i)},\sigma^{2(i)}I)\]
-
-<p>먼저, $p_{\theta}(z)$는 centered isotropic Gaussian을 따르며, $\log q_{\phi}(z|x)$도 Gaussian을 따른다고 가정한다.</p>
-
-\[- \mathcal{L}(\theta, \phi; \mathbf{x}^{(i)}) \simeq - \frac{1}{2} \sum_{j=1}^{J} \left( 1 + \log \left( (\sigma_{j}^{(i)})^2 \right) - (\mu_{j}^{(i)})^2 - (\sigma_{j}^{(i)})^2 \right) - \frac{1}{L} \sum_{l=1}^{L} \log p_{\theta} (\mathbf{x}^{(i)} | \mathbf{z}^{(i,l)})\]
-
-<p>이 식은 Gaussian 분포에 대해 Regularization Loss를 구체적으로 정의했다. 두번째 항인 Reconstruction Loss는 negative log-likelihood다. 따라서, Binary Cross Entropy로 정의할 수 있다.</p>
-
-<div class="language-python highlighter-rouge"><div class="code-header">
-        <span data-label-text="Python"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">loss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_reconstructed</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">std</span><span class="p">):</span>
-    <span class="c1"># Regularization Loss
-</span>    <span class="n">kl_div</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="nf">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="nf">log</span><span class="p">(</span><span class="n">std</span><span class="p">.</span><span class="nf">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">-</span> <span class="n">mu</span><span class="p">.</span><span class="nf">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">std</span><span class="p">.</span><span class="nf">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-    <span class="c1"># Reconstruction Loss
-</span>    <span class="n">recon_loss</span> <span class="o">=</span> <span class="nf">binary_cross_entropy</span><span class="p">(</span><span class="n">x_reconstructed</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">kl_div</span> <span class="o">+</span> <span class="n">recon_loss</span>
-</pre></td></tr></tbody></table></code></div></div>
-
-<h2 id="pytorch-구현"><span class="me-2">Pytorch 구현</span><a href="#pytorch-구현" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
-
-<p>전체 구현은 <a href="https://github.com/denev6/deep-learning-codes/blob/main/models/VAE/train_vae.ipynb">Github: VAE</a>에서 확인할 수 있다.</p>
-
-<div class="language-python highlighter-rouge"><div class="code-header">
-        <span data-label-text="Python"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">VAE</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">):</span>
-        <span class="nf">super</span><span class="p">(</span><span class="n">VAE</span><span class="p">,</span> <span class="n">self</span><span class="p">).</span><span class="nf">__init__</span><span class="p">()</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="nc">Encoder</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">)</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="nc">Decoder</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">encoder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-        <span class="c1"># Reparameterization trick
-</span>        <span class="n">std</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">exp</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">logvar</span><span class="p">)</span>
-        <span class="n">epsilon</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">randn_like</span><span class="p">(</span><span class="n">std</span><span class="p">)</span>
-        <span class="n">z</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">std</span> <span class="o">*</span> <span class="n">epsilon</span>
-
-        <span class="n">x_recon</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">decoder</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">x_recon</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span>
-</pre></td></tr></tbody></table></code></div></div>
-
-<p>구현에는 표준편차 $\sigma$ 대신 $\log \sigma^2$인 <code class="language-plaintext highlighter-rouge">logvar</code>를 반환하도록 한다.</p>
-
-<blockquote>
-  <p>$\sigma$는 일반적으로 매우 작은 값으로 계산된다. 따라서 학습 과정에서 최적화가 잘 되지 않는 문제가 있다. 하지만 분산을 log 공간에 매핑시키면 값을 더 큰 범위로 변환할 수 있다. $\sigma$가 일반적으로 [0, 1] 범위를 가진다고 하면, $\log \sigma^2$는 [log(1), -inf] 범위를 가진다. 따라서 학습 과정에서 잘 최적화되는 모습을 보인다. - <a href="https://stackoverflow.com/questions/74920955/why-vae-encoder-outputs-log-variance-and-not-standard-deviation">출처</a>.</p>
-</blockquote>
-
-<p>참고로 $\log \sigma^2$가 음수 범위를 가지기 때문에 <code class="language-plaintext highlighter-rouge">logvar</code>를 출력하는 layer는 activation으로 ReLU를 사용하면 안 된다.</p>
-
-<div class="language-python highlighter-rouge"><div class="code-header">
-        <span data-label-text="Python"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">loss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_recon</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span><span class="p">):</span>
-    <span class="n">recon_loss</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">functional</span><span class="p">.</span><span class="nf">binary_cross_entropy</span><span class="p">(</span><span class="n">x_recon</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-    <span class="n">kl_div</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">torch</span><span class="p">.</span><span class="nf">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">logvar</span> <span class="o">-</span> <span class="n">mu</span><span class="p">.</span><span class="nf">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">logvar</span><span class="p">.</span><span class="nf">exp</span><span class="p">())</span>
-    <span class="k">return</span> <span class="n">recon_loss</span> <span class="o">+</span> <span class="n">kl_div</span>
-</pre></td></tr></tbody></table></code></div></div>
-
-<p>이렇게 하면 Loss function도 <code class="language-plaintext highlighter-rouge">logvar</code>에 대해 재정의할 수 있다.</p>
-
-<p>MNIST 데이터셋을 이용해 학습하면 입력 이미지와 유사한 출력 만들어 낸다.</p>
-
-<p><a href="/assets/posts/vae/mnist-result.png" class="popup img-link "><img data-src="/assets/posts/vae/mnist-result.png" alt="MNIST 결과" class="lazyload" data-proofer-ignore></a></p>
-
-<h3 id="시각화"><span class="me-2">시각화</span><a href="#시각화" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
-
-<p>2차원 latent space를 시각화했다. 코드: <a href="https://github.com/denev6/deep-learning-codes/blob/main/models/VAE/vae_visual.py">Github</a></p>
-
-<p><a href="/assets/posts/vae/2d-latent.png" class="popup img-link "><img data-src="/assets/posts/vae/2d-latent.png" alt="2D latent visualization" class="lazyload" data-proofer-ignore></a></p>
-
-<p>2차원 latent space, 즉 2개의 Gaussian 분포를 생성하도록 Encoder를 학습시켰다. $z$를 [-3, 3] 범위에 대해 Decoder에 입력했다. $p(z)$가 Standard Normal Distribution을 따른다고 가정했기 때문에 [-3, 3] 범위로 latent space 대부분을 시각화할 수 있다.</p>
-
-<p>시각화한 이미지를 통해 샘플링된 $z$와 출력 $x$의 관계를 확인할 수 있다.</p>
+<p>1202-layer는 110-layer와 비슷한 training error를 보였음에도 더 나쁜 결과를 냈다. 이는 데이터에 비해 큰 모델로 인해 overfitting이 발생한 것으로 추측한다. 이때는 maxout이나 dropout 같은 강한 regularization이 필요하다.</p>
 
 </div>
 
@@ -1296,7 +1158,7 @@ Jin's Notes
     <div class="post-meta mb-3">
       <i class="far fa-folder-open fa-fw me-1"></i>
       
-        <a href="/categories/computer-vision/">Computer-Vision</a>
+        <a href="/categories/paper-review/">Paper-Review</a>
     </div>
   
 
@@ -1305,11 +1167,11 @@ Jin's Notes
   <div class="post-tags">
     <i class="fa fa-tags fa-fw me-1"></i>
     
-    <a href="/tags/python/" class="post-tag no-text-decoration">Python</a>
+    <a href="/tags/ai/" class="post-tag no-text-decoration">AI</a>
     
     <a href="/tags/cv/" class="post-tag no-text-decoration">CV</a>
     
-    <a href="/tags/ai/" class="post-tag no-text-decoration">AI</a>
+    <a href="/tags/python/" class="post-tag no-text-decoration">Python</a>
     
   </div>
   
@@ -1340,7 +1202,7 @@ Jin's Notes
     
       
       <a
-        href="https://twitter.com/intent/tweet?text=Auto-Encoding%20Variational%20Bayes%20-%20Jin's%20Notes&url=https%3A%2F%2Fdenev6.github.io%2Fcomputer-vision%2F2025%2F01%2F29%2Fvae.html"
+        href="https://twitter.com/intent/tweet?text=Deep%20Residual%20Learning%20for%20Image%20Recognition%20-%20Jin's%20Notes&url=https%3A%2F%2Fdenev6.github.io%2Fpaper-review%2F2025%2F02%2F04%2Fresnet.html"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Twitter"
@@ -1353,7 +1215,7 @@ Jin's Notes
     
       
       <a
-        href="https://www.facebook.com/sharer/sharer.php?title=Auto-Encoding%20Variational%20Bayes%20-%20Jin's%20Notes&u=https%3A%2F%2Fdenev6.github.io%2Fcomputer-vision%2F2025%2F01%2F29%2Fvae.html"
+        href="https://www.facebook.com/sharer/sharer.php?title=Deep%20Residual%20Learning%20for%20Image%20Recognition%20-%20Jin's%20Notes&u=https%3A%2F%2Fdenev6.github.io%2Fpaper-review%2F2025%2F02%2F04%2Fresnet.html"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Facebook"
@@ -1366,7 +1228,7 @@ Jin's Notes
     
       
       <a
-        href="https://t.me/share/url?url=https%3A%2F%2Fdenev6.github.io%2Fcomputer-vision%2F2025%2F01%2F29%2Fvae.html&text=Auto-Encoding%20Variational%20Bayes%20-%20Jin's%20Notes"
+        href="https://t.me/share/url?url=https%3A%2F%2Fdenev6.github.io%2Fpaper-review%2F2025%2F02%2F04%2Fresnet.html&text=Deep%20Residual%20Learning%20for%20Image%20Recognition%20-%20Jin's%20Notes"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Telegram"
@@ -1379,7 +1241,7 @@ Jin's Notes
     
       
       <a
-        href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdenev6.github.io%2Fcomputer-vision%2F2025%2F01%2F29%2Fvae.html"
+        href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdenev6.github.io%2Fpaper-review%2F2025%2F02%2F04%2Fresnet.html"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Linkedin"
@@ -2081,6 +1943,18 @@ Jin's Notes
 
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 
 
 
@@ -2096,7 +1970,7 @@ Jin's Notes
     <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
       
         <article class="col">
-          <a href="/paper-review/2025/01/31/alexnet.html" class="post-preview card h-100">
+          <a href="/computer-vision/2025/01/08/svd.html" class="post-preview card h-100">
             <div class="card-body">
               <!--
   Date format snippet
@@ -2110,14 +1984,14 @@ Jin's Notes
   
     class="small"
   
-  data-ts="1738249200"
+  data-ts="1736262000"
   data-df="YYYY/MM/DD"
   
 >
-  2025/01/31
+  2025/01/08
 </time>
 
-              <h4 class="pt-0 my-2">ImageNet Classification with Deep Convolutional Neural Networks</h4>
+              <h4 class="pt-0 my-2">SVD를 이용한 이미지 압축</h4>
               <div class="text-muted small">
                 <p>
                   
@@ -2126,11 +2000,9 @@ Jin's Notes
 
 
 
-                  ImageNet Classification with Deep Convolutional Neural Networks: 논문은 AlexNet을 소개한 논문으로 CNN 모델의 각 레이어가 어떤 역할을 하는지 잘 분석했다.
+                  SVD: Singular Vector Decomposition에 대해 다룬다. 각 수식이 어떤 의미를 가지고, 이미지 압축에 어떻게 사용되는지 설명한다. 본 글을 이해하기 위해 아래 개념을 숙지하고 있어야 한다.
 
-논문을 정리한 글이며, CNN의 기본적인 개념을 생략하고 정리했다. 자세한 부분은 BLOG: CNN에 볼 수 있다.
-
-본 글에서 분석을...
+Vector: 크기와 방향을 가지는 양으로, 2차원 공간의 벡터는 $\vec{v}=\begin{bmatrix}u_1 &amp;amp; u_2\en...
                 </p>
               </div>
             </div>
@@ -2138,7 +2010,7 @@ Jin's Notes
         </article>
       
         <article class="col">
-          <a href="/paper-review/2025/02/04/resnet.html" class="post-preview card h-100">
+          <a href="/computer-vision/2025/01/29/vae.html" class="post-preview card h-100">
             <div class="card-body">
               <!--
   Date format snippet
@@ -2152,14 +2024,14 @@ Jin's Notes
   
     class="small"
   
-  data-ts="1738594800"
+  data-ts="1738076400"
   data-df="YYYY/MM/DD"
   
 >
-  2025/02/04
+  2025/01/29
 </time>
 
-              <h4 class="pt-0 my-2">Deep Residual Learning for Image Recognition</h4>
+              <h4 class="pt-0 my-2">Auto-Encoding Variational Bayes</h4>
               <div class="text-muted small">
                 <p>
                   
@@ -2168,22 +2040,16 @@ Jin's Notes
 
 
 
-                  
-  논문: Deep Residual Learning for Image Recognition
-  구현: Github: Pytorch-Vision
+                  Auto Encoder
+
+Variational Auto-Encoding을 이해하기 위해 기본적인 Auto-Encoding을 알아야 한다.
 
 
-Abstract
+
+Auto Encoder(AE)는 데이터를 압축하고 복원하는 단순한 모델이다. Linear layer을 통해 데이터 크기를 줄이고 복원한다. Auto Encoder 구성은 다음과 같다.
 
 
-  이전보다 더 깊은 모델을 학습
-  레이어 입력을 참고하도록 재구성
-  residual network는 깊은 모델의 정확도를 올림
-
-
-Introduction
-
-vanishing/exp...
+  Encoder: 데...
                 </p>
               </div>
             </div>
@@ -2228,12 +2094,14 @@ vanishing/exp...
 
 
 
+1
+2
+3
 $ git clone https://github.com/denev6/face-mouse-control.git
 $ pip install -r requirements.txt
 $ python main.py
 
-
-실행할 때...
+...
                 </p>
               </div>
             </div>
@@ -2255,22 +2123,18 @@ $ python main.py
 
   
     <a
-      href="/paper-review/2025/01/27/hog.html"
+      href="/paper-review/2025/01/31/alexnet.html"
       class="btn btn-outline-primary"
       aria-label="이전 글"
     >
-      <p>Histograms of Oriented Gradients for Human Detection</p>
+      <p>ImageNet Classification with Deep Convolutional Neural Networks</p>
     </a>
   
 
   
-    <a
-      href="/paper-review/2025/01/31/alexnet.html"
-      class="btn btn-outline-primary"
-      aria-label="다음 글"
-    >
-      <p>ImageNet Classification with Deep Convolutional Neural Networks</p>
-    </a>
+    <div class="btn btn-outline-primary disabled" aria-label="다음 글">
+      <p>-</p>
+    </div>
   
 </nav>
 

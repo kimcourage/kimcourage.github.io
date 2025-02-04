@@ -10,10 +10,9 @@ img_path: /assets/posts/transformer/
 
 본 글은 "**_Attention is All You Need_**" 논문을 번역 및 분석했다. 일부 문장은 맥락에 따라 의역되었으며, 명확한 이해를 위해 부분적으로 설명을 추가했다. 주요 용어는 정확한 의미 전달을 위해 영문 그대로 작성했다. (예: recurrent, convolutional 등)
 
-## Abstract 
+## Abstract
 
 기존 시퀀스 모델은 encoder-decoder가 포함된 복잡한 recurrent나 convolutional 신경망을 기반으로 한다. 본 논문은 recurrence와 convolution 없이 **attention mechanisms을 기반으로 하는 간단한 Transformer 구조를 제안**한다. 2종류의 기계번역 문제에서 좋은 성과를 보였고, 병렬화를 통해 학습 시간을 단축했다. 본 모델은 WMT 2014 영어-독일어 번역에서 28.4 BLEU를 달성했다. WMT 2014 영어-프랑스어 번역은 41.8 BLEU로 단일 모델 SOTA를 달성했다. 8개 GPU로 3.5일을 학습했다. Transformer를 영어 문장 성분 파싱에 적용했고, 다른 문제에도 적용 가능하다는 사실을 확인했다. 학습 데이터가 큰 상황과 제한된 상황에서 모두 잘 학습되었다.
-
 
 ## Introduction
 
@@ -23,7 +22,7 @@ Attention mechanisms는 시퀀스 길이에 관계없이 의존성 모델링이 
 
 ## Model Architecture
 
-![](fig1.png)
+![overall architecture](fig1.png)
 _fig1_
 
 \*그림에서 좌측이 Encoder, 우측이 Decoder 구조다.
@@ -32,7 +31,7 @@ _fig1_
 
 **Encoder**는 N=6개의 동일한 층이 연결된 모습이다. 각 층은 multi-head self-attention과 간단한 position-wise fully connected feed-forward network로 구성된다. 각 sub-layer에 대해 residual connection을 적용하고, 뒤이어 정규화를 진행한다. \* 그림에서  residual connection은 multi-head attention 입력을 출력과 합치는 부분을 말한다. (Add)
 
-$LayerNorm(x+Sublayer(x))$
+$Norm(x+Sublayer(x))$
 
 residual connection을 쉽게 처리하기 위해 embedding을 포함한 모든 출력은 $d_{model}=512$ 차원으로 고정한다.
 
@@ -40,7 +39,7 @@ residual connection을 쉽게 처리하기 위해 embedding을 포함한 모든 
 
 ### Attention
 
-![](fig2.png)
+![attention 종류](fig2.png)
 _fig2_
 
 #### Scaled Dot-Product Attention
@@ -63,11 +62,13 @@ $W_i^Q,W_i^K,W_i^V$과 $W^O\in\mathbb{R}^{hd_v\times d_{model}}$는 project 될 
 
 본 연구는 h=8개의 병렬된 attention 층을 사용한다. 각 차원은 $d_k=d_v=d_{model}/h=64$이다. 줄어든 차원 덕분에 전체 연산 비용은 singe-head attention과 유사하다.
 
-\*여기서 차원이 줄었다는 표현은 병렬 연산을 하며 나타난 효과다. 위 설명에 따르면 $d_k=64$차원의 모델 8개를 병렬로 처리한다. 이는 $d_{model}=512$차원의 모델 하나를 처리하는 것과 같다 (512 = 64 x 8). 
+\*여기서 차원이 줄었다는 표현은 병렬 연산을 하며 나타난 효과다. 위 설명에 따르면 $d_k=64$차원의 모델 8개를 병렬로 처리한다. 이는 $d_{model}=512$차원의 모델 하나를 처리하는 것과 같다 (512 = 64 x 8).
 
 #### Applications of Attention in our Model
 
-Transformer는 multi-head attention을 3가지 방식으로 활용한다. 
+Transformer는 multi-head attention을 3가지 방식으로 활용한다.
+
+![K, V, Q 위치](attention.png)
 
 encoder-decoder attention 층에서 query는 이전 decoder에서 오고, key와 value는 encoder 출력에서 나온다. 따라서 decoder가 모든 입력 시퀀스 위치에 적용된다. 이는 seq2seq에서 전형적인 encoder-decoder attention 구조와 동일하다.
 
@@ -89,23 +90,23 @@ $FFN(x)=ReLU(xW_1+b_1)W_2+b_2$
 
 ### Embeddings and Softmax
 
-$d_{model}$ 차원의 벡터로 입출력을 변환하기 위해 학습된 embedding을 사용한다. decoder 출력을 확률로 변환하기 위해 선형 변환과 softmax를 사용했다. 본 연구는 두 embedding 층과 softmax 이전 선형 변환에서 같은 가중치 행렬을 사용했다. 그리고 embedding 층에서는 가중치에 $\sqrt{d_{model}}$을 곱한다. 
+$d_{model}$ 차원의 벡터로 입출력을 변환하기 위해 학습된 embedding을 사용한다. decoder 출력을 확률로 변환하기 위해 선형 변환과 softmax를 사용했다. 본 연구는 두 embedding 층과 softmax 이전 선형 변환에서 같은 가중치 행렬을 사용했다. 그리고 embedding 층에서는 가중치에 $\sqrt{d_{model}}$을 곱한다.
 
 ### Positional Encoding
 
-본 모델은 순환 구조가 없기 때문에 시퀀스 순서를 이해하기 위해 토큰에 위치 정보가 필요하다. 이를 위해 **positional encoding**을 encoder와 decoder의 input embedding 밑부분에 추가했다. positional encoding은 embedding과 더해질 수 있도록 같은 $d_{model}=512$ 차원을 가진다. 본 연구는 여러 방법 중 다른 주기를 가지는 sine과 cosine 함수를 이용한다. 
+본 모델은 순환 구조가 없기 때문에 시퀀스 순서를 이해하기 위해 토큰에 위치 정보가 필요하다. 이를 위해 **positional encoding**을 encoder와 decoder의 input embedding 밑부분에 추가했다. positional encoding은 embedding과 더해질 수 있도록 같은 $d_{model}=512$ 차원을 가진다. 본 연구는 여러 방법 중 다른 주기를 가지는 sine과 cosine 함수를 이용한다.
 
 $PE_{(pos,2i)}=sin(pos/10000^{2i/d_{model}})$
 
 $PE_{(pos,2i+1)}=cos(pos/10000^{2i/d_{model}})$
 
-*pos*는 위치이며, *i*는 차원이다. 각 차원은 정현파(sinusoid)에 대응된다. 주기는 $2\pi$에서 $10000\cdot 2\pi$가 된다. 
+*pos*는 위치이며, *i*는 차원이다. 각 차원은 정현파(sinusoid)에 대응된다. 주기는 $2\pi$에서 $10000\cdot 2\pi$가 된다.
 
-**\*positional encoding 추가 설명**
+**positional encoding 추가 설명**
 
 ![positional encoding](pos.png)
 
-말 그대로 embedding 된 단어에 위치 정보를 추가해 주는 역할이다. 위치를 표기하는 방법은 다양하다. 예를 들어 첫 번째 단어는 1 ... i번째 단어는 i로 나타낼 수 있다. 그런데 i 값이 너무 커지면 더했을 때 임베딩된 벡터와 관계없이 아주 큰 값이 된다. 임베딩 벡터는 단어 정보를 담고 있기 때문에 중요하다. 따라서 항상 -1 ~ 1 사이 범위를 가지는 sine, cosine 함수를 선택했다. 
+말 그대로 embedding 된 단어에 위치 정보를 추가해 주는 역할이다. 위치를 표기하는 방법은 다양하다. 예를 들어 첫 번째 단어는 1 ... i번째 단어는 i로 나타낼 수 있다. 그런데 i 값이 너무 커지면 더했을 때 임베딩된 벡터와 관계없이 아주 큰 값이 된다. 임베딩 벡터는 단어 정보를 담고 있기 때문에 중요하다. 따라서 항상 -1 ~ 1 사이 범위를 가지는 sine, cosine 함수를 선택했다.
 
 하지만 sine, cosine은 일정한 주기를 가지기 때문에 i가 커지면 중복 값이 발생할 수 있다. 따라서 논문에서는 i마다 다른 주기를 가지도록 PE 함수를 정의했다. 물론 i 값이 매우 커지면 겹치는 경우가 발생할 수 있지만, 현재 연구에서는 i에 비해 주기가 충분히 크기 때문에 문제가 되지 않는다.
 
@@ -135,7 +136,7 @@ _fig5_
 
 ### Training Data and Batching
 
-450만 개 문장 쌍으로 구성된 **stardard WMT 2014** 영어-독일어 데이터를 학습했다. 영어-프랑스 번역 문제에서 3600만 개 WMT 영어-프랑스어 데이터를 사용했고, 토큰을 32000 word-piece 단어로 나눴다. 문장 쌍은 시퀀스 길이 정도로 batch 했다. 각 training batch는 대략 25000 source token과 25000개 target token을 담고 있는 문장 쌍이 들어있다. 
+450만 개 문장 쌍으로 구성된 **stardard WMT 2014** 영어-독일어 데이터를 학습했다. 영어-프랑스 번역 문제에서 3600만 개 WMT 영어-프랑스어 데이터를 사용했고, 토큰을 32000 word-piece 단어로 나눴다. 문장 쌍은 시퀀스 길이 정도로 batch 했다. 각 training batch는 대략 25000 source token과 25000개 target token을 담고 있는 문장 쌍이 들어있다.
 
 ### Hardware and Schedule
 
@@ -153,7 +154,7 @@ $lrate=d^{-0.5}_{model}\cdot min(step\\_num^{-0.5},step\\_num\cdot warmup\\_step
 
 **Residual dropout**: 각 sub-layer가 입력과 더해지고 정규화되기 전에 dropout 시킨다. 추가로 embedding과 positional encoding 합에도 dropout을 적용한다. base model은 $P_{drop}=0.1$을 적용한다.
 
-**Label smoothing**: label smoothing factor로 $\epsilon_{ls}=0.1$을 사용한다. 모델을 모호하게 학습해 perplexity를 해치지만 accuracy와 BLEU 점수를 높여준다. 
+**Label smoothing**: label smoothing factor로 $\epsilon_{ls}=0.1$을 사용한다. 모델을 모호하게 학습해 perplexity를 해치지만 accuracy와 BLEU 점수를 높여준다.
 
 ## Result
 
@@ -172,14 +173,14 @@ _table2_
 
 ### Model Variations
 
-Transformer의 component 별 중요도를 평가하기 위해 base model을 다양하게 변형해 영어-독일어 번역 성능을 측정했다. 앞서 설명했듯 beam search를 사용했고, 대신 체크포인트를 평균 내는 방식은 사용하지 않았다. 결과는 아래 표에서 볼 수 있다. 
+Transformer의 component 별 중요도를 평가하기 위해 base model을 다양하게 변형해 영어-독일어 번역 성능을 측정했다. 앞서 설명했듯 beam search를 사용했고, 대신 체크포인트를 평균 내는 방식은 사용하지 않았다. 결과는 아래 표에서 볼 수 있다.
 
 ![](table3.png)
 _table3_
 
 Table3 (A) 열에서 attention head 개수, key-value 차원을 다르게 하되 연산 일관성을 유지했다. single-head attention은 0.9 BLEU로 성능이 하락했고, 너무 많은 head는 성능을 떨어뜨린다.
 
-Table3 (B) 열에서 attention key 차원을 줄이니 성능에 문제가 발생했다. (C)와 (D) 열은 큰 모델일수록 성능이 좋고, dropout이 over-fitting을 막는데 도움이 된다는 사실을 보여준다. (E) 열은 sinusiudal positional encoding 대신 학습된 positional embeddings을 사용했고 base model과 거의 비슷한 결과를 보였다. 
+Table3 (B) 열에서 attention key 차원을 줄이니 성능에 문제가 발생했다. (C)와 (D) 열은 큰 모델일수록 성능이 좋고, dropout이 over-fitting을 막는데 도움이 된다는 사실을 보여준다. (E) 열은 sinusiudal positional encoding 대신 학습된 positional embeddings을 사용했고 base model과 거의 비슷한 결과를 보였다.
 
 ## Conclusion
 

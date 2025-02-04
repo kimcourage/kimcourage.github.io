@@ -4,7 +4,7 @@
   <id>https://denev6.github.io/</id>
   <title>Jin's Notes</title>
   <subtitle>AI, 수학, Python, Golang을 다루는 학생입니다.</subtitle>
-  <updated>2025-02-01T15:36:45+09:00</updated>
+  <updated>2025-02-04T20:52:52+09:00</updated>
   <author>
     <name>박성진</name>
     <uri>https://denev6.github.io/</uri>
@@ -17,6 +17,61 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>Deep Residual Learning for Image Recognition</title>
+    <link href="https://denev6.github.io/paper-review/2025/02/04/resnet.html" rel="alternate" type="text/html" title="Deep Residual Learning for Image Recognition" />
+    <published>2025-02-04T00:00:00+09:00</published>
+  
+    <updated>2025-02-04T00:00:00+09:00</updated>
+  
+    <id>https://denev6.github.io/paper-review/2025/02/04/resnet.html</id>
+    <content src="https://denev6.github.io/paper-review/2025/02/04/resnet.html" />
+    <author>
+      <name>박성진</name>
+    </author>
+
+  
+    
+    <category term="Paper-Review" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      
+  논문: Deep Residual Learning for Image Recognition
+  구현: Github: Pytorch-Vision
+
+
+Abstract
+
+
+  이전보다 더 깊은 모델을 학습
+  레이어 입력을 참고하도록 재구성
+  residual network는 깊은 모델의 정확도를 올림
+
+
+Introduction
+
+vanishing/exploding gradient가 모델 수렴을 방해한다. 이는 normalized initialization과 intermediate normalization layers로 해결할 수 있다.
+
+하지만 degradation 문제도 발생한다. 정확도가 낮아지지 않고 training error가 얕은 모델보다 크다.
+
+
+
+본 연구는 deep residual lear...
+    </summary>
+  
+
+  </entry>
 
   
   <entry>
@@ -50,14 +105,15 @@
 
 논문을 정리한 글이며, CNN의 기본적인 개념을 생략하고 정리했다. 자세한 부분은 BLOG: CNN에 볼 수 있다.
 
+본 글에서 분석을 위해 사용한 코드는 Github에 정리되어 있다.
+
 Abstract
 
 
   ImageNet LSVRC-2012 대회에서 SOTA를 달성
   모델은 6000만 개의 파라미터와 650,000개 뉴런으로 구성
   5개의 convolutional layer + 3개의 fully-connected layer + 1000-way softmax
-  non-saturating activation과 효율적인 GPU 연산을 통한 빠른 학습
-...
+  non-satura...
     </summary>
   
 
@@ -191,46 +247,6 @@ Model 학습
 모델과 데이터셋을 고르는 기준은 단순하다. 로컬에서 가볍게 돌릴 수 있어야 한다. 지금은 모델이 중요한 게 아니라 그럴싸한 API를 만드는 것이 목표이기 때문에 성능보다 속도를 우선시했다. 데이터셋은 가벼운 Fashion MNIST를 사용했다. 28 x 28의 작은 크기 덕분에 빠르게 학습할 수 있다.
 
 참고로 Fashion MNIST는 부츠, 운동화, 티셔츠, 가방 등 의류 이미지로 구성된 데이...
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>SVD를 이용한 이미지 압축</title>
-    <link href="https://denev6.github.io/computer-vision/2025/01/08/svd.html" rel="alternate" type="text/html" title="SVD를 이용한 이미지 압축" />
-    <published>2025-01-08T00:00:00+09:00</published>
-  
-    <updated>2025-01-08T00:00:00+09:00</updated>
-  
-    <id>https://denev6.github.io/computer-vision/2025/01/08/svd.html</id>
-    <content src="https://denev6.github.io/computer-vision/2025/01/08/svd.html" />
-    <author>
-      <name>박성진</name>
-    </author>
-
-  
-    
-    <category term="Computer-Vision" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      SVD: Singular Vector Decomposition에 대해 다룬다. 각 수식이 어떤 의미를 가지고, 이미지 압축에 어떻게 사용되는지 설명한다. 본 글을 이해하기 위해 아래 개념을 숙지하고 있어야 한다.
-
-Vector: 크기와 방향을 가지는 양으로, 2차원 공간의 벡터는 $\vec{v}=\begin{bmatrix}u_1 &amp;amp; u_2\end{bmatrix}$와 같이 표현한다. 본문에서는 편의상 $v$ 형태로 표기한다.
-
-Inversed matrix: $A$에 대한 역행렬로 $A^{-1}$로 표기하며, $A^{-1}A=I$라는 특징을 가진다.
-
-Orthogonal matrix: 모든 column 벡터가 직교하는 행렬로, $AA^T=A^TA=I$라는 특징을 가진다. 동시에 $A^T=A^{-1}...
     </summary>
   
 
