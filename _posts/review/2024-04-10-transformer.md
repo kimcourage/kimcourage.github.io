@@ -1,6 +1,7 @@
 ---
 title: Attention is all you need
 category: Paper-Review
+tags: [NLP, AI]
 toc: true 
 math: true
 img_path: /assets/posts/transformer/

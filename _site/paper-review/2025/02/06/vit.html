@@ -42,25 +42,25 @@
   
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.3.4" />
-<meta property="og:title" content="Auto-Encoding Variational Bayes" />
+<meta property="og:title" content="An Image is Worth 16x16 Words, Transformers For Image Recognition At Scale" />
 <meta property="og:locale" content="ko_KR" />
-<meta name="description" content="Auto Encoder" />
-<meta property="og:description" content="Auto Encoder" />
-<link rel="canonical" href="https://denev6.github.io/computer-vision/2025/01/29/vae.html" />
-<meta property="og:url" content="https://denev6.github.io/computer-vision/2025/01/29/vae.html" />
+<meta name="description" content="논문: arXiv 공식 구현: Pytorch-vision 분석 코드: Github" />
+<meta property="og:description" content="논문: arXiv 공식 구현: Pytorch-vision 분석 코드: Github" />
+<link rel="canonical" href="https://denev6.github.io/paper-review/2025/02/06/vit.html" />
+<meta property="og:url" content="https://denev6.github.io/paper-review/2025/02/06/vit.html" />
 <meta property="og:site_name" content="Jin’s Notes" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2025-01-29T00:00:00+09:00" />
+<meta property="article:published_time" content="2025-02-06T00:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Auto-Encoding Variational Bayes" />
+<meta property="twitter:title" content="An Image is Worth 16x16 Words, Transformers For Image Recognition At Scale" />
 <meta name="twitter:site" content="@" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-01-31T00:18:46+09:00","datePublished":"2025-01-29T00:00:00+09:00","description":"Auto Encoder","headline":"Auto-Encoding Variational Bayes","mainEntityOfPage":{"@type":"WebPage","@id":"https://denev6.github.io/computer-vision/2025/01/29/vae.html"},"url":"https://denev6.github.io/computer-vision/2025/01/29/vae.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-02-06T00:00:00+09:00","datePublished":"2025-02-06T00:00:00+09:00","description":"논문: arXiv 공식 구현: Pytorch-vision 분석 코드: Github","headline":"An Image is Worth 16x16 Words, Transformers For Image Recognition At Scale","mainEntityOfPage":{"@type":"WebPage","@id":"https://denev6.github.io/paper-review/2025/02/06/vit.html"},"url":"https://denev6.github.io/paper-review/2025/02/06/vit.html"}</script>
 <!-- End Jekyll SEO tag -->
 
   
 
-  <title>Auto-Encoding Variational Bayes | 
+  <title>An Image is Worth 16x16 Words, Transformers For Image Recognition At Scale | 
 Jin's Notes
   </title>
 
@@ -312,7 +312,7 @@ Jin's Notes
         
           
             
-              <span>Auto-Encoding Variational Bayes</span>
+              <span>An Image is Worth 16x16 Words, Transformers For Image Recognition At Scale</span>
             
 
           
@@ -740,74 +740,6 @@ Jin's Notes
     
 
   
-    
-
-    
-    
-
-    
-
-    
-    
-
-    
-    
-    
-    
-
-    
-      
-
-      
-      
-      
-
-      
-    
-      
-
-      
-      
-      
-
-      
-    
-
-    <!-- take out classes -->
-    
-
-    
-
-    
-
-    
-
-    <!-- lazy-load images <https://github.com/aFarkas/lazysizes#readme> -->
-    
-    
-
-    <!-- add image placeholder -->
-    
-      
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-      <!-- make sure the `<img>` is wrapped by `<a>` -->
-      
-
-      
-        <!-- create the image wrapper -->
-        
-      
-    
-
-    <!-- combine -->
-    
-
-  
 
   
 
@@ -882,6 +814,18 @@ Jin's Notes
       
 
     
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
 
     
 
@@ -898,6 +842,66 @@ Jin's Notes
       
         
         
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
       
 
       
@@ -958,7 +962,7 @@ Jin's Notes
 
 
 <header>
-  <h1 data-toc-skip>Auto-Encoding Variational Bayes</h1>
+  <h1 data-toc-skip>An Image is Worth 16x16 Words, Transformers For Image Recognition At Scale</h1>
 
   <div class="post-meta text-muted">
     <!-- published date -->
@@ -974,13 +978,13 @@ Jin's Notes
 
 <time
   
-  data-ts="1738076400"
+  data-ts="1738767600"
   data-df="YYYY/MM/DD"
   
     data-bs-toggle="tooltip" data-bs-placement="bottom"
   
 >
-  2025/01/29
+  2025/02/06
 </time>
 
     </span>
@@ -1023,9 +1027,9 @@ Jin's Notes
   class="readtime"
   data-bs-toggle="tooltip"
   data-bs-placement="bottom"
-  title="1785 단어"
+  title="2126 단어"
 >
-  <em>9 
+  <em>11 
 분</em>
 읽는 시간
 </span>
@@ -1039,183 +1043,59 @@ Jin's Notes
 
 
 <div class="content">
-  <h2 id="auto-encoder"><span class="me-2">Auto Encoder</span><a href="#auto-encoder" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
-
-<p>Variational Auto-Encoding을 이해하기 위해 기본적인 Auto-Encoding을 알아야 한다.</p>
-
-<p><a href="/assets/posts/vae/ae-overview.png" class="popup img-link "><img data-src="/assets/posts/vae/ae-overview.png" alt="Auto-Encoder 개요" class="lazyload" data-proofer-ignore></a></p>
-
-<p><code class="language-plaintext highlighter-rouge">Auto Encoder</code>(AE)는 데이터를 <strong>압축하고 복원</strong>하는 단순한 모델이다. Linear layer을 통해 데이터 크기를 줄이고 복원한다. Auto Encoder 구성은 다음과 같다.</p>
-
-<ul>
-  <li><strong>Encoder</strong>: 데이터를 압축하는 신경망 (파란 부분)</li>
-  <li><strong>latent variable</strong>: 데이터가 압축된 벡터</li>
-  <li><strong>Decoder</strong>: 데이터를 복원하는 신경망 (초록 부분)</li>
+  <ul>
+  <li>논문: <a href="https://arxiv.org/pdf/2010.11929">arXiv</a></li>
+  <li>공식 구현: <a href="https://github.com/pytorch/vision/blob/main/torchvision/models/vision_transformer.py">Pytorch-vision</a></li>
+  <li>분석 코드: <a href="https://github.com/denev6/deep-learning-codes/blob/main/models/ViT.ipynb">Github</a></li>
 </ul>
 
-<p>다른 표현으로 Encoder를 <code class="language-plaintext highlighter-rouge">Recognition model</code>, Decoder를 <code class="language-plaintext highlighter-rouge">Reconstruction model</code>이라고 부른다.</p>
+<p>본문에 <code class="language-plaintext highlighter-rouge">L000</code>으로 적힌 링크는 줄번호로, 클릭하면 Pytorch에서 어떻게 구현되어 있는지 확인할 수 있다.</p>
 
-<div class="language-python highlighter-rouge"><div class="code-header">
-        <span data-label-text="Python"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">Autoencoder</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
-        <span class="nf">super</span><span class="p">(</span><span class="n">Autoencoder</span><span class="p">,</span> <span class="n">self</span><span class="p">).</span><span class="nf">__init__</span><span class="p">()</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="nc">Sequential</span><span class="p">(</span>
-            <span class="n">nn</span><span class="p">.</span><span class="nc">Linear</span><span class="p">(</span><span class="n">in_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">),</span>
-            <span class="n">nn</span><span class="p">.</span><span class="nc">ReLU</span><span class="p">(),</span>
-            <span class="n">nn</span><span class="p">.</span><span class="nc">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">),</span>
-            <span class="n">nn</span><span class="p">.</span><span class="nc">ReLU</span><span class="p">(),</span>
-        <span class="p">)</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="nc">Sequential</span><span class="p">(</span>
-            <span class="n">nn</span><span class="p">.</span><span class="nc">Linear</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">),</span>
-            <span class="n">nn</span><span class="p">.</span><span class="nc">ReLU</span><span class="p">(),</span>
-            <span class="n">nn</span><span class="p">.</span><span class="nc">Linear</span><span class="p">(</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">in_dim</span><span class="p">),</span>
-            <span class="n">nn</span><span class="p">.</span><span class="nc">Tanh</span><span class="p">(),</span>
-        <span class="p">)</span>
-</pre></td></tr></tbody></table></code></div></div>
+<h2 id="abstract"><span class="me-2">Abstract</span><a href="#abstract" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>이를 활용하면 이미지 노이즈를 제거할 수 있다. 전체 코드: <a href="https://github.com/denev6/deep-learning-codes/blob/main/models/auto_encoder.ipynb">Github</a>.</p>
+<p>Transformer는 자연어 처리 분야에서 활발히 사용되고 있지만, 비전(vision) 문제에 적용된 경우는 제한적이다. 우리는 이미지 조각을 순수한 transformer에 입력해 분류 문제를 풀었다. <strong>Vision Transformer(ViT)는 CNN과 비교해 SOTA를 달성했으며, 더 적은 연산 비용이 든다.</strong></p>
 
-<p><a href="/assets/posts/vae/ae-noise.png" class="popup img-link "><img data-src="/assets/posts/vae/ae-noise.png" alt="Auto-encoder 노이즈 제거" class="lazyload" data-proofer-ignore></a></p>
+<h2 id="introduction"><span class="me-2">Introduction</span><a href="#introduction" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>입력을 노이즈 있는 이미지, 정답을 노이즈 없는 이미지로 두고 학습하면 노이즈를 제거하는 모델이 학습된다. 같은 맥락에서 워터마크를 제거하는 모델도 학습할 수 있다.</p>
+<p>Self-attention 구조의 transformer가 자연어 처리에서 좋은 성능을 보이고 있지만, 비전 분야는 여전히 CNN이 우세하다. 이로 인해 ResNet 기반의 모델이 SOTA를 보이고 있다.</p>
 
-<h2 id="variational-ae-개요"><span class="me-2">Variational AE 개요</span><a href="#variational-ae-개요" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>우리는 자연어 처리에 영감을 받아 기본 transformer에 이미지를 넣어봤다. 이미지는 조각으로 나누어져 일련의 선형 임베딩으로 입력된다. 이미지 조각은 자연어 처리에서 단어 토큰과 같이 다루어진다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">Variational Auto Encoder</code>(VAE)는 “<a href="https://arxiv.org/abs/1312.6114">Auto-Encoding Variational Bayes</a>“에서 소개된 모델로, <strong>latent variable을 확률 분포에서 샘플링</strong>한다.</p>
+<p>Transformer는 중간 사이즈의 데이터를 학습했을 때 ResNet보다 낮은 정확도를 보이는데, CNN과 달리 inductive bias가 부족하기 때문으로 보인다 (translation equivariance, locality 등). 따라서 충분한 데이터가 없다면 쉽게 일반화되지 않는다.</p>
 
-<p><a href="/assets/posts/vae/vae-overview.png" class="popup img-link "><img data-src="/assets/posts/vae/vae-overview.png" alt="VAE 개요" class="lazyload" data-proofer-ignore></a></p>
-
-<p>Encoder가 latent variable을 출력하는 대신, 평균($\mu$)과 표준편차($\sigma$)를 출력한다. 평균과 표준편차를 이용해 Gaussian 분포를 생성하고 latent variable을 샘플링한다. 즉, Gaussian 분포 $N(\mu ,\sigma^2)$에 대해 Encoder는 $\mu$와 $\sigma$를 생성하도록 학습한다. 샘플링한 latent $z$는 Decoder 입력이 된다. 조금 더 깊이 들어가보자.</p>
-
-<p><a href="/assets/posts/vae/vae-math.png" class="popup img-link "><img data-src="/assets/posts/vae/vae-math.png" alt="VAE 수식 표현" class="lazyload" data-proofer-ignore></a></p>
-
-<p>확률 분포를 생성하고 샘플링하는 과정을 수식으로 표현해보자.</p>
+<p>하지만 큰 데이터셋을 학습할 때는 Vision Transformer(ViT)가 좋은 성능을 보인다. 다음은 데이터셋 별 모델 정확도이다.</p>
 
 <ul>
-  <li>$p_{\theta}(x)$: 풀려는 문제. 올바른 $x$를 생성해낼 확률.</li>
-  <li>$p_{\theta}(x|z)$: <strong>Decoder</strong>. latent $z$로부터 $x$가 나올 확률.</li>
-  <li>$p_{\theta}(z|x)$: <strong>Encoder</strong>. 입력 $x$로부터 latent $z$가 나올 확률.
-    <ul>
-      <li>$q_{\phi}(z|x)$: $p_{\theta}(z|x)$의 근삿값.</li>
-    </ul>
-  </li>
+  <li>ImageNet: 88.55%</li>
+  <li>ImageNet-ReaL: 90.72%</li>
+  <li>CIFAR-100: 94.55%</li>
+  <li>VTAB(19-task): 77.63%</li>
 </ul>
 
-<p>먼저, Encoder는 입력 $x$가 주어졌을 때 $z$를 출력한다. 그런데 우리는 $x$에 대응하는 $z$를 알지 못한다. 따라서 $p_{\theta}(z|x)$를 구할 수 없다. 대신 Encoder를 학습시켜 $p_{\theta}$에 근사하는 $q_{\phi}$를 구한다.</p>
+<h2 id="method"><span class="me-2">Method</span><a href="#method" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>다시 말해, Encoder를 학습하는 과정은 파라미터 $\phi$를 학습시켜 $q_{\phi}$가 $p_{\theta}$에 가까워지도록 한다.</p>
+<h3 id="vision-transformer-vit"><span class="me-2">Vision Transformer (ViT)</span><a href="#vision-transformer-vit" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
-<p>Decoder는 $z$가 주어졌을 때 $x$를 출력한다. 따라서 $p_{\theta}(x|z)$로 표현할 수 있다.</p>
+<p>Transformer는 일련의 1D token embedding을 입력으로 받는다. 우리는 <strong>이미지를 일련의 2D patch로 나누어 사용</strong>한다.</p>
 
-<blockquote class="prompt-warning">
-  <p>참고로 $p(x)$는 Encoder + Decoder를 나타내는 식이 아니다. 다만, 정의한 문제 $p(x)=p(z)p(x|z)$를 풀기 위해 추론에 Encoder, Decoder 구조를 활용하는 것일 뿐이다.</p>
-</blockquote>
+<p><a href="/assets/posts/vit/architecture.png" class="popup img-link "><img data-src="/assets/posts/vit/architecture.png" alt="전체 구조" class="lazyload" data-proofer-ignore></a></p>
 
-<h2 id="stochastic-gradient-variational-bayes"><span class="me-2">Stochastic Gradient Variational Bayes</span><a href="#stochastic-gradient-variational-bayes" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<p>Transformer는 정해진 크기의 latent vector를 가지기 때문에 이미지 patch가 정해진 차원으로 매핑될 수 있도록 한다.</p>
 
-<p>Loss function을 유도해보자.</p>
+\[z_0 = [x_{class};x^1_pE;...;x_p^NE]+E_{pos}\]
 
-<p>$\log p_{\theta}(\mathbf{x})$는 log-likelihood로 올바른 $x$를 생성할 가능성을 나타낸다. 우리는 이 가능성을 최대로 만들어 올바른 $x$를 생성하려 한다.</p>
+<p>BERT와 마찬가지로 <code class="language-plaintext highlighter-rouge">[class]</code> 토큰은 학습 가능한 임베딩 벡터($x_{class}$)로 encoder를 거쳐 출력으로 나간다. Classification Head는 1-layer MLP로 구현한다 (<a href="https://github.com/pytorch/vision/blob/main/torchvision/models/vision_transformer.py#L243">L243</a>).</p>
 
 <blockquote class="prompt-info">
-  <p>아래는 Evidence Lower Bound: <a href="https://en.wikipedia.org/wiki/Evidence_lower_bound">ELBO</a>에 대한 식으로, 유도 과정을 생략하고 결과만 작성했다.</p>
+  <p>CLS(class) 토큰은 첫 번째 임베딩 벡터로 학습 가능한 랜덤한 값으로 초기화된다 (<a href="https://github.com/pytorch/vision/blob/main/torchvision/models/vision_transformer.py#L220">L220</a>). 이 토큰은 학습 과정에서 encoder 내 모든 이미지 조각의 정보를 반영하며, 이미지를 대표하는 값을 갖게 된다. 이후 encoder 출력으로 나가 분류 문제를 푸는데 활용한다 (<a href="https://github.com/pytorch/vision/blob/main/torchvision/models/vision_transformer.py#L301">L301</a>).</p>
 </blockquote>
 
-<p>KL-divergence를 $\log p_{\theta}(x)$에 대해 정리하면 다음과 같다.</p>
+<p><strong>Position embedding은 patch에 더해진다.</strong> 학습 가능한 1D 임베딩을 사용하며, 2D-aware 방식과 큰 성능 차이를 발견하지 못했다.</p>
 
-\[\log p_{\theta}(\mathbf{x}^{(i)}) = D_{KL} \left( q_{\phi}(\mathbf{z} | \mathbf{x}^{(i)}) \parallel p_{\theta}(\mathbf{z} | \mathbf{x}^{(i)}) \right) + \mathcal{L}(\theta, \phi; \mathbf{x}^{(i)})\]
+<p>Encoder는 multihead self-attention과 MLP block으로 만들어진다. 정규화를 모든 블록 전에 추가하며 모든 블록 뒤에 residual connection(<a href="https://github.com/pytorch/vision/blob/main/torchvision/models/vision_transformer.py#L115">L115</a>)을 적용한다.</p>
 
-<p>KL-divergence 부분은 항상 양수이기 때문에 다음과 같은 부등식이 성립한다.</p>
-
-\[\log p_{\theta}(\mathbf{x}^{(i)}) \geq \mathcal{L}(\theta, \phi; \mathbf{x}^{(i)})\]
-
-<p>따라서 $\log p_{\theta}(\mathbf{x})$를 최대화하기 위해 $\mathcal{L}(\theta, \phi; \mathbf{x})$을 최대화해야 하고, 다시 말해 $- \mathcal{L}(\theta, \phi; \mathbf{x})$를 최소화해야 한다.</p>
-
-<p>이 식을 다시 작성하면 다음과 같다.</p>
-
-\[- \mathcal{L}(\theta, \phi; \mathbf{x}^{(i)}) = D_{KL} \left( q_{\phi}(\mathbf{z} | \mathbf{x}^{(i)}) \parallel p_{\theta}(\mathbf{z}) \right) - \mathbb{E}_{q_{\phi}(\mathbf{z} | \mathbf{x}^{(i)})} \left[ \log p_{\theta}(\mathbf{x}^{(i)} | \mathbf{z}) \right]\]
-
-<p>여기서 우변은 Regularization + Reconstruction로 구성되어 있다.</p>
-
-<ul>
-  <li><strong>Regularization Loss</strong>: Encoder가 주어진 $x$에 대해 $z$를 잘 생성하는지</li>
-  <li><strong>Reconstruction Loss</strong>: Decoder가 주어진 $z$에 대해 $x$를 잘 생성하는지</li>
-</ul>
-
-<p>정리하면, VAE의 Loss function은 Lower bound로부터 파생된다. <strong>Loss는 Encoder와 Decoder에 대한 Loss를 더한 값</strong>이다. 자세한 과정은 논문 <code class="language-plaintext highlighter-rouge">2.2</code>와 <code class="language-plaintext highlighter-rouge">2.3</code>에 기록되어 있다.</p>
-
-<h3 id="reparameterization-trick"><span class="me-2">Reparameterization trick</span><a href="#reparameterization-trick" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
-
-<p>앞서 설명했듯 VAE에서 latent $z$는 Gaussian 분포에서 샘플링한다.</p>
-
-<p>평균을 $\mu$, 표준편차를 $\sigma$라 할 때,</p>
-
-\[z^{(i,l)}\sim q_{\phi}(z|x^{(i)})\]
-
-\[z^{(i,l)} = \mu^{(i)} + \sigma^{(i)} \odot \epsilon^{(l)}\]
-
-<p>$\epsilon\sim N(0,1)$는 랜덤한 작은 값이다.</p>
-
-<div class="language-python highlighter-rouge"><div class="code-header">
-        <span data-label-text="Python"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-</pre></td><td class="rouge-code"><pre><span class="n">epsilon</span> <span class="o">=</span> <span class="nf">randn_like</span><span class="p">(</span><span class="n">std</span><span class="p">)</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">std</span> <span class="o">*</span> <span class="n">epsilon</span>
-</pre></td></tr></tbody></table></code></div></div>
-
-<h3 id="loss-function-정의"><span class="me-2">Loss Function 정의</span><a href="#loss-function-정의" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
-
-<p>위에서 설명했던 Loss는 일반화된 모습이었다. 구현을 위해서는 구체적인 식을 정의해야 한다.</p>
-
-\[p_{\theta}(z)\sim N(z;0,I)\]
-
-\[\log q_{\phi}(z|x^{(i)})=\log N(z;\mu^{(i)},\sigma^{2(i)}I)\]
-
-<p>먼저, $p_{\theta}(z)$는 centered isotropic Gaussian을 따르며, $\log q_{\phi}(z|x)$도 Gaussian을 따른다고 가정한다.</p>
-
-\[- \mathcal{L}(\theta, \phi; \mathbf{x}^{(i)}) \simeq - \frac{1}{2} \sum_{j=1}^{J} \left( 1 + \log \left( (\sigma_{j}^{(i)})^2 \right) - (\mu_{j}^{(i)})^2 - (\sigma_{j}^{(i)})^2 \right) - \frac{1}{L} \sum_{l=1}^{L} \log p_{\theta} (\mathbf{x}^{(i)} | \mathbf{z}^{(i,l)})\]
-
-<p>이 식은 Gaussian 분포에 대해 Regularization Loss를 구체적으로 정의했다. 두번째 항인 Reconstruction Loss는 negative log-likelihood다. 따라서, Binary Cross Entropy로 정의할 수 있다.</p>
-
-<div class="language-python highlighter-rouge"><div class="code-header">
-        <span data-label-text="Python"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-6
-</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">loss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_reconstructed</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">std</span><span class="p">):</span>
-    <span class="c1"># Regularization Loss
-</span>    <span class="n">kl_div</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="nf">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="nf">log</span><span class="p">(</span><span class="n">std</span><span class="p">.</span><span class="nf">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">-</span> <span class="n">mu</span><span class="p">.</span><span class="nf">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">std</span><span class="p">.</span><span class="nf">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-    <span class="c1"># Reconstruction Loss
-</span>    <span class="n">recon_loss</span> <span class="o">=</span> <span class="nf">binary_cross_entropy</span><span class="p">(</span><span class="n">x_reconstructed</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">kl_div</span> <span class="o">+</span> <span class="n">recon_loss</span>
-</pre></td></tr></tbody></table></code></div></div>
-
-<h2 id="pytorch-구현"><span class="me-2">Pytorch 구현</span><a href="#pytorch-구현" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
-
-<p>전체 구현은 <a href="https://github.com/denev6/deep-learning-codes/blob/main/models/VAE/train_vae.ipynb">Github: VAE</a>에서 확인할 수 있다.</p>
-
-<div class="language-python highlighter-rouge"><div class="code-header">
-        <span data-label-text="Python"><i class="fas fa-code fa-fw small"></i></span>
+<div class="language-text highlighter-rouge"><div class="code-header">
+        <span data-label-text="Text"><i class="fas fa-code fa-fw small"></i></span>
       <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
@@ -1228,63 +1108,103 @@ Jin's Notes
 10
 11
 12
-13
-14
-15
-16
-</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">VAE</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">):</span>
-        <span class="nf">super</span><span class="p">(</span><span class="n">VAE</span><span class="p">,</span> <span class="n">self</span><span class="p">).</span><span class="nf">__init__</span><span class="p">()</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="nc">Encoder</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">latent_dim</span><span class="p">)</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="nc">Decoder</span><span class="p">(</span><span class="n">latent_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">encoder</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-        <span class="c1"># Reparameterization trick
-</span>        <span class="n">std</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">exp</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">logvar</span><span class="p">)</span>
-        <span class="n">epsilon</span> <span class="o">=</span> <span class="n">torch</span><span class="p">.</span><span class="nf">randn_like</span><span class="p">(</span><span class="n">std</span><span class="p">)</span>
-        <span class="n">z</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">std</span> <span class="o">*</span> <span class="n">epsilon</span>
-
-        <span class="n">x_recon</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">decoder</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">x_recon</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span>
+</pre></td><td class="rouge-code"><pre>(encoder_layer): EncoderBlock(
+  (ln): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+  (self_attention): MultiheadAttention(
+    (out_proj): NonDynamicallyQuantizableLinear(in_features=768, out_features=768, bias=True)
+  )
+  (ln): LayerNorm((768,), eps=1e-06, elementwise_affine=True)
+  (mlp): MLPBlock(
+    (0): Linear(in_features=768, out_features=3072, bias=True)
+    (1): GELU(approximate='none')
+    (2): Linear(in_features=3072, out_features=768, bias=True)
+  )
+)
 </pre></td></tr></tbody></table></code></div></div>
 
-<p>구현에는 표준편차 $\sigma$ 대신 $\log \sigma^2$인 <code class="language-plaintext highlighter-rouge">logvar</code>를 반환하도록 한다.</p>
+<p>ViT는 CNN처럼 이미지에 특화된 inductive bias가 없다. 따라서 position embedding을 이용해 위치 정보를 조정하며, patch의 2차원 위치 정보를 처음부터 학습해야 한다.</p>
 
-<blockquote>
-  <p>$\sigma$는 일반적으로 매우 작은 값으로 계산된다. 따라서 학습 과정에서 최적화가 잘 되지 않는 문제가 있다. 하지만 분산을 log 공간에 매핑시키면 값을 더 큰 범위로 변환할 수 있다. $\sigma$가 일반적으로 [0, 1] 범위를 가진다고 하면, $\log \sigma^2$는 [log(1), -inf] 범위를 가진다. 따라서 학습 과정에서 잘 최적화되는 모습을 보인다. - <a href="https://stackoverflow.com/questions/74920955/why-vae-encoder-outputs-log-variance-and-not-standard-deviation">출처</a>.</p>
-</blockquote>
+<p><a href="/assets/posts/vit/hybrid.png" class="popup img-link "><img data-src="/assets/posts/vit/hybrid.png" alt="Hybrid 모델" class="lazyload" data-proofer-ignore></a></p>
 
-<p>참고로 $\log \sigma^2$가 음수 범위를 가지기 때문에 <code class="language-plaintext highlighter-rouge">logvar</code>를 출력하는 layer는 activation으로 ReLU를 사용하면 안 된다.</p>
+<p>대안으로 <strong>CNN의 feature map을 입력으로 사용</strong>하는 방법이 있다 (<a href="https://github.com/pytorch/vision/blob/main/torchvision/models/vision_transformer.py#L213">L213</a>). 이러한 방법을 <code class="language-plaintext highlighter-rouge">hybrid</code>라고 표현한다. 만약에 1x1 필터를 사용하면 이미지를 feature map 차원으로 flatten하는 과정이 된다.</p>
 
-<div class="language-python highlighter-rouge"><div class="code-header">
-        <span data-label-text="Python"><i class="fas fa-code fa-fw small"></i></span>
-      <button aria-label="copy" data-title-succeed=""><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-</pre></td><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">loss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_recon</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">logvar</span><span class="p">):</span>
-    <span class="n">recon_loss</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="n">functional</span><span class="p">.</span><span class="nf">binary_cross_entropy</span><span class="p">(</span><span class="n">x_recon</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-    <span class="n">kl_div</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">torch</span><span class="p">.</span><span class="nf">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">logvar</span> <span class="o">-</span> <span class="n">mu</span><span class="p">.</span><span class="nf">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">logvar</span><span class="p">.</span><span class="nf">exp</span><span class="p">())</span>
-    <span class="k">return</span> <span class="n">recon_loss</span> <span class="o">+</span> <span class="n">kl_div</span>
-</pre></td></tr></tbody></table></code></div></div>
+<h3 id="fine-tuning-and-higher-resolution"><span class="me-2">Fine-tuning and Higher Resolution</span><a href="#fine-tuning-and-higher-resolution" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
-<p>이렇게 하면 Loss function도 <code class="language-plaintext highlighter-rouge">logvar</code>에 대해 재정의할 수 있다.</p>
+<p>우리는 ViT를 큰 데이터셋에 사전 학습시키고, 작은 downstream 문제에 fine-tune 했다. 이때 사전 학습된 prediction head를 지우고 0으로 초기화한 feedforward layer를 추가했다. 고해상도 이미지를 처리할 때도 patch 크기를 유지했으며, 시퀀스 길이는 길어진다. 하지만 transformer는 고정된 길이를 입력 받기 때문에 사전 학습된 position embedding에 2D interpolation을 적용해 사용한다.</p>
 
-<p>MNIST 데이터셋을 이용해 학습하면 입력 이미지와 유사한 출력 만들어 낸다.</p>
+<h2 id="experiments"><span class="me-2">Experiments</span><a href="#experiments" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p><a href="/assets/posts/vae/mnist-result.png" class="popup img-link "><img data-src="/assets/posts/vae/mnist-result.png" alt="MNIST 결과" class="lazyload" data-proofer-ignore></a></p>
+<h3 id="setup"><span class="me-2">Setup</span><a href="#setup" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
-<h3 id="시각화"><span class="me-2">시각화</span><a href="#시각화" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+<p>ViT는 BERT 기본 설정을 활용한다. 또한 크기에 따라 다음과 같은 표기법을 사용한다. 예: ViT-L/16 = “Large” variant with 16 x 16 patch. Patch 크기가 작을수록 많은 연산을 수행한다.</p>
 
-<p>2차원 latent space를 시각화했다. 코드: <a href="https://github.com/denev6/deep-learning-codes/blob/main/models/VAE/vae_visual.py">Github</a></p>
+<p>Baseline CNN으로 ResNet을 변형해 사용하며, 이 모델을 <code class="language-plaintext highlighter-rouge">BiT</code>라고 표기한다.</p>
 
-<p><a href="/assets/posts/vae/2d-latent.png" class="popup img-link "><img data-src="/assets/posts/vae/2d-latent.png" alt="2D latent visualization" class="lazyload" data-proofer-ignore></a></p>
+<p>학습에 사용한 설정은 다음과 같다.</p>
 
-<p>2차원 latent space, 즉 2개의 Gaussian 분포를 생성하도록 Encoder를 학습시켰다. $z$를 [-3, 3] 범위에 대해 Decoder에 입력했다. $p(z)$가 Standard Normal Distribution을 따른다고 가정했기 때문에 [-3, 3] 범위로 latent space 대부분을 시각화할 수 있다.</p>
+<ul>
+  <li>Adam($\beta_1=0.9$, $\beta_2=0.999$)</li>
+  <li>batch size: 4096</li>
+  <li>weight decay: 0.1</li>
+  <li>linear learning-rate warmup</li>
+</ul>
 
-<p>시각화한 이미지를 통해 샘플링된 $z$와 출력 $x$의 관계를 확인할 수 있다.</p>
+<p>Fine-tuning은 다음과 같다.</p>
+
+<ul>
+  <li>SGD + momentum</li>
+  <li>batch size: 512</li>
+</ul>
+
+<h3 id="comparison-to-state-of-the-art"><span class="me-2">Comparison to State Of The Art</span><a href="#comparison-to-state-of-the-art" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>작은 모델인 ViT-L/16이 BiT-L을 앞선다. 심지어 이전 SOTA보다 연산량도 적다.</p>
+
+<h3 id="pre-training-data-requirements"><span class="me-2">Pre-training Data Requirements</span><a href="#pre-training-data-requirements" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>데이터 크기가 얼마나 중요할까? 작은 데이터(ImageNet)를 학습한 ViT-Large는 ViT-Base보다 낮은 성적을 보인다. 큰 데이터(JFT-300M)를 학습했을 때 큰 모델이 좋은 성능을 보였다. 데이터가 작을 때 BiT CNN이 ViT보다 좋은 성적을 보이지만, 데이터가 커지면 그 반대가 된다.</p>
+
+<p>작은 데이터에 대해 ViT는 ResNet보다 쉽게 overfit 되는 경향이 있다. 이를 통해 <strong>convolutional inductive bias는 작은 데이터를 학습하는데 유리하지만, 충분히 큰 데이터는 직접적으로 패턴을 분석하는 것이 유리</strong>하다는 사실을 추론할 수 있다.</p>
+
+<h3 id="scaling-study"><span class="me-2">Scaling Study</span><a href="#scaling-study" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<ol>
+  <li>ViT는 성능과 비용 측면에서 ResNet을 압도한다. ViT는 연산 비용이 약 2 ~ 4배 정도 적다.</li>
+  <li>데이터가 작을 때 Hybrid가 약간 더 좋은 성능을 보인다. 하지만 데이터가 커지면 차이가 없어진다.</li>
+  <li>아직 ViT는 포화(saturate) 상태가 아니기 때문에 후속 연구가 이어질 수 있다. (모델을 키우면 성능도 커질 것으로 기대한다.)</li>
+</ol>
+
+<h3 id="inspecting-vision-transformer"><span class="me-2">Inspecting Vision Transformer</span><a href="#inspecting-vision-transformer" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p><a href="/assets/posts/vit/filters.png" class="popup img-link "><img data-src="/assets/posts/vit/filters.png" alt="filters" class="lazyload" data-proofer-ignore></a></p>
+
+<p>첫 레이어는 이미지를 저차원으로 매핑시킨다. 위 이미지는 학습된 필터 중 PCA를 통해 찾아낸 주요 28개 필터 모습이다. 이미지 patch에서 구조를 찾아내기 위한 모양으로 보인다.</p>
+
+<p><a href="/assets/posts/vit/position-embedding.png" class="popup img-link "><img data-src="/assets/posts/vit/position-embedding.png" alt="position embedding" class="lazyload" data-proofer-ignore></a></p>
+
+<p>이후 position embedding이 더해진다. <strong>가까운 patch는 유사한 position embedding</strong>을 보인다. 위 이미지는 patch와 position embedding 간의 유사도를 2차원으로 나타낸다.</p>
+
+<p>Attention 가중치를 바탕으로 어느 정도 깊이(거리)의 네트워크에서 전반적인 정보를 수집해 내는지 확인했다. 여기서 “attention distance”는 CNN의 receptive field 크기와 같다. 몇몇 head는 초기에 대부분의 정보를 잡아내기도 했다. 다른 head는 지속적으로 작은 attention distance를 보였다. 이렇게 강한 localized attention은 hybrid model에서 적게 나타났다. 이는 CNN이 지역적인 정보를 찾기 때문에 attention head에서 지역적인 패턴을 찾을 필요가 없기 때문으로 보인다. 다시 말해, <strong>CNN은 지역적인 정보를, Attention은 넓은 범위의 정보를 찾는데 유리</strong>하다고 볼 수 있다. 이러한 정보를 바탕으로 분류에 필요한 이미지 부분을 찾아낸다.</p>
+
+<p><a href="/assets/posts/vit/attention.png" class="popup img-link "><img data-src="/assets/posts/vit/attention.png" alt="attention image" class="lazyload" data-proofer-ignore></a></p>
+
+<p>Attention 가중치를 이미지에 투영한 예시다. 강아지의 윤곽(귀, 앞발 등)에 강한 가중치를 주어 중요도가 높은 정보로 판단한다. 반면 뒤에 사람은 낮은 가중치를 준다. 따라서 분류 문제를 풀 때, 강아지가 있는 부분은 강하게, 사람이 있는 부분은 약하게 반영된다.</p>
+
+<h3 id="self-supervision"><span class="me-2">Self-supervision</span><a href="#self-supervision" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p>BERT를 참고해 self-supervision을 위한 masked patch prediction을 수행했다. ViT-B/16을 기준으로, ImageNet을 이용해 바닥부터 학습하는 경우보다 2% 성능 향상이 있었지만, supervised pre-training보다는 4% 뒤쳐졌다.</p>
+
+<h2 id="conclusion"><span class="me-2">Conclusion</span><a href="#conclusion" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Transformer를 이미지 인식에 바로 적용해봤다. Vision Transformer는 이미지 분류에서 SOTA를 뛰어 넘었으며, 상대적으로 비용이 적게 든다.</p>
+
+<p>하지만 여전히 문제가 남아있다.</p>
+
+<ul>
+  <li>ViT를 detection, segmentation 등 다른 문제에 적용</li>
+  <li>self-supervised pre-training 방법 탐구</li>
+  <li>성능 향상을 위한 ViT 모델 크기 키우기</li>
+</ul>
 
 </div>
 
@@ -1296,7 +1216,7 @@ Jin's Notes
     <div class="post-meta mb-3">
       <i class="far fa-folder-open fa-fw me-1"></i>
       
-        <a href="/categories/computer-vision/">Computer-Vision</a>
+        <a href="/categories/paper-review/">Paper-Review</a>
     </div>
   
 
@@ -1305,11 +1225,9 @@ Jin's Notes
   <div class="post-tags">
     <i class="fa fa-tags fa-fw me-1"></i>
     
-    <a href="/tags/python/" class="post-tag no-text-decoration">Python</a>
+    <a href="/tags/ai/" class="post-tag no-text-decoration">AI</a>
     
     <a href="/tags/cv/" class="post-tag no-text-decoration">CV</a>
-    
-    <a href="/tags/ai/" class="post-tag no-text-decoration">AI</a>
     
   </div>
   
@@ -1340,7 +1258,7 @@ Jin's Notes
     
       
       <a
-        href="https://twitter.com/intent/tweet?text=Auto-Encoding%20Variational%20Bayes%20-%20Jin's%20Notes&url=https%3A%2F%2Fdenev6.github.io%2Fcomputer-vision%2F2025%2F01%2F29%2Fvae.html"
+        href="https://twitter.com/intent/tweet?text=An%20Image%20is%20Worth%2016x16%20Words,%20Transformers%20For%20Image%20Recognition%20At%20Scale%20-%20Jin's%20Notes&url=https%3A%2F%2Fdenev6.github.io%2Fpaper-review%2F2025%2F02%2F06%2Fvit.html"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Twitter"
@@ -1353,7 +1271,7 @@ Jin's Notes
     
       
       <a
-        href="https://www.facebook.com/sharer/sharer.php?title=Auto-Encoding%20Variational%20Bayes%20-%20Jin's%20Notes&u=https%3A%2F%2Fdenev6.github.io%2Fcomputer-vision%2F2025%2F01%2F29%2Fvae.html"
+        href="https://www.facebook.com/sharer/sharer.php?title=An%20Image%20is%20Worth%2016x16%20Words,%20Transformers%20For%20Image%20Recognition%20At%20Scale%20-%20Jin's%20Notes&u=https%3A%2F%2Fdenev6.github.io%2Fpaper-review%2F2025%2F02%2F06%2Fvit.html"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Facebook"
@@ -1366,7 +1284,7 @@ Jin's Notes
     
       
       <a
-        href="https://t.me/share/url?url=https%3A%2F%2Fdenev6.github.io%2Fcomputer-vision%2F2025%2F01%2F29%2Fvae.html&text=Auto-Encoding%20Variational%20Bayes%20-%20Jin's%20Notes"
+        href="https://t.me/share/url?url=https%3A%2F%2Fdenev6.github.io%2Fpaper-review%2F2025%2F02%2F06%2Fvit.html&text=An%20Image%20is%20Worth%2016x16%20Words,%20Transformers%20For%20Image%20Recognition%20At%20Scale%20-%20Jin's%20Notes"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Telegram"
@@ -1379,7 +1297,7 @@ Jin's Notes
     
       
       <a
-        href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdenev6.github.io%2Fcomputer-vision%2F2025%2F01%2F29%2Fvae.html"
+        href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdenev6.github.io%2Fpaper-review%2F2025%2F02%2F06%2Fvit.html"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Linkedin"
@@ -2055,54 +1973,6 @@ Jin's Notes
 
   
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
 
 
 
@@ -2118,7 +1988,7 @@ Jin's Notes
     <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
       
         <article class="col">
-          <a href="/paper-review/2025/01/31/alexnet.html" class="post-preview card h-100">
+          <a href="/computer-vision/2025/01/08/svd.html" class="post-preview card h-100">
             <div class="card-body">
               <!--
   Date format snippet
@@ -2132,14 +2002,14 @@ Jin's Notes
   
     class="small"
   
-  data-ts="1738249200"
+  data-ts="1736262000"
   data-df="YYYY/MM/DD"
   
 >
-  2025/01/31
+  2025/01/08
 </time>
 
-              <h4 class="pt-0 my-2">ImageNet Classification with Deep Convolutional Neural Networks</h4>
+              <h4 class="pt-0 my-2">SVD를 이용한 이미지 압축</h4>
               <div class="text-muted small">
                 <p>
                   
@@ -2148,11 +2018,56 @@ Jin's Notes
 
 
 
-                  ImageNet Classification with Deep Convolutional Neural Networks: 논문은 AlexNet을 소개한 논문으로 CNN 모델의 각 레이어가 어떤 역할을 하는지 잘 분석했다.
+                  SVD: Singular Vector Decomposition에 대해 다룬다. 각 수식이 어떤 의미를 가지고, 이미지 압축에 어떻게 사용되는지 설명한다. 본 글을 이해하기 위해 아래 개념을 숙지하고 있어야 한다.
 
-논문을 정리한 글이며, CNN의 기본적인 개념을 생략하고 정리했다. 자세한 부분은 BLOG: CNN에 볼 수 있다.
+Vector: 크기와 방향을 가지는 양으로, 2차원 공간의 벡터는 $\vec{v}=\begin{bmatrix}u_1 &amp;amp; u_2\en...
+                </p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+        <article class="col">
+          <a href="/computer-vision/2025/01/29/vae.html" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
 
-본 글에서 분석을...
+
+
+
+<time
+  
+    class="small"
+  
+  data-ts="1738076400"
+  data-df="YYYY/MM/DD"
+  
+>
+  2025/01/29
+</time>
+
+              <h4 class="pt-0 my-2">Auto-Encoding Variational Bayes</h4>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  Auto Encoder
+
+Variational Auto-Encoding을 이해하기 위해 기본적인 Auto-Encoding을 알아야 한다.
+
+
+
+Auto Encoder(AE)는 데이터를 압축하고 복원하는 단순한 모델이다. Linear layer을 통해 데이터 크기를 줄이고 복원한다. Auto Encoder 구성은 다음과 같다.
+
+
+  Encoder: 데...
                 </p>
               </div>
             </div>
@@ -2209,52 +2124,6 @@ $ python main.py
           </a>
         </article>
       
-        <article class="col">
-          <a href="/paper-review/2023/02/06/multimodal-depression.html" class="post-preview card h-100">
-            <div class="card-body">
-              <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-    class="small"
-  
-  data-ts="1675609200"
-  data-df="YYYY/MM/DD"
-  
->
-  2023/02/06
-</time>
-
-              <h4 class="pt-0 my-2">영상을 통한 우울증 예측 모델 분석</h4>
-              <div class="text-muted small">
-                <p>
-                  
-
-
-
-
-
-                  동기
-
-성균관대 우수학부생 프로그램을 통해 우울증 챗봇 개발에 참여하는 기회를 얻었다. 이전에 실시간 얼굴 인식 프로젝트를 진행한 경험이 있어 얼굴 이미지를 통해 우울증을 탐지하는 멀티모달 구현에 도전했다.
-
-
-
-논문 요약 (번역/ 정리)
-
-이미지를 중심으로한 우울증 연구 중 논문: Automatic Depression Detection via Lea...
-                </p>
-              </div>
-            </div>
-          </a>
-        </article>
-      
     </nav>
   </aside>
   <!-- #related-posts -->
@@ -2270,22 +2139,18 @@ $ python main.py
 
   
     <a
-      href="/paper-review/2025/01/27/hog.html"
+      href="/paper-review/2025/02/04/resnet.html"
       class="btn btn-outline-primary"
       aria-label="이전 글"
     >
-      <p>Histograms of Oriented Gradients for Human Detection</p>
+      <p>Deep Residual Learning for Image Recognition</p>
     </a>
   
 
   
-    <a
-      href="/paper-review/2025/01/31/alexnet.html"
-      class="btn btn-outline-primary"
-      aria-label="다음 글"
-    >
-      <p>ImageNet Classification with Deep Convolutional Neural Networks</p>
-    </a>
+    <div class="btn btn-outline-primary disabled" aria-label="다음 글">
+      <p>-</p>
+    </div>
   
 </nav>
 
@@ -2843,27 +2708,6 @@ $ python main.py
 
 <script defer src="/assets/js/dist/post.min.js"></script>
 
-
-  <!-- MathJax -->
-  <script>
-    /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */
-    MathJax = {
-      tex: {
-        /* start/end delimiter pairs for in-line math */
-        inlineMath: [
-          ['$', '$'],
-          ['\\(', '\\)']
-        ],
-        /* start/end delimiter pairs for display math */
-        displayMath: [
-          ['$$', '$$'],
-          ['\\[', '\\]']
-        ]
-      }
-    };
-  </script>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
 
 
 
