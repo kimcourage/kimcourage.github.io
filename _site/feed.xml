@@ -4,7 +4,7 @@
   <id>https://denev6.github.io/</id>
   <title>Jin's Notes</title>
   <subtitle>AI, 수학, Python, Golang을 다루는 학생입니다.</subtitle>
-  <updated>2025-02-06T10:13:24+09:00</updated>
+  <updated>2025-02-14T08:21:52+09:00</updated>
   <author>
     <name>박성진</name>
     <uri>https://denev6.github.io/</uri>
@@ -17,6 +17,50 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>Image Segmentation with FCN</title>
+    <link href="https://denev6.github.io/computer-vision/2025/02/08/fcn.html" rel="alternate" type="text/html" title="Image Segmentation with FCN" />
+    <published>2025-02-08T00:00:00+09:00</published>
+  
+    <updated>2025-02-08T00:00:00+09:00</updated>
+  
+    <id>https://denev6.github.io/computer-vision/2025/02/08/fcn.html</id>
+    <content src="https://denev6.github.io/computer-vision/2025/02/08/fcn.html" />
+    <author>
+      <name>박성진</name>
+    </author>
+
+  
+    
+    <category term="Computer-Vision" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      이미지 segmentation에 대해 다루며, CNN을 활용한 FCN(Fullly Convolutional Network)을 중심으로 소개한다. FCN은 논문 “Fully Convolutional Networks for Semantic Segmentation“에서 소개되었다.
+
+Image Segmentation
+
+
+
+이미지 segmentation은 픽셀 단위로 객체 클래스를 분류하는 문제를 말한다. 이는 각 픽셀마다 이미지 분류 문제를 푸는 것과 같다. c개의 레이블이 있다면 배경(0)을 하나의 레이블로 두고 총 c+1개의 레이블로 분류하는 문제가 된다.
+
+
+
+기존의 CNN classification 모델은 2차원 feature map을 1차원으로 압축해 결과를 출력한다. 만약 2차원 정보를 유지한 채...
+    </summary>
+  
+
+  </entry>
 
   
   <entry>
@@ -72,7 +116,7 @@ Self-attention 구조의 transformer가 자연어 처리에서 좋은 성능을 
     <link href="https://denev6.github.io/paper-review/2025/02/04/resnet.html" rel="alternate" type="text/html" title="Deep Residual Learning for Image Recognition" />
     <published>2025-02-04T00:00:00+09:00</published>
   
-    <updated>2025-02-04T00:00:00+09:00</updated>
+    <updated>2025-02-07T08:47:57+09:00</updated>
   
     <id>https://denev6.github.io/paper-review/2025/02/04/resnet.html</id>
     <content src="https://denev6.github.io/paper-review/2025/02/04/resnet.html" />
@@ -213,46 +257,6 @@ Auto Encoder(AE)는 데이터를 압축하고 복원하는 단순한 모델이�
 
 class Autoencoder(nn.Module):
     def ...
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>Histograms of Oriented Gradients for Human Detection</title>
-    <link href="https://denev6.github.io/paper-review/2025/01/27/hog.html" rel="alternate" type="text/html" title="Histograms of Oriented Gradients for Human Detection" />
-    <published>2025-01-27T00:00:00+09:00</published>
-  
-    <updated>2025-01-27T00:00:00+09:00</updated>
-  
-    <id>https://denev6.github.io/paper-review/2025/01/27/hog.html</id>
-    <content src="https://denev6.github.io/paper-review/2025/01/27/hog.html" />
-    <author>
-      <name>박성진</name>
-    </author>
-
-  
-    
-    <category term="Paper-Review" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      Histograms of Oriented Gradients for Human Detection(vision.stanford) 논문을 바탕으로 HOG descriptor 작동 원리에 대해 분석한다. 논문을 완전히 번역하는 것이 아닌 내용을 분석하고 정리한 글이다. 따라서 실제 논문 목차와 다르며, 필자의 설명이 추가되었다.
-
-본 글에서 gradient는 이미지의 x 또는 y 방향에 대한 미분값을 말하며, 자세한 내용은 블로그: edge-detection에서 정의했다. SVM도 블로그: svm에서 다뤘었다.
-
-초록
-
-본 연구는 Linear SVM을 이용한 사람 검출 모델을 개발했다. 이미지 gradient를 이용해 경계(edge)를 탐지하는 Histograms of Oriented Gradient(HOG)...
     </summary>
   
 
