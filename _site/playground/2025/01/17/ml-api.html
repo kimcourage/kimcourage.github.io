@@ -831,9 +831,9 @@ Jin's Notes
   class="readtime"
   data-bs-toggle="tooltip"
   data-bs-placement="bottom"
-  title="1950 단어"
+  title="1681 단어"
 >
-  <em>10 
+  <em>9 
 분</em>
 읽는 시간
 </span>
@@ -849,7 +849,7 @@ Jin's Notes
 <div class="content">
   <p>항상 공부를 하면서 궁금한 점이 있었다. 내가 만드는 기술이 사용자에게 닿기까지 어떤 과정이 있을까? 머신러닝 모델을 공부하면서도 같은 의문이 들었다. 그래서 <strong>이미지 파일을 받아 딥러닝 모델로 예측하는 API</strong>를 만들어 보았다.</p>
 
-<p>Github: <a href="https://github.com/denev6/deep-learning-codes/tree/main/ML-Ops">deep-learning-codes/ML-Ops</a></p>
+<p>Github: <a href="https://github.com/denev6/serve-models">serve-models</a></p>
 
 <h2 id="model-학습"><span class="me-2">Model 학습</span><a href="#model-학습" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
@@ -892,7 +892,7 @@ Jin's Notes
 <span class="p">])</span>
 </pre></td></tr></tbody></table></code></div></div>
 
-<p>학습: <a href="https://github.com/denev6/deep-learning-codes/tree/main/ML-Ops/final.ipynb">final.ipynb</a></p>
+<p>학습: <a href="https://github.com/denev6/serve-models/blob/main/src/lib/server/MobileNet/final.ipynb">final.ipynb</a></p>
 
 <ul>
   <li>Training set: 54000 (90%)</li>
@@ -963,9 +963,7 @@ Accuracy: 94.36
 
 <h3 id="api-구현"><span class="me-2">API 구현</span><a href="#api-구현" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
-<p>목표는 <strong>사용자로부터 이미지를 입력받아 모델 추론 결과를 돌려주는 API</strong>이다. 크게 HTML form을 통해 POST 요청을 입력받는 방법과 직접 POST 요청을 보내는 방법이 있다.</p>
-
-<p>구현: <a href="https://github.com/denev6/deep-learning-codes/blob/main/ML-Ops/app/main.py">app/main.py</a></p>
+<p>목표는 <strong>사용자로부터 이미지를 입력받아 모델 추론 결과를 돌려주는 API</strong>이다.</p>
 
 <div class="language-python highlighter-rouge"><div class="code-header">
         <span data-label-text="Python"><i class="fas fa-code fa-fw small"></i></span>
@@ -977,58 +975,21 @@ Accuracy: 94.36
 6
 7
 8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-</pre></td><td class="rouge-code"><pre><span class="nd">@app.get</span><span class="p">(</span><span class="sh">"</span><span class="s">/</span><span class="sh">"</span><span class="p">,</span> <span class="n">response_class</span><span class="o">=</span><span class="n">HTMLResponse</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">templates</span><span class="p">.</span><span class="nc">TemplateResponse</span><span class="p">(</span><span class="sh">"</span><span class="s">index.html</span><span class="sh">"</span><span class="p">,</span> <span class="p">{</span><span class="sh">"</span><span class="s">request</span><span class="sh">"</span><span class="p">:</span> <span class="n">request</span><span class="p">})</span>
+</pre></td><td class="rouge-code"><pre><span class="nd">@app.post</span><span class="p">(</span><span class="sh">"</span><span class="s">/fashion-mnist</span><span class="sh">"</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">predict_fashion</span><span class="p">(</span><span class="nb">file</span><span class="p">:</span> <span class="n">UploadFile</span> <span class="o">=</span> <span class="nc">File</span><span class="p">()):</span>
+    <span class="nb">file</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">is_valid_size</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
+    <span class="nb">file</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">is_valid_image</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
 
-<span class="nd">@app.post</span><span class="p">(</span><span class="sh">"</span><span class="s">/result/</span><span class="sh">"</span><span class="p">,</span> <span class="n">response_class</span><span class="o">=</span><span class="n">HTMLResponse</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">show_prediction</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="nb">file</span><span class="p">:</span> <span class="n">UploadFile</span> <span class="o">=</span> <span class="nc">File</span><span class="p">()):</span>
-    <span class="c1"># 생략...
-</span>    <span class="k">return</span> <span class="n">templates</span><span class="p">.</span><span class="nc">TemplateResponse</span><span class="p">(</span>
-        <span class="sh">"</span><span class="s">result.html</span><span class="sh">"</span><span class="p">,</span>
-        <span class="p">{</span>
-            <span class="sh">"</span><span class="s">request</span><span class="sh">"</span><span class="p">:</span> <span class="n">request</span><span class="p">,</span>
-            <span class="sh">"</span><span class="s">img_src</span><span class="sh">"</span><span class="p">:</span> <span class="n">img_url</span><span class="p">,</span>
-            <span class="sh">"</span><span class="s">label</span><span class="sh">"</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span>
-            <span class="sh">"</span><span class="s">prob</span><span class="sh">"</span><span class="p">:</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">prob</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">%</span><span class="sh">"</span><span class="p">,</span>
-        <span class="p">},</span>
-    <span class="p">)</span>
-
-<span class="nd">@app.post</span><span class="p">(</span><span class="sh">"</span><span class="s">/predict/</span><span class="sh">"</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">get_prediction</span><span class="p">(</span><span class="nb">file</span><span class="p">:</span> <span class="n">UploadFile</span> <span class="o">=</span> <span class="nc">File</span><span class="p">()):</span>
-    <span class="c1"># 생략...
-</span>    <span class="k">return</span> <span class="p">{</span><span class="sh">"</span><span class="s">label</span><span class="sh">"</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span> <span class="sh">"</span><span class="s">prob</span><span class="sh">"</span><span class="p">:</span> <span class="n">prob</span><span class="p">}</span>
+    <span class="n">img_tensor</span> <span class="o">=</span> <span class="nf">convert_image</span><span class="p">(</span><span class="nb">file</span><span class="p">.</span><span class="nb">file</span><span class="p">)</span>
+    <span class="n">label</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="nf">predict</span><span class="p">(</span><span class="n">img_tensor</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="sh">"</span><span class="s">label</span><span class="sh">"</span><span class="p">:</span> <span class="n">label</span><span class="p">,</span> <span class="sh">"</span><span class="s">probs</span><span class="sh">"</span><span class="p">:</span> <span class="n">probs</span><span class="p">}</span>
 </pre></td></tr></tbody></table></code></div></div>
-
-<ol>
-  <li><code class="language-plaintext highlighter-rouge">/index</code>에서 이미지를 입력받아 <code class="language-plaintext highlighter-rouge">/result</code>에서 결과를 보여준다.</li>
-  <li><code class="language-plaintext highlighter-rouge">/predict</code>로 POST 요청을 보내 예측 레이블과 확률을 JSON 형식으로 받는다.</li>
-</ol>
-
-<h3 id="html-form으로-테스트"><span class="me-2">HTML form으로 테스트</span><a href="#html-form으로-테스트" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
-
-<p>템플릿 코드: <a href="https://github.com/denev6/deep-learning-codes/tree/main/ML-Ops/app/templates">templates</a></p>
-
-<p><a href="/assets/posts/ml-api/prediction-template.png" class="popup img-link "><img data-src="/assets/posts/ml-api/prediction-template.png" alt="템플릿 실행 결과" class="lazyload" data-proofer-ignore></a></p>
-
-<p>POST 요청을 받으면 이미지가 맞는지 확인한다. 검증된 이미지는 전처리를 거쳐 <code class="language-plaintext highlighter-rouge">/static/img</code>에 저장한다. 동시에 모델을 거쳐 예측 결과를 받아낸다. 위 사진을 보면 예상한대로 잘 작동하는 것처럼 보인다. 이렇게 템플릿을 활용하면 코드를 잘 모르는 사람도 이미지를 넣어보고 테스트할 수 있는 환경이 만들어진다.</p>
 
 <h3 id="request로-테스트"><span class="me-2">Request로 테스트</span><a href="#request로-테스트" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
 
-<p>이번에는 Python을 통해 요청을 날려봤다.</p>
+<p>Python을 통해 요청을 날려봤다.</p>
+
+<p>코드: <a href="https://github.com/denev6/serve-models/blob/main/src/lib/server/test.py">server/test.py</a></p>
 
 <div class="language-python highlighter-rouge"><div class="code-header">
         <span data-label-text="Python"><i class="fas fa-code fa-fw small"></i></span>
@@ -1052,7 +1013,7 @@ Accuracy: 94.36
 </pre></td><td class="rouge-code"><pre><span class="kn">import</span> <span class="n">requests</span>
 
 <span class="n">port</span> <span class="o">=</span> <span class="sh">"</span><span class="s">8000</span><span class="sh">"</span>
-<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"</span><span class="s">http://127.0.0.1:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s">/predict/</span><span class="sh">"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"</span><span class="s">http://127.0.0.1:</span><span class="si">{</span><span class="n">port</span><span class="si">}</span><span class="s">/fashion-mnist</span><span class="sh">"</span>
 <span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="sh">"</span><span class="s">./static/sample/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s">.png</span><span class="sh">"</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">(</span><span class="sh">"</span><span class="s">Sneaker</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">Trouser</span><span class="sh">"</span><span class="p">)]</span>
 
 <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">images</span><span class="p">:</span>
@@ -1080,15 +1041,21 @@ Status: 200
 Response: {'label': 'Trouser', 'prob': 0.9963659048080444}
 </pre></td></tr></tbody></table></code></div></div>
 
-<p>원하는 결과를 잘 받아왔다. 코드로 주고 받는 방식은 결과를 받아와 추가적인 작업을 진행할 수 있다. 결과를 바탕으로 데이터 분석 등을 수행한다면 템플릿보다 유용한 방법이다. 사용자에게 이미지를 예쁘게 보여줄 필요도 없기 때문에 서버에 이미지를 저장하는 작업을 하지 않아도 된다. (데이터 수집이 필요하다면 추가하면 된다.)</p>
+<p>원하는 결과를 잘 받아왔다. 코드로 주고 받는 방식은 결과를 받아와 추가적인 작업을 진행할 수 있다. 결과를 바탕으로 데이터 분석 등을 수행한다면 템플릿보다 유용한 방법이다.</p>
 
-<p>2종류의 API 모두 계획대로 작동한다.</p>
+<h3 id="frontend에서-요청"><span class="me-2">FrontEnd에서 요청</span><a href="#frontend에서-요청" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3>
+
+<p><a href="/assets/posts/ml-api/prediction-template.png" class="popup img-link "><img data-src="/assets/posts/ml-api/prediction-template.png" alt="템플릿 실행 결과" class="lazyload" data-proofer-ignore></a></p>
+
+<p>수정: 25-03-01</p>
+
+<p>위 사진을 보면 예상한대로 잘 작동하는 것처럼 보인다. 이렇게 템플릿을 활용하면 코드를 잘 모르는 사람도 이미지를 넣어보고 테스트할 수 있는 환경이 만들어진다.</p>
 
 <h2 id="docker"><span class="me-2">Docker</span><a href="#docker" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
 <p>마지막으로 완성한 API를 실행할 Docker 환경을 구축했다.</p>
 
-<p>Dockerfile 원본: <a href="https://github.com/denev6/deep-learning-codes/blob/main/ML-Ops/app/Dockerfile">Dockerfile</a></p>
+<p>Dockerfile 원본: <a href="https://github.com/denev6/serve-models/blob/main/src/lib/server/Dockerfile">Dockerfile</a></p>
 
 <div class="language-dockerfile highlighter-rouge"><div class="code-header">
         <span data-label-text="Dockerfile"><i class="fas fa-code fa-fw small"></i></span>
@@ -1132,7 +1099,7 @@ docker run <span class="nt">-p</span> 8080:8000 <span class="nt">--name</span> <
 
 <p>모델 학습부터 사용자에게 전달하는 과정을 살펴보았다.</p>
 
-<p>*여담으로 <a href="https://github.com/denev6/deep-learning-codes/tree/main/ML-Ops/_model">Github</a>에 가면 버려진 파일이 있다. 원래는 모델 학습에서 보여줬던 실험을 로컬에서 MLFlow를 사용해 돌릴 계획이었다. 그런데 base 모델을 학습해보니 생각보다 시간이 오려 걸렸고, 결국 Colab의 도움을 받았다.</p>
+<p>*여담으로 <a href="https://github.com/denev6/serve-models/tree/main/src/lib/server/MobileNet/_model">Github</a>에 가면 버려진 파일이 있다. 원래는 모델 학습에서 보여줬던 실험을 로컬에서 MLFlow를 사용해 돌릴 계획이었다. 그런데 base 모델을 학습해보니 생각보다 시간이 오려 걸렸고, 결국 Colab의 도움을 받았다.</p>
 
 </div>
 
