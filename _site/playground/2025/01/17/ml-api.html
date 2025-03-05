@@ -55,7 +55,7 @@
 <meta property="twitter:title" content="FastAPI 기반 딥러닝 모델 API 구축하기" />
 <meta name="twitter:site" content="@" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-01-28T23:37:47+09:00","datePublished":"2025-01-17T00:00:00+09:00","description":"항상 공부를 하면서 궁금한 점이 있었다. 내가 만드는 기술이 사용자에게 닿기까지 어떤 과정이 있을까? 머신러닝 모델을 공부하면서도 같은 의문이 들었다. 그래서 이미지 파일을 받아 딥러닝 모델로 예측하는 API를 만들어 보았다.","headline":"FastAPI 기반 딥러닝 모델 API 구축하기","mainEntityOfPage":{"@type":"WebPage","@id":"https://denev6.github.io/playground/2025/01/17/ml-api.html"},"url":"https://denev6.github.io/playground/2025/01/17/ml-api.html"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-03-02T00:33:47+09:00","datePublished":"2025-01-17T00:00:00+09:00","description":"항상 공부를 하면서 궁금한 점이 있었다. 내가 만드는 기술이 사용자에게 닿기까지 어떤 과정이 있을까? 머신러닝 모델을 공부하면서도 같은 의문이 들었다. 그래서 이미지 파일을 받아 딥러닝 모델로 예측하는 API를 만들어 보았다.","headline":"FastAPI 기반 딥러닝 모델 API 구축하기","mainEntityOfPage":{"@type":"WebPage","@id":"https://denev6.github.io/playground/2025/01/17/ml-api.html"},"url":"https://denev6.github.io/playground/2025/01/17/ml-api.html"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -1257,6 +1257,13 @@ docker run <span class="nt">-p</span> 8080:8000 <span class="nt">--name</span> <
         
         
         <li class="text-truncate lh-lg">
+          <a href="/playground/2025/01/17/ml-api.html">FastAPI 기반 딥러닝 모델 API 구축하기</a>
+        </li>
+      
+        
+        
+        
+        <li class="text-truncate lh-lg">
           <a href="/paper-review/2025/02/04/resnet.html">Deep Residual Learning for Image Recognition</a>
         </li>
       
@@ -1279,13 +1286,6 @@ docker run <span class="nt">-p</span> 8080:8000 <span class="nt">--name</span> <
         
         <li class="text-truncate lh-lg">
           <a href="/computer-vision/2025/01/29/vae.html">Auto-Encoding Variational Bayes</a>
-        </li>
-      
-        
-        
-        
-        <li class="text-truncate lh-lg">
-          <a href="/computer-vision/2025/01/06/edge-detection.html">Edge detection</a>
         </li>
       
     </ul>
@@ -1401,42 +1401,40 @@ docker run <span class="nt">-p</span> 8080:8000 <span class="nt">--name</span> <
     
     
     
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
       
         
         
 
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
   
     
     
@@ -1592,10 +1590,10 @@ docker run <span class="nt">-p</span> 8080:8000 <span class="nt">--name</span> <
         <a class="post-tag btn btn-outline-primary" href="/tags/cv/">CV</a>
       
         
-        <a class="post-tag btn btn-outline-primary" href="/tags/c/">C++</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/pytorch/">Pytorch</a>
       
         
-        <a class="post-tag btn btn-outline-primary" href="/tags/pytorch/">Pytorch</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/c/">C++</a>
       
         
         <a class="post-tag btn btn-outline-primary" href="/tags/go/">Go</a>
@@ -1856,6 +1854,18 @@ docker run <span class="nt">-p</span> 8080:8000 <span class="nt">--name</span> <
 
   
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 
 
 
@@ -1869,46 +1879,6 @@ docker run <span class="nt">-p</span> 8080:8000 <span class="nt">--name</span> <
   <aside id="related-posts" aria-labelledby="related-label">
     <h3 class="mb-4" id="related-label">관련된 글</h3>
     <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
-      
-        <article class="col">
-          <a href="/paper-review/2025/01/27/hog.html" class="post-preview card h-100">
-            <div class="card-body">
-              <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-    class="small"
-  
-  data-ts="1737903600"
-  data-df="YYYY/MM/DD"
-  
->
-  2025/01/27
-</time>
-
-              <h4 class="pt-0 my-2">Histograms of Oriented Gradients for Human Detection</h4>
-              <div class="text-muted small">
-                <p>
-                  
-
-
-
-
-
-                  Histograms of Oriented Gradients for Human Detection(vision.stanford) 논문을 바탕으로 HOG descriptor 작동 원리에 대해 분석한다. 논문을 완전히 번역하는 것이 아닌 내용을 분석하고 정리한 글이다. 따라서 실제 논문 목차와 다르며, 필자의 설명이 추가되었다.
-
-본 글에서 gradient는...
-                </p>
-              </div>
-            </div>
-          </a>
-        </article>
       
         <article class="col">
           <a href="/computer-vision/2025/01/29/vae.html" class="post-preview card h-100">
@@ -1993,6 +1963,50 @@ Auto Encoder(AE)는 데이터를 압축하고 복원하는 단순한 모델이�
 논문을 정리한 글이며, CNN의 기본적인 개념을 생략하고 정리했다. 자세한 부분은 BLOG: CNN에 볼 수 있다.
 
 본 글에서 분석을...
+                </p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+        <article class="col">
+          <a href="/computer-vision/2025/02/08/fcn.html" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+    class="small"
+  
+  data-ts="1738940400"
+  data-df="YYYY/MM/DD"
+  
+>
+  2025/02/08
+</time>
+
+              <h4 class="pt-0 my-2">Image Segmentation with FCN</h4>
+              <div class="text-muted small">
+                <p>
+                  
+
+
+
+
+
+                  이미지 segmentation에 대해 다루며, CNN을 활용한 FCN(Fullly Convolutional Network)을 중심으로 소개한다. FCN은 논문 “Fully Convolutional Networks for Semantic Segmentation“에서 소개되었다.
+
+Image Segmentation
+
+
+
+이미지 segmentation은 픽...
                 </p>
               </div>
             </div>
@@ -2237,42 +2251,40 @@ Auto Encoder(AE)는 데이터를 압축하고 복원하는 단순한 모델이�
     
     
     
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
+  
+    
+    
+    
+    
       
         
         
 
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-      
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
-  
-    
-    
-    
-    
   
     
     
@@ -2428,10 +2440,10 @@ Auto Encoder(AE)는 데이터를 압축하고 복원하는 단순한 모델이�
         <a class="post-tag btn btn-outline-primary" href="/tags/cv/">CV</a>
       
         
-        <a class="post-tag btn btn-outline-primary" href="/tags/c/">C++</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/pytorch/">Pytorch</a>
       
         
-        <a class="post-tag btn btn-outline-primary" href="/tags/pytorch/">Pytorch</a>
+        <a class="post-tag btn btn-outline-primary" href="/tags/c/">C++</a>
       
         
         <a class="post-tag btn btn-outline-primary" href="/tags/go/">Go</a>
