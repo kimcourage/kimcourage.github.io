@@ -10,10 +10,12 @@
   -webkit-animation-delay: 0.15s;
   animation-delay: 0.15s;
   z-index: 20;
+  font-size: $type-size-4;
 
   &__inner-wrap {
     @include clearfix;
-    margin-inline: auto;
+    margin-left: auto;
+    margin-right: auto;
     padding: 1em;
     max-width: 100%;
     display: -webkit-box;
@@ -22,7 +24,8 @@
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    font-family: $sans-serif-narrow;
+    font-family: $serif;
+    font-weight: bold;
 
     @include breakpoint($x-large) {
       max-width: $max-width;
@@ -47,6 +50,7 @@
   display: -ms-flexbox;
   display: flex;
   -ms-flex-item-align: center;
+  font-family: $helvetica;
   align-self: center;
   font-weight: bold;
   // z-index: 20;
@@ -58,16 +62,17 @@
 }
 
 .masthead__menu {
-  float: inline-start;
-  margin-inline: 0;
+  float: left;
+  margin-left: 0;
+  margin-right: 0;
   width: 100%;
   clear: both;
 
   .site-nav {
-    margin-inline-start: 0;
+    margin-left: 0;
 
     @include breakpoint($small) {
-      float: inline-end;
+      float: right;
     }
   }
 
@@ -85,7 +90,7 @@
   white-space: nowrap;
 
   &--lg {
-    padding-inline-end: 2em;
+    padding-right: 2em;
     font-weight: 700;
   }
 }
