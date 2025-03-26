@@ -4,7 +4,7 @@
   <id>https://denev6.github.io/</id>
   <title>Jin's Notes</title>
   <subtitle>AI, 수학, Python, Golang을 다루는 학생입니다.</subtitle>
-  <updated>2025-03-06T01:35:04+09:00</updated>
+  <updated>2025-03-26T09:50:35+09:00</updated>
   <author>
     <name>박성진</name>
     <uri>https://denev6.github.io/</uri>
@@ -17,6 +17,54 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>RAG로 학교 공지 검색</title>
+    <link href="https://denev6.github.io/projects/2025/03/24/retrieve-notice.html" rel="alternate" type="text/html" title="RAG로 학교 공지 검색" />
+    <published>2025-03-24T00:00:00+09:00</published>
+  
+    <updated>2025-03-24T00:00:00+09:00</updated>
+  
+    <id>https://denev6.github.io/projects/2025/03/24/retrieve-notice.html</id>
+    <content src="https://denev6.github.io/projects/2025/03/24/retrieve-notice.html" />
+    <author>
+      <name>박성진</name>
+    </author>
+
+  
+    
+    <category term="Projects" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      프로젝트를 시작하며
+
+Retrieval-Augmented Generation(RAG)를 이용해 학교 공지를 빠르게 찾는 챗봇을 구현했다. Encoder + FAISS + SQLite를 이용해 로컬 GPU로 실험했으며, 문장 요약을 위해 GPT-3.5-turbo를 사용했다.
+
+
+
+Github 보기
+
+챗봇을 만든 이유는 단순하다. 평소와 같이 강의를 듣기 위해 강의실에 앉아 있었다. 그런데 시간이 흘러도 교수님은 오시지 않았고, 무언가 이상함을 직감했다. 학교 홈페이지를 들어갔지만 관련 공지를 찾을 수 없었다. 혹시나 하는 마음에 학교 챗봇에 폐강 관련 공지가 있는지 물어봤지만, 모른다는 답변만 돌아왔다.
+
+이후에도 챗봇을 이용해 여러 실험을 해봤지만 계속 모른다는 이야기만 반복했다.
+
+
+
+그래서 그날 밤...
+    </summary>
+  
+
+  </entry>
 
   
   <entry>
@@ -200,52 +248,6 @@ vanishing/exploding gradient가 모델 수렴을 방해한다. 이는 normalized
 
 
 본 연구는 deep residual lear...
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>ImageNet Classification with Deep Convolutional Neural Networks</title>
-    <link href="https://denev6.github.io/paper-review/2025/01/31/alexnet.html" rel="alternate" type="text/html" title="ImageNet Classification with Deep Convolutional Neural Networks" />
-    <published>2025-01-31T00:00:00+09:00</published>
-  
-    <updated>2025-01-31T00:00:00+09:00</updated>
-  
-    <id>https://denev6.github.io/paper-review/2025/01/31/alexnet.html</id>
-    <content src="https://denev6.github.io/paper-review/2025/01/31/alexnet.html" />
-    <author>
-      <name>박성진</name>
-    </author>
-
-  
-    
-    <category term="Paper-Review" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      ImageNet Classification with Deep Convolutional Neural Networks: 논문은 AlexNet을 소개한 논문으로 CNN 모델의 각 레이어가 어떤 역할을 하는지 잘 분석했다.
-
-논문을 정리한 글이며, CNN의 기본적인 개념을 생략하고 정리했다. 자세한 부분은 BLOG: CNN에 볼 수 있다.
-
-본 글에서 분석을 위해 사용한 코드는 Github에 정리되어 있다.
-
-Abstract
-
-
-  ImageNet LSVRC-2012 대회에서 SOTA를 달성
-  모델은 6000만 개의 파라미터와 650,000개 뉴런으로 구성
-  5개의 convolutional layer + 3개의 fully-connected layer + 1000-way softmax
-  non-satura...
     </summary>
   
 
