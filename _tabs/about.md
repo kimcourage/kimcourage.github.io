@@ -58,7 +58,7 @@ Sung-jin Park
 ### 기타
 
 - 🧠 EEG 뇌파 신호를 활용한 청소년 ADHD 탐지: [Github](https://github.com/denev6/ADHD-EEG-ViT), [블로그](https://denev6.github.io/projects/2025/03/05/eeg-transformer.html)
-- 🔔 RAG + FAISS로 학교 공지 검색: [Github](https://github.com/denev6/retrieve-notice) | [블로그](https://denev6.github.io/projects/2025/03/24/retrieve-notice.html)
+- 🐕 Retriever + LLM으로 공지 검색 챗봇: [Github](https://github.com/denev6/retrieve-notice), [블로그](https://denev6.github.io/projects/2025/03/24/retrieve-notice.html)
 - ⚡ SvelteKit + FastAPI를 이용한 모델 서빙: [Github](https://github.com/denev6/serve-models), [블로그](https://denev6.github.io/playground/2025/01/17/ml-api.html)
 
 ## 자격증 및 논문
