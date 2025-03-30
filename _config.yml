@@ -10,7 +10,7 @@ baseurl: ""
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
 # otherwise, the layout language will use the default value of 'en'.
-lang: ko-KR
+lang: ko
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
 timezone: Asia/Seoul
@@ -18,33 +18,33 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Jin's Notes
+title: Yonggi Kim # the main title
 
-tagline: 호기심 가득한 개발자의 노트 # it will display as the sub-title
+tagline: Quantitative Psychologist & Psychometrician # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  AI, 수학, Python, Golang을 다루는 학생입니다.
+  "Hello"
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: "https://denev6.github.io"
+url: "https://kimcourage.github.io"
 
 github:
-  username: denev6
+  username: kimcourage # change to your github username
 
 twitter:
-  username: 
+  username: twitter_username # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: 박성진
-  email: dev.seongjin@gmail.com
+  name: Yonggi Kim
+  email: yonggi1124@gmail.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://github.com/denev6
+    - https://github.com/kimcourage # change to your github homepage
     # Uncomment below to add more social links
-    - https://denev6.tistory.com/ 
-    - https://www.instagram.com/color_dnv
+    # - https://이름.tistory.com/ 
+    # - https://www.instagram.com/이름
     # - https://www.linkedin.com/in/username
 
 google_site_verification: # fill in to your verification string
@@ -52,7 +52,7 @@ google_site_verification: # fill in to your verification string
 # The end of `jekyll-seo-tag` settings
 
 google_analytics:
-  id: G-85T4845YWM # fill in your Google Analytics ID
+  id: # fill in your Google Analytics ID
   # Google Analytics pageviews report settings
   pv:
     proxy_endpoint: # fill in the Google Analytics superProxy endpoint of Google App Engine
@@ -69,30 +69,30 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode: light # [light|dark]
+theme_mode: # [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: #"https://denev6.github.io"
+img_cdn: "https://kimcourage.github.io"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: /assets/img/avatar.jpg
+avatar: /assets/img/avatar.png
 
 # boolean type, the global switch for TOC in posts.
 toc: true
 
 comments:
-  active: utterances # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  active: # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
   utterances:
-    repo: denev6/utterances
-    issue_term: pathname # < url | pathname | title | ...>
+    repo: 
+    issue_term: # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
     repo: # <gh-username>/<repo>
@@ -115,7 +115,7 @@ assets:
 pwa:
   enabled: false # the option for PWA feature
 
-paginate: 7
+paginate: 10
 paginate_path: "/page/:num"
 
 # ------------ The following options are not recommended to be modified ------------------
