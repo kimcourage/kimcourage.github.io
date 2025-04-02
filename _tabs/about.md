@@ -36,7 +36,7 @@ Statistical models are useful tools for testing researchers' hypotheses about ps
   - Cognitive Diagnosis Model
   - Network Psychometrics
 - Response Style & Time
-- DIfferential Item Functioning/Measurement Invariance
+- Differential Item Functioning/Measurement Invariance
 - Scale Development
 
 **Applied Mathematics**
