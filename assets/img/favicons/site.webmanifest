@@ -1,6 +1,6 @@
 {
-  "name": "Jin's Note",
-  "short_name": "Jin's",
+  "name": "MyWebSite",
+  "short_name": "MySite",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

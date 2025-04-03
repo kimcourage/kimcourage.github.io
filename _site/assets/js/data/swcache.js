@@ -23,8 +23,6 @@ const resource = [
   /* --- Favicons & compressed JS --- */
   
   
-    '/assets/img/favicons/android-chrome-192x192.png',
-    '/assets/img/favicons/android-chrome-512x512.png',
     '/assets/img/favicons/apple-touch-icon.png',
     '/assets/img/favicons/favicon-96x96.png',
     '/assets/img/favicons/favicon.ico',
@@ -37,7 +35,8 @@ const resource = [
     '/assets/js/dist/home.min.js',
     '/assets/js/dist/misc.min.js',
     '/assets/js/dist/page.min.js',
-    '/assets/js/dist/post.min.js'
+    '/assets/js/dist/post.min.js',
+    '/assets/img/favicons/.DS_Store'
 ];
 
 /* The request url with below domain will be cached */
