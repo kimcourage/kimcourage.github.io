@@ -79,24 +79,24 @@ theme_mode: # [light|dark]
 img_cdn: "https://kimcourage.github.io"
 
 # the avatar on sidebar, support local or CORS resources
-avatar: '/assets/img/avatar.png'
+avatar: "/assets/img/avatar.png"
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
-social_preview_image: '/assets/img/preview.png'
+social_preview_image: "/assets/img/preview.png"
 
 # boolean type, the global switch for TOC in posts.
 toc: true
 
 comments:
-  active: # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  active: "utterances" # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
   utterances:
-    repo: 
-    issue_term: # < url | pathname | title | ...>
+    repo: "kimcourage/blog_comments"
+    issue_term: "pathname" # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
     repo: # <gh-username>/<repo>
