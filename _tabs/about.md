@@ -31,11 +31,12 @@ Statistical models are useful tools for testing researchers' hypotheses about ps
 
 **Psychometrics**
 
-- Measurement Model: 
-  - Item Response Model (Especially, IRTree; Explantory Item Response Model)
+- Generalized Latent Variable Modeling for Measurement: 
+  - Item Response Model
   - Cognitive Diagnosis Model
-  - Network Psychometrics
-- Response Style & Time
+  - Factor Model
+  - Mixture Model
+- Response Process & Style & Time Modeling
 - Differential Item Functioning/Measurement Invariance
 - Scale Development
 
