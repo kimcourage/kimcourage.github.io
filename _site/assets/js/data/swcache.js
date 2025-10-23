@@ -43,7 +43,7 @@ const resource = [
 const allowedDomains = [
   
 
-  'kimcourage.github.io',
+  'localhost:4000',
 
   
     'kimcourage.github.io',
